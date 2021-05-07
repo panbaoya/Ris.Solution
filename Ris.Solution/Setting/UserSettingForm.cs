@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace Ris.Ui.Setting
 {
-    public partial class UserSettingForm : Form
+    public partial class UserSettingForm : BaseForm
     {
         IUserBll _userBll;
         public UserSettingForm()

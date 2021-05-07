@@ -30,12 +30,10 @@ namespace Ris.Ui
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterForm));
-            this.btnRegister = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cmbPosition = new CustomControl.ComboBoxExApd();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.comboBoxExApd1 = new CustomControl.ComboBoxExApd();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -72,6 +70,12 @@ namespace Ris.Ui
             this.txtImageNumber = new System.Windows.Forms.TextBox();
             this.txtCheckNo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.btnRegister = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbGender = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -96,42 +100,48 @@ namespace Ris.Ui
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtPinyin1 = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnReset = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnRegister
+            // tabControl1
             // 
-            this.btnRegister.BackColor = System.Drawing.Color.Transparent;
-            this.btnRegister.Location = new System.Drawing.Point(174, 4);
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(75, 23);
-            this.btnRegister.TabIndex = 0;
-            this.btnRegister.Text = "登记";
-            this.btnRegister.UseVisualStyleBackColor = false;
-            this.btnRegister.Click += new System.EventHandler(this.button1_Click);
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(720, 592);
+            this.tabControl1.TabIndex = 1017;
             // 
-            // btnCancel
+            // tabPage1
             // 
-            this.btnCancel.BackColor = System.Drawing.Color.Transparent;
-            this.btnCancel.Location = new System.Drawing.Point(472, 4);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 21;
-            this.btnCancel.Text = "取消";
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.tabPage1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tabPage1.Controls.Add(this.groupBox2);
+            this.tabPage1.Controls.Add(this.groupBox4);
+            this.tabPage1.Controls.Add(this.panel1);
+            this.tabPage1.Controls.Add(this.groupBox1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(712, 566);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "登记信息";
             // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.cmbPosition);
-            this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.comboBoxExApd1);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.button1);
@@ -169,10 +179,10 @@ namespace Ris.Ui
             this.groupBox2.Controls.Add(this.txtCheckNo);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 136);
+            this.groupBox2.Location = new System.Drawing.Point(3, 139);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(707, 488);
-            this.groupBox2.TabIndex = 20;
+            this.groupBox2.Size = new System.Drawing.Size(706, 302);
+            this.groupBox2.TabIndex = 1018;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "检查信息";
             // 
@@ -186,29 +196,7 @@ namespace Ris.Ui
             this.cmbPosition.Size = new System.Drawing.Size(100, 20);
             this.cmbPosition.TabIndex = 20;
             this.cmbPosition.TextSource = null;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.dataGridView1);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox3.Location = new System.Drawing.Point(3, 314);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(701, 171);
-            this.groupBox3.TabIndex = 1016;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "收费项目";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 17);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(695, 151);
-            this.dataGridView1.TabIndex = 0;
+            this.cmbPosition.SelectedIndexChanged += new System.EventHandler(this.cmbPosition_SelectedIndexChanged);
             // 
             // comboBoxExApd1
             // 
@@ -234,6 +222,7 @@ namespace Ris.Ui
             this.button2.Text = "手 动";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -247,7 +236,7 @@ namespace Ris.Ui
             this.button1.Text = "自 动";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label28
             // 
@@ -287,10 +276,6 @@ namespace Ris.Ui
             // 
             this.cmbMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMethod.FormattingEnabled = true;
-            this.cmbMethod.Items.AddRange(new object[] {
-            "门诊",
-            "急诊",
-            "体检"});
             this.cmbMethod.Location = new System.Drawing.Point(268, 244);
             this.cmbMethod.Name = "cmbMethod";
             this.cmbMethod.Size = new System.Drawing.Size(100, 20);
@@ -317,7 +302,6 @@ namespace Ris.Ui
             this.cmbCheckType.Name = "cmbCheckType";
             this.cmbCheckType.Size = new System.Drawing.Size(100, 20);
             this.cmbCheckType.TabIndex = 16;
-            this.cmbCheckType.SelectedIndexChanged += new System.EventHandler(this.cmbPosition_SelectedIndexChanged);
             // 
             // label27
             // 
@@ -340,7 +324,6 @@ namespace Ris.Ui
             this.cmbEquipment.Name = "cmbEquipment";
             this.cmbEquipment.Size = new System.Drawing.Size(100, 20);
             this.cmbEquipment.TabIndex = 18;
-            this.cmbEquipment.SelectedIndexChanged += new System.EventHandler(this.cmbPosition_SelectedIndexChanged);
             // 
             // label29
             // 
@@ -535,6 +518,7 @@ namespace Ris.Ui
             // 
             // txtImageNumber
             // 
+            this.txtImageNumber.Enabled = false;
             this.txtImageNumber.Location = new System.Drawing.Point(77, 22);
             this.txtImageNumber.Name = "txtImageNumber";
             this.txtImageNumber.Size = new System.Drawing.Size(100, 21);
@@ -555,6 +539,73 @@ namespace Ris.Ui
             this.label10.Size = new System.Drawing.Size(59, 12);
             this.label10.TabIndex = 23;
             this.label10.Text = "就诊类型:";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.dataGridView2);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox4.Location = new System.Drawing.Point(3, 441);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(706, 92);
+            this.groupBox4.TabIndex = 1020;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "收费项目";
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView2.Location = new System.Drawing.Point(3, 17);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowTemplate.Height = 23;
+            this.dataGridView2.Size = new System.Drawing.Size(700, 72);
+            this.dataGridView2.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnReset);
+            this.panel1.Controls.Add(this.btnRegister);
+            this.panel1.Controls.Add(this.btnCancel);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(3, 533);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(706, 30);
+            this.panel1.TabIndex = 1019;
+            // 
+            // btnReset
+            // 
+            this.btnReset.BackColor = System.Drawing.Color.Transparent;
+            this.btnReset.Location = new System.Drawing.Point(320, 4);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 22;
+            this.btnReset.Text = "重置";
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // btnRegister
+            // 
+            this.btnRegister.BackColor = System.Drawing.Color.Transparent;
+            this.btnRegister.Location = new System.Drawing.Point(171, 4);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(75, 23);
+            this.btnRegister.TabIndex = 0;
+            this.btnRegister.Text = "登记";
+            this.btnRegister.UseVisualStyleBackColor = false;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancel.Location = new System.Drawing.Point(469, 4);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 21;
+            this.btnCancel.Text = "取消";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // groupBox1
             // 
@@ -583,10 +634,10 @@ namespace Ris.Ui
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtPinyin1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(707, 136);
-            this.groupBox1.TabIndex = 19;
+            this.groupBox1.Size = new System.Drawing.Size(706, 136);
+            this.groupBox1.TabIndex = 1017;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "基本信息";
             // 
@@ -610,7 +661,6 @@ namespace Ris.Ui
             this.btnSearch.Size = new System.Drawing.Size(20, 20);
             this.btnSearch.TabIndex = 7;
             this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // cmbName
             // 
@@ -688,7 +738,6 @@ namespace Ris.Ui
             this.txtBirthDay.Name = "txtBirthDay";
             this.txtBirthDay.Size = new System.Drawing.Size(100, 21);
             this.txtBirthDay.TabIndex = 6;
-            this.txtBirthDay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNum_KeyPress);
             // 
             // txtPostCode
             // 
@@ -745,7 +794,6 @@ namespace Ris.Ui
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(228, 21);
             this.txtPhone.TabIndex = 7;
-            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNum_KeyPress);
             // 
             // label3
             // 
@@ -789,37 +837,36 @@ namespace Ris.Ui
             this.txtPinyin1.Size = new System.Drawing.Size(100, 21);
             this.txtPinyin1.TabIndex = 4;
             // 
-            // panel1
+            // tabPage2
             // 
-            this.panel1.Controls.Add(this.btnReset);
-            this.panel1.Controls.Add(this.btnRegister);
-            this.panel1.Controls.Add(this.btnCancel);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 594);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(707, 30);
-            this.panel1.TabIndex = 22;
+            this.tabPage2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(712, 566);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "电子申请单";
             // 
-            // btnReset
+            // dataGridView1
             // 
-            this.btnReset.BackColor = System.Drawing.Color.Transparent;
-            this.btnReset.Location = new System.Drawing.Point(323, 4);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(75, 23);
-            this.btnReset.TabIndex = 22;
-            this.btnReset.Text = "重置";
-            this.btnReset.UseVisualStyleBackColor = false;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(706, 560);
+            this.dataGridView1.TabIndex = 1;
             // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(707, 624);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(720, 592);
+            this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "RegisterForm";
@@ -827,22 +874,45 @@ namespace Ris.Ui
             this.Text = "新增登记";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnRegister;
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private CustomControl.ComboBoxExApd cmbPosition;
+        private CustomControl.ComboBoxExApd comboBoxExApd1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox txtRemarks;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtBillHospital;
+        private System.Windows.Forms.ComboBox cmbMethod;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.ComboBox cmbCheckType;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.ComboBox cmbEquipment;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.ComboBox cmbCheckDept;
+        private System.Windows.Forms.ComboBox cmbApplyDept;
+        private System.Windows.Forms.DateTimePicker dtpApplyDate;
+        private System.Windows.Forms.ComboBox cmbPatientType;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtSymptom;
         private System.Windows.Forms.Label label19;
@@ -850,18 +920,35 @@ namespace Ris.Ui
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtBed;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox txtArea;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtApplyDocter;
+        private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtImageNumber;
         private System.Windows.Forms.TextBox txtCheckNo;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Button btnRegister;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox cmbGender;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.ComboBox cmbName;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtAge;
         private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtBirthDay;
         private System.Windows.Forms.TextBox txtPostCode;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtAddress;
@@ -874,39 +961,7 @@ namespace Ris.Ui
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtPinyin1;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.ComboBox cmbName;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.ComboBox cmbGender;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ComboBox cmbPatientType;
-        private System.Windows.Forms.DateTimePicker dtpApplyDate;
-        private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.ComboBox cmbApplyDept;
-        private System.Windows.Forms.ComboBox cmbMethod;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtBillHospital;
-        private System.Windows.Forms.ComboBox cmbCheckType;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.ComboBox cmbCheckDept;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.TextBox txtRemarks;
-        private System.Windows.Forms.ComboBox cmbEquipment;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.TextBox txtImageNumber;
-        private CustomControl.ComboBoxExApd comboBoxExApd1;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox txtAge;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox txtBirthDay;
-        private CustomControl.ComboBoxExApd cmbPosition;
     }
 }

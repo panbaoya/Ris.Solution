@@ -11,19 +11,13 @@ using System.Windows.Forms;
 
 namespace Ris.Ui.Setting
 {
-    public partial class ConfigurationSettingForm : Form, IBaseForm
+    public partial class ConfigurationSettingForm : BaseForm
     {
         ITypeConfigBll _typeConfigBll;
         public ConfigurationSettingForm()
         {
             InitializeComponent();
             _typeConfigBll = new TypeConfigBll();
-        }
-
-        public void SetFont()
-        {
-            this.Font = new Font("宋体", AppConfSetting.GlobalFontSize);
-            this.Text += "-" + AppConfSetting.HospitalName;
         }
 
         private void ConfigurationSettingForm_Load(object sender, EventArgs e)
@@ -34,7 +28,7 @@ namespace Ris.Ui.Setting
             types.Insert(0, new TypeConfigModel { DataCode = "-1", DataName = "全部" });
             cmbType.DataSource = types; // EnumUnit.EnumToList<TypeConfigEnum>();
             dataGridView1.ClearSelection();
-            SetFont();
+            SetStyle();
             BindData();
             //this.comboBox1.Text = AppConfSetting.GlobalFontSize.ToString();
             ////this.txtHospitalCode.Text = AppConfSetting.HospitalCode;

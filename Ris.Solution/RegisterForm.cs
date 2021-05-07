@@ -18,7 +18,7 @@ using System.Windows.Forms;
 
 namespace Ris.Ui
 {
-    public partial class RegisterForm : Form,IBaseForm
+    public partial class RegisterForm : BaseForm
     {
         ///业务类
         private readonly IRegisterBll _registerBll;
@@ -28,67 +28,18 @@ namespace Ris.Ui
         public RegisterForm()
         {
             InitializeComponent();
+            txtIDCard.LostFocus += txtIDCard_LostFocus;
             _registerBll = new RegisterBll();
             _typeConfigBll = new TypeConfigBll();
             _deptmentBll = new DeptmentBll();
             _positionMethodBll = new PositionMethodBll();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            btnRegister.Enabled = false;
-            //绑定模型
-            RegisterModel _registerModel= new RegisterModel
-            {
-                    CardNo = txtCardNo.Text,
-                    Name=cmbName.Text,
-                    IDCard=txtIDCard.Text,
-                    PinYin1=txtPinyin1.Text,
-                    Gender=Convert.ToInt32(cmbGender.SelectedValue),
-                    Address=txtAddress.Text,
-                    BirthDay=txtBirthDay.Text,
-                    CurrentAge=txtAge.Text,
-                    Phone=txtPhone.Text,
-                    PostCode=txtPostCode.Text,
-                    Email=txtEmail.Text,
-                    ImageNumber=txtImageNumber.Text,
-                    PatientType=cmbPatientType.Text,
-                    CheckNo=txtCheckNo.Text,
-                    BillHospital=txtBillHospital.Text,
-                    ApplyDept=cmbApplyDept.SelectedValue.ToString(),
-                    ApplyDeptName= cmbApplyDept.Text,
-                    ApplyDocterName=txtApplyDocter.Text,
-                    Area=txtArea.Text,
-                    Bed=txtBed.Text,
-                    ApplyDate=DateTime.Now,
-                    CheckDept =cmbCheckDept.SelectedValue.ToString(),
-                    CheckDeptName=cmbCheckDept.Text,
-                    CheckType=cmbCheckType.Text,
-                    Equipment=cmbEquipment.Text,
-                    Position=cmbPosition.Text,
-                    Method=cmbMethod.Text,
-                    Symptom=txtSymptom.Text,
-                    Diagnosis=txtDiagnosis.Text,
-                    DockerAsk=txtRemarks.Text
-            };
-            if (_registerBll.Register(_registerModel, out string errorMsg))
-            {
-                MessageBox.Show("添加成功.");
-                this.Close();
-                this.DialogResult = DialogResult.OK;
-            }
-            else
-            {
-                MessageBox.Show(errorMsg);
-            }
-            btnRegister.Enabled = true;
-        }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
-            txtIDCard.LostFocus += txtIDCard_LostFocus;
-            SetFont();
+            SetStyle();
             Init();
+            tabPage2.Parent = null;
         }
 
         private void txtIDCard_LostFocus(object sender, EventArgs e)
@@ -200,12 +151,6 @@ namespace Ris.Ui
             }
         }
 
-        public void SetFont()
-        {
-            this.Font = new Font("宋体", AppConfSetting.GlobalFontSize);
-            this.Text += "-" + AppConfSetting.HospitalName;
-        }
-
         private void cmbPosition_SelectedIndexChanged(object sender, EventArgs e)
         {
             //检查方法
@@ -213,11 +158,6 @@ namespace Ris.Ui
             cmbMethod.DisplayMember = "Name";
             cmbMethod.ValueMember = "ID";
             cmbMethod.DataSource = methods;
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            txtImageNumber.Text = DateTime.Now.ToString("yyyyMMddHHmmss");
         }
 
         private void txtCardNo_KeyPress(object sender, KeyPressEventArgs e)
@@ -292,6 +232,67 @@ namespace Ris.Ui
                 txtDiagnosis.Text = model.Diagnosis;
                 txtRemarks.Text = model.DockerAsk;
             }
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            btnRegister.Enabled = false;
+            //绑定模型
+            RegisterModel _registerModel = new RegisterModel
+            {
+                CardNo = txtCardNo.Text,
+                Name = cmbName.Text,
+                IDCard = txtIDCard.Text,
+                PinYin1 = txtPinyin1.Text,
+                Gender = Convert.ToInt32(cmbGender.SelectedValue),
+                Address = txtAddress.Text,
+                BirthDay = txtBirthDay.Text,
+                CurrentAge = txtAge.Text,
+                Phone = txtPhone.Text,
+                PostCode = txtPostCode.Text,
+                Email = txtEmail.Text,
+                ImageNumber = txtImageNumber.Text,
+                PatientType = cmbPatientType.Text,
+                CheckNo = txtCheckNo.Text,
+                BillHospital = txtBillHospital.Text,
+                ApplyDept = cmbApplyDept.SelectedValue.ToString(),
+                ApplyDeptName = cmbApplyDept.Text,
+                ApplyDocterName = txtApplyDocter.Text,
+                Area = txtArea.Text,
+                Bed = txtBed.Text,
+                ApplyDate = DateTime.Now,
+                CheckDept = cmbCheckDept.SelectedValue.ToString(),
+                CheckDeptName = cmbCheckDept.Text,
+                CheckType = cmbCheckType.Text,
+                Equipment = cmbEquipment.Text,
+                Position = cmbPosition.Text,
+                Method = cmbMethod.Text,
+                Symptom = txtSymptom.Text,
+                Diagnosis = txtDiagnosis.Text,
+                DockerAsk = txtRemarks.Text
+            };
+            if (_registerBll.Register(_registerModel, out string errorMsg))
+            {
+                MessageBox.Show("添加成功.");
+                this.Close();
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show(errorMsg);
+            }
+            btnRegister.Enabled = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txtImageNumber.Text = DateTime.Now.ToString("yyyyMMddHHmmss");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            txtImageNumber.Text = null;
+            txtImageNumber.Enabled = true;
         }
     }
 }

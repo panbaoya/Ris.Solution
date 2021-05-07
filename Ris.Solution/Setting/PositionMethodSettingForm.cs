@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace Ris.Ui.Setting
 {
-    public partial class PositionMethodSettingForm : Form
+    public partial class PositionMethodSettingForm : BaseForm
     {
         PositionMethodModel _updateModel; 
         IPositionMethodBll _positionMethodBll;

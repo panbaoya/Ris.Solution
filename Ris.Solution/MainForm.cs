@@ -18,7 +18,7 @@ using System.Windows.Forms;
 
 namespace Ris.Ui
 {
-    public partial class MainForm : Form, IBaseForm
+    public partial class MainForm :BaseForm
     {
         private readonly IRegisterBll _registerBll;
         private readonly ITypeConfigBll _typeConfigBll;
@@ -51,7 +51,8 @@ namespace Ris.Ui
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            SetFont();
+            tssUser.Text += $"[{CurrentUser.Name}]";
+            SetStyle();
             this.dgvRegisterList.AutoGenerateColumns = false;
             dgvRegisterList.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             foreach (DataGridViewColumn item in dgvRegisterList.Columns)
@@ -206,7 +207,10 @@ namespace Ris.Ui
                 lblPosition.Text = patientRegister.Position;
                 txtZs.Text = patientRegister.Symptom;
                 txtZd.Text = patientRegister.Diagnosis;
-                txtYsyq.Text = patientRegister.DockerAsk;
+                txtYsyq.Text = patientRegister.DockerAsk; 
+                lblZs.Text= patientRegister.Symptom;
+                lblZd.Text = patientRegister.Diagnosis;
+                lblYsyq.Text = patientRegister.DockerAsk;
                 //UdpUnit.SendMsg("clearImage");
             }
         }
@@ -225,19 +229,15 @@ namespace Ris.Ui
             deptSetting.ShowDialog();
         }
 
-        public void SetFont()
+        public override void SetStyle()
         {
-            if (!string.IsNullOrEmpty(AppConfSetting.HospitalName))
-            {
-                this.Text = "Ris登记系统-" + AppConfSetting.HospitalName;
-            }
-            else
+            if (string.IsNullOrEmpty(AppConfSetting.HospitalName))
             {
                 ConfigurationSettingForm form = new ConfigurationSettingForm();
                 form.Owner = this;
                 var result = form.ShowDialog();
             }
-            this.Font = new Font("宋体", AppConfSetting.GlobalFontSize);
+            base.SetStyle();
         }
 
         private void tsmConfigSet_Click(object sender, EventArgs e)

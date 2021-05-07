@@ -11,21 +11,28 @@ using System.Windows.Forms;
 
 namespace Ris.Ui.Setting
 {
-    public partial class SystemSettingForm : Form,IBaseForm
+    public partial class SystemSettingForm : BaseForm
     {
         public SystemSettingForm()
         {
             InitializeComponent();
         }
 
-        public void SetFont()
-        {
-            this.Font = new Font("宋体", AppConfSetting.GlobalFontSize);
-        }
-
         private void SystemSetting_Load(object sender, EventArgs e)
         {
-            SetFont();
+            SetStyle();
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string fullAddress = txtPostAddress.Text;
+            if (!string.IsNullOrEmpty(txtPort.Text))
+            {
+                fullAddress += ":" + txtPort.Text+"/";
+            }
+            txtPostAddress.Text = fullAddress;
+            AppConfSetting.SaveSettiongs("PostAddress", fullAddress);
         }
     }
 }

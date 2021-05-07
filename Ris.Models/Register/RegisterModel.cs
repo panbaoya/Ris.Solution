@@ -14,6 +14,7 @@ namespace Ris.Models.Register
         public string PinYin { get; set; }
         public string PinYin1 { get; set; }
         public Nullable<int> Gender { get; set; }
+        public string GenderName { get; set; }
         public string IDCard { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }

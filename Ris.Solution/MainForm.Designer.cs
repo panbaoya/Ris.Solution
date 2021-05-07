@@ -30,9 +30,9 @@ namespace Ris.Ui
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,37 +45,12 @@ namespace Ris.Ui
             this.授权信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsbRegister = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgvRegisterList = new System.Windows.Forms.DataGridView();
-            this.PatientID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.grdName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CardNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PinYin1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Age = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDCard = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ImageNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PatientType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CheckNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApplyDept = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApplyDocter = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApplyDocterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Area = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bed = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApplyDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CheckDept = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CheckDeptName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CheckType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Equipment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Position = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Method = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Symptom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Diagnosis = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DockerAsk = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtYsyq = new System.Windows.Forms.RichTextBox();
             this.txtZd = new System.Windows.Forms.RichTextBox();
@@ -107,7 +82,7 @@ namespace Ris.Ui
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -120,8 +95,36 @@ namespace Ris.Ui
             this.label14 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtImageNumber = new System.Windows.Forms.TextBox();
-            this.tsbRegister = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.PatientID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grdName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CardNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PinYin1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Age = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDCard = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImageNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PatientType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CheckNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApplyDept = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApplyDocter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApplyDocterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Area = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApplyDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CheckDept = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CheckDeptName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CheckType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Equipment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Position = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Method = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Symptom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Diagnosis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DockerAsk = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblZs = new System.Windows.Forms.Label();
+            this.lblZd = new System.Windows.Forms.Label();
+            this.lblYsyq = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -141,7 +144,7 @@ namespace Ris.Ui
             this.关于ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1904, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(1223, 25);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -210,13 +213,13 @@ namespace Ris.Ui
             // 授权信息ToolStripMenuItem
             // 
             this.授权信息ToolStripMenuItem.Name = "授权信息ToolStripMenuItem";
-            this.授权信息ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.授权信息ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.授权信息ToolStripMenuItem.Text = "授权信息";
             // 
             // 关于ToolStripMenuItem1
             // 
             this.关于ToolStripMenuItem1.Name = "关于ToolStripMenuItem1";
-            this.关于ToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.关于ToolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
             this.关于ToolStripMenuItem1.Text = "关于";
             this.关于ToolStripMenuItem1.Click += new System.EventHandler(this.关于ToolStripMenuItem1_Click);
             // 
@@ -229,14 +232,34 @@ namespace Ris.Ui
             this.toolStripButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 25);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1904, 56);
+            this.toolStrip1.Size = new System.Drawing.Size(1223, 56);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // tsbRegister
+            // 
+            this.tsbRegister.Image = global::Ris.Ui.Properties.Resources.Register;
+            this.tsbRegister.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbRegister.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRegister.Name = "tsbRegister";
+            this.tsbRegister.Size = new System.Drawing.Size(78, 53);
+            this.tsbRegister.Text = "预约登记(&N)";
+            this.tsbRegister.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbRegister.Click += new System.EventHandler(this.tsbRegister_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 56);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 53);
+            this.toolStripButton2.Text = "toolStripButton2";
             // 
             // tabControl1
             // 
@@ -244,21 +267,22 @@ namespace Ris.Ui
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.ImageList = this.imageList1;
             this.tabControl1.Location = new System.Drawing.Point(0, 81);
+            this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1587, 938);
+            this.tabControl1.Size = new System.Drawing.Size(1017, 689);
             this.tabControl1.TabIndex = 5;
             // 
             // tabPage1
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tabPage1.Controls.Add(this.dgvRegisterList);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.ImageKey = "Register.png";
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1579, 911);
+            this.tabPage1.Size = new System.Drawing.Size(1009, 662);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "已登记列表";
             // 
@@ -276,7 +300,6 @@ namespace Ris.Ui
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvRegisterList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvRegisterList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvRegisterList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PatientID,
             this.grdName,
@@ -321,237 +344,17 @@ namespace Ris.Ui
             this.dgvRegisterList.RowTemplate.Height = 23;
             this.dgvRegisterList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRegisterList.ShowCellToolTips = false;
-            this.dgvRegisterList.Size = new System.Drawing.Size(1573, 676);
+            this.dgvRegisterList.Size = new System.Drawing.Size(1003, 427);
             this.dgvRegisterList.TabIndex = 0;
             this.dgvRegisterList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRegisterList_CellClick);
             this.dgvRegisterList.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRegisterList_ColumnHeaderMouseClick);
             // 
-            // PatientID
-            // 
-            this.PatientID.Frozen = true;
-            this.PatientID.HeaderText = "患者ID";
-            this.PatientID.Name = "PatientID";
-            this.PatientID.ReadOnly = true;
-            this.PatientID.Visible = false;
-            this.PatientID.Width = 66;
-            // 
-            // grdName
-            // 
-            this.grdName.DataPropertyName = "Name";
-            this.grdName.Frozen = true;
-            this.grdName.HeaderText = "姓名";
-            this.grdName.Name = "grdName";
-            this.grdName.ReadOnly = true;
-            this.grdName.Width = 54;
-            // 
-            // CardNo
-            // 
-            this.CardNo.DataPropertyName = "CardNo";
-            this.CardNo.Frozen = true;
-            this.CardNo.HeaderText = "卡号";
-            this.CardNo.Name = "CardNo";
-            this.CardNo.ReadOnly = true;
-            this.CardNo.Width = 54;
-            // 
-            // PinYin1
-            // 
-            this.PinYin1.DataPropertyName = "PinYin1";
-            this.PinYin1.HeaderText = "姓名全拼";
-            this.PinYin1.Name = "PinYin1";
-            this.PinYin1.ReadOnly = true;
-            this.PinYin1.Width = 78;
-            // 
-            // Gender
-            // 
-            this.Gender.DataPropertyName = "Gender";
-            this.Gender.HeaderText = "性别";
-            this.Gender.Name = "Gender";
-            this.Gender.ReadOnly = true;
-            this.Gender.Width = 54;
-            // 
-            // Age
-            // 
-            this.Age.DataPropertyName = "Age";
-            this.Age.HeaderText = "年龄";
-            this.Age.Name = "Age";
-            this.Age.ReadOnly = true;
-            this.Age.Width = 54;
-            // 
-            // IDCard
-            // 
-            this.IDCard.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.IDCard.DataPropertyName = "IDCard";
-            this.IDCard.HeaderText = "身份证号";
-            this.IDCard.Name = "IDCard";
-            this.IDCard.ReadOnly = true;
-            this.IDCard.Width = 78;
-            // 
-            // ImageNumber
-            // 
-            this.ImageNumber.DataPropertyName = "ImageNumber";
-            this.ImageNumber.HeaderText = "影像号";
-            this.ImageNumber.Name = "ImageNumber";
-            this.ImageNumber.ReadOnly = true;
-            this.ImageNumber.Width = 66;
-            // 
-            // PatientType
-            // 
-            this.PatientType.DataPropertyName = "PatientType";
-            this.PatientType.HeaderText = "患者类型";
-            this.PatientType.Name = "PatientType";
-            this.PatientType.ReadOnly = true;
-            this.PatientType.Width = 78;
-            // 
-            // CheckNo
-            // 
-            this.CheckNo.DataPropertyName = "CheckNo";
-            this.CheckNo.HeaderText = "就诊号";
-            this.CheckNo.Name = "CheckNo";
-            this.CheckNo.ReadOnly = true;
-            this.CheckNo.Width = 66;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "BillHospital";
-            this.Column2.HeaderText = "开单医院";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 78;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "ApplyDept";
-            this.Column3.HeaderText = "申请科室代码";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Visible = false;
-            this.Column3.Width = 102;
-            // 
-            // ApplyDept
-            // 
-            this.ApplyDept.DataPropertyName = "ApplyDeptName";
-            this.ApplyDept.HeaderText = "申请科室";
-            this.ApplyDept.Name = "ApplyDept";
-            this.ApplyDept.ReadOnly = true;
-            this.ApplyDept.Width = 78;
-            // 
-            // ApplyDocter
-            // 
-            this.ApplyDocter.DataPropertyName = "ApplyDocter";
-            this.ApplyDocter.HeaderText = "申请医生代码";
-            this.ApplyDocter.Name = "ApplyDocter";
-            this.ApplyDocter.ReadOnly = true;
-            this.ApplyDocter.Visible = false;
-            this.ApplyDocter.Width = 102;
-            // 
-            // ApplyDocterName
-            // 
-            this.ApplyDocterName.DataPropertyName = "ApplyDocterName";
-            this.ApplyDocterName.HeaderText = "申请医生";
-            this.ApplyDocterName.Name = "ApplyDocterName";
-            this.ApplyDocterName.ReadOnly = true;
-            this.ApplyDocterName.Width = 78;
-            // 
-            // Area
-            // 
-            this.Area.DataPropertyName = "Area";
-            this.Area.HeaderText = "申请病区";
-            this.Area.Name = "Area";
-            this.Area.ReadOnly = true;
-            this.Area.Width = 78;
-            // 
-            // Bed
-            // 
-            this.Bed.DataPropertyName = "Bed";
-            this.Bed.HeaderText = "申请病床";
-            this.Bed.Name = "Bed";
-            this.Bed.ReadOnly = true;
-            this.Bed.Width = 78;
-            // 
-            // ApplyDate
-            // 
-            this.ApplyDate.DataPropertyName = "ApplyDate";
-            this.ApplyDate.HeaderText = "申请时间";
-            this.ApplyDate.Name = "ApplyDate";
-            this.ApplyDate.ReadOnly = true;
-            this.ApplyDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.ApplyDate.Width = 78;
-            // 
-            // CheckDept
-            // 
-            this.CheckDept.DataPropertyName = "CheckDept";
-            this.CheckDept.HeaderText = "检查科室代码";
-            this.CheckDept.Name = "CheckDept";
-            this.CheckDept.ReadOnly = true;
-            this.CheckDept.Visible = false;
-            this.CheckDept.Width = 102;
-            // 
-            // CheckDeptName
-            // 
-            this.CheckDeptName.DataPropertyName = "CheckDeptName";
-            this.CheckDeptName.HeaderText = "检查科室名称";
-            this.CheckDeptName.Name = "CheckDeptName";
-            this.CheckDeptName.ReadOnly = true;
-            this.CheckDeptName.Width = 102;
-            // 
-            // CheckType
-            // 
-            this.CheckType.DataPropertyName = "CheckType";
-            this.CheckType.HeaderText = "检查类型";
-            this.CheckType.Name = "CheckType";
-            this.CheckType.ReadOnly = true;
-            this.CheckType.Width = 78;
-            // 
-            // Equipment
-            // 
-            this.Equipment.DataPropertyName = "Equipment";
-            this.Equipment.HeaderText = "检查设备";
-            this.Equipment.Name = "Equipment";
-            this.Equipment.ReadOnly = true;
-            this.Equipment.Width = 78;
-            // 
-            // Position
-            // 
-            this.Position.DataPropertyName = "Position";
-            this.Position.HeaderText = "检查位置";
-            this.Position.Name = "Position";
-            this.Position.ReadOnly = true;
-            this.Position.Width = 78;
-            // 
-            // Method
-            // 
-            this.Method.DataPropertyName = "Method";
-            this.Method.HeaderText = "检查方法";
-            this.Method.Name = "Method";
-            this.Method.ReadOnly = true;
-            this.Method.Width = 78;
-            // 
-            // Symptom
-            // 
-            this.Symptom.DataPropertyName = "Symptom";
-            this.Symptom.HeaderText = "主诉";
-            this.Symptom.Name = "Symptom";
-            this.Symptom.ReadOnly = true;
-            this.Symptom.Width = 54;
-            // 
-            // Diagnosis
-            // 
-            this.Diagnosis.DataPropertyName = "Diagnosis";
-            this.Diagnosis.HeaderText = "诊断";
-            this.Diagnosis.Name = "Diagnosis";
-            this.Diagnosis.ReadOnly = true;
-            this.Diagnosis.Width = 54;
-            // 
-            // DockerAsk
-            // 
-            this.DockerAsk.DataPropertyName = "DockerAsk";
-            this.DockerAsk.HeaderText = "医生要求";
-            this.DockerAsk.Name = "DockerAsk";
-            this.DockerAsk.ReadOnly = true;
-            this.DockerAsk.Width = 78;
-            // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.lblYsyq);
+            this.groupBox1.Controls.Add(this.lblZd);
+            this.groupBox1.Controls.Add(this.lblZs);
             this.groupBox1.Controls.Add(this.txtYsyq);
             this.groupBox1.Controls.Add(this.txtZd);
             this.groupBox1.Controls.Add(this.txtZs);
@@ -579,9 +382,9 @@ namespace Ris.Ui
             this.groupBox1.Controls.Add(this.lblHospital);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(3, 679);
+            this.groupBox1.Location = new System.Drawing.Point(3, 430);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1573, 229);
+            this.groupBox1.Size = new System.Drawing.Size(1003, 229);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "详细信息";
@@ -828,23 +631,24 @@ namespace Ris.Ui
             // 
             // statusStrip1
             // 
+            this.statusStrip1.BackColor = System.Drawing.Color.Transparent;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2,
-            this.toolStripStatusLabel3,
+            this.tssUser,
             this.toolStripStatusLabel4,
             this.tssTime});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 1019);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 770);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
-            this.statusStrip1.Size = new System.Drawing.Size(1904, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1223, 22);
             this.statusStrip1.TabIndex = 9;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(1763, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(1051, 17);
             this.toolStripStatusLabel1.Spring = true;
             // 
             // toolStripStatusLabel2
@@ -853,11 +657,11 @@ namespace Ris.Ui
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(4, 17);
             // 
-            // toolStripStatusLabel3
+            // tssUser
             // 
-            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(59, 17);
-            this.toolStripStatusLabel3.Text = "当前登录:";
+            this.tssUser.Name = "tssUser";
+            this.tssUser.Size = new System.Drawing.Size(59, 17);
+            this.tssUser.Text = "当前登录:";
             // 
             // toolStripStatusLabel4
             // 
@@ -873,10 +677,12 @@ namespace Ris.Ui
             // 
             // timer1
             // 
+            this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.ckbCheckType);
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.comboBox1);
@@ -886,17 +692,18 @@ namespace Ris.Ui
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.txtImageNumber);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.groupBox2.Location = new System.Drawing.Point(1587, 81);
+            this.groupBox2.Location = new System.Drawing.Point(1017, 81);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(317, 938);
+            this.groupBox2.Size = new System.Drawing.Size(206, 689);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "条件查询";
             // 
             // ckbCheckType
             // 
+            this.ckbCheckType.CheckOnClick = true;
             this.ckbCheckType.FormattingEnabled = true;
-            this.ckbCheckType.Location = new System.Drawing.Point(71, 99);
+            this.ckbCheckType.Location = new System.Drawing.Point(74, 84);
             this.ckbCheckType.Name = "ckbCheckType";
             this.ckbCheckType.Size = new System.Drawing.Size(120, 84);
             this.ckbCheckType.TabIndex = 4;
@@ -915,7 +722,7 @@ namespace Ris.Ui
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(61, 240);
+            this.comboBox1.Location = new System.Drawing.Point(64, 225);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 20);
             this.comboBox1.TabIndex = 2;
@@ -923,7 +730,7 @@ namespace Ris.Ui
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 99);
+            this.label15.Location = new System.Drawing.Point(9, 84);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(59, 12);
             this.label15.TabIndex = 1;
@@ -933,7 +740,7 @@ namespace Ris.Ui
             // 
             this.cmbPatientType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPatientType.FormattingEnabled = true;
-            this.cmbPatientType.Location = new System.Drawing.Point(71, 67);
+            this.cmbPatientType.Location = new System.Drawing.Point(74, 52);
             this.cmbPatientType.Name = "cmbPatientType";
             this.cmbPatientType.Size = new System.Drawing.Size(121, 20);
             this.cmbPatientType.TabIndex = 2;
@@ -941,7 +748,7 @@ namespace Ris.Ui
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 70);
+            this.label14.Location = new System.Drawing.Point(9, 55);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(59, 12);
             this.label14.TabIndex = 1;
@@ -950,7 +757,7 @@ namespace Ris.Ui
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(18, 40);
+            this.label9.Location = new System.Drawing.Point(21, 25);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(47, 12);
             this.label9.TabIndex = 1;
@@ -958,36 +765,265 @@ namespace Ris.Ui
             // 
             // txtImageNumber
             // 
-            this.txtImageNumber.Location = new System.Drawing.Point(71, 37);
+            this.txtImageNumber.Location = new System.Drawing.Point(74, 22);
             this.txtImageNumber.Name = "txtImageNumber";
             this.txtImageNumber.Size = new System.Drawing.Size(121, 21);
             this.txtImageNumber.TabIndex = 0;
             // 
-            // tsbRegister
+            // PatientID
             // 
-            this.tsbRegister.Image = global::Ris.Ui.Properties.Resources.Register;
-            this.tsbRegister.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbRegister.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbRegister.Name = "tsbRegister";
-            this.tsbRegister.Size = new System.Drawing.Size(78, 53);
-            this.tsbRegister.Text = "预约登记(&N)";
-            this.tsbRegister.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsbRegister.Click += new System.EventHandler(this.tsbRegister_Click);
+            this.PatientID.Frozen = true;
+            this.PatientID.HeaderText = "患者ID";
+            this.PatientID.Name = "PatientID";
+            this.PatientID.ReadOnly = true;
+            this.PatientID.Visible = false;
+            this.PatientID.Width = 66;
             // 
-            // toolStripButton2
+            // grdName
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 53);
-            this.toolStripButton2.Text = "toolStripButton2";
+            this.grdName.DataPropertyName = "Name";
+            this.grdName.Frozen = true;
+            this.grdName.HeaderText = "姓名";
+            this.grdName.Name = "grdName";
+            this.grdName.ReadOnly = true;
+            this.grdName.Width = 54;
+            // 
+            // CardNo
+            // 
+            this.CardNo.DataPropertyName = "CardNo";
+            this.CardNo.Frozen = true;
+            this.CardNo.HeaderText = "卡号";
+            this.CardNo.Name = "CardNo";
+            this.CardNo.ReadOnly = true;
+            this.CardNo.Width = 54;
+            // 
+            // PinYin1
+            // 
+            this.PinYin1.DataPropertyName = "PinYin1";
+            this.PinYin1.HeaderText = "姓名全拼";
+            this.PinYin1.Name = "PinYin1";
+            this.PinYin1.ReadOnly = true;
+            this.PinYin1.Width = 78;
+            // 
+            // Gender
+            // 
+            this.Gender.DataPropertyName = "GenderName";
+            this.Gender.HeaderText = "性别";
+            this.Gender.Name = "Gender";
+            this.Gender.ReadOnly = true;
+            this.Gender.Width = 54;
+            // 
+            // Age
+            // 
+            this.Age.DataPropertyName = "Age";
+            this.Age.HeaderText = "年龄";
+            this.Age.Name = "Age";
+            this.Age.ReadOnly = true;
+            this.Age.Width = 54;
+            // 
+            // IDCard
+            // 
+            this.IDCard.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.IDCard.DataPropertyName = "IDCard";
+            this.IDCard.HeaderText = "身份证号";
+            this.IDCard.Name = "IDCard";
+            this.IDCard.ReadOnly = true;
+            this.IDCard.Width = 78;
+            // 
+            // ImageNumber
+            // 
+            this.ImageNumber.DataPropertyName = "ImageNumber";
+            this.ImageNumber.HeaderText = "影像号";
+            this.ImageNumber.Name = "ImageNumber";
+            this.ImageNumber.ReadOnly = true;
+            this.ImageNumber.Width = 66;
+            // 
+            // PatientType
+            // 
+            this.PatientType.DataPropertyName = "PatientType";
+            this.PatientType.HeaderText = "患者类型";
+            this.PatientType.Name = "PatientType";
+            this.PatientType.ReadOnly = true;
+            this.PatientType.Width = 78;
+            // 
+            // CheckNo
+            // 
+            this.CheckNo.DataPropertyName = "CheckNo";
+            this.CheckNo.HeaderText = "就诊号";
+            this.CheckNo.Name = "CheckNo";
+            this.CheckNo.ReadOnly = true;
+            this.CheckNo.Width = 66;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "BillHospital";
+            this.Column2.HeaderText = "开单医院";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 78;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "ApplyDept";
+            this.Column3.HeaderText = "申请科室代码";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Visible = false;
+            this.Column3.Width = 102;
+            // 
+            // ApplyDept
+            // 
+            this.ApplyDept.DataPropertyName = "ApplyDeptName";
+            this.ApplyDept.HeaderText = "申请科室";
+            this.ApplyDept.Name = "ApplyDept";
+            this.ApplyDept.ReadOnly = true;
+            this.ApplyDept.Width = 78;
+            // 
+            // ApplyDocter
+            // 
+            this.ApplyDocter.DataPropertyName = "ApplyDocter";
+            this.ApplyDocter.HeaderText = "申请医生代码";
+            this.ApplyDocter.Name = "ApplyDocter";
+            this.ApplyDocter.ReadOnly = true;
+            this.ApplyDocter.Visible = false;
+            this.ApplyDocter.Width = 102;
+            // 
+            // ApplyDocterName
+            // 
+            this.ApplyDocterName.DataPropertyName = "ApplyDocterName";
+            this.ApplyDocterName.HeaderText = "申请医生";
+            this.ApplyDocterName.Name = "ApplyDocterName";
+            this.ApplyDocterName.ReadOnly = true;
+            this.ApplyDocterName.Width = 78;
+            // 
+            // Area
+            // 
+            this.Area.DataPropertyName = "Area";
+            this.Area.HeaderText = "申请病区";
+            this.Area.Name = "Area";
+            this.Area.ReadOnly = true;
+            this.Area.Width = 78;
+            // 
+            // Bed
+            // 
+            this.Bed.DataPropertyName = "Bed";
+            this.Bed.HeaderText = "申请病床";
+            this.Bed.Name = "Bed";
+            this.Bed.ReadOnly = true;
+            this.Bed.Width = 78;
+            // 
+            // ApplyDate
+            // 
+            this.ApplyDate.DataPropertyName = "ApplyDate";
+            this.ApplyDate.HeaderText = "申请时间";
+            this.ApplyDate.Name = "ApplyDate";
+            this.ApplyDate.ReadOnly = true;
+            this.ApplyDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.ApplyDate.Width = 78;
+            // 
+            // CheckDept
+            // 
+            this.CheckDept.DataPropertyName = "CheckDept";
+            this.CheckDept.HeaderText = "检查科室代码";
+            this.CheckDept.Name = "CheckDept";
+            this.CheckDept.ReadOnly = true;
+            this.CheckDept.Visible = false;
+            this.CheckDept.Width = 102;
+            // 
+            // CheckDeptName
+            // 
+            this.CheckDeptName.DataPropertyName = "CheckDeptName";
+            this.CheckDeptName.HeaderText = "检查科室名称";
+            this.CheckDeptName.Name = "CheckDeptName";
+            this.CheckDeptName.ReadOnly = true;
+            this.CheckDeptName.Width = 102;
+            // 
+            // CheckType
+            // 
+            this.CheckType.DataPropertyName = "CheckType";
+            this.CheckType.HeaderText = "检查类型";
+            this.CheckType.Name = "CheckType";
+            this.CheckType.ReadOnly = true;
+            this.CheckType.Width = 78;
+            // 
+            // Equipment
+            // 
+            this.Equipment.DataPropertyName = "Equipment";
+            this.Equipment.HeaderText = "检查设备";
+            this.Equipment.Name = "Equipment";
+            this.Equipment.ReadOnly = true;
+            this.Equipment.Width = 78;
+            // 
+            // Position
+            // 
+            this.Position.DataPropertyName = "Position";
+            this.Position.HeaderText = "检查位置";
+            this.Position.Name = "Position";
+            this.Position.ReadOnly = true;
+            this.Position.Width = 78;
+            // 
+            // Method
+            // 
+            this.Method.DataPropertyName = "Method";
+            this.Method.HeaderText = "检查方法";
+            this.Method.Name = "Method";
+            this.Method.ReadOnly = true;
+            this.Method.Width = 78;
+            // 
+            // Symptom
+            // 
+            this.Symptom.DataPropertyName = "Symptom";
+            this.Symptom.HeaderText = "主诉";
+            this.Symptom.Name = "Symptom";
+            this.Symptom.ReadOnly = true;
+            this.Symptom.Width = 54;
+            // 
+            // Diagnosis
+            // 
+            this.Diagnosis.DataPropertyName = "Diagnosis";
+            this.Diagnosis.HeaderText = "诊断";
+            this.Diagnosis.Name = "Diagnosis";
+            this.Diagnosis.ReadOnly = true;
+            this.Diagnosis.Width = 54;
+            // 
+            // DockerAsk
+            // 
+            this.DockerAsk.DataPropertyName = "DockerAsk";
+            this.DockerAsk.HeaderText = "医生要求";
+            this.DockerAsk.Name = "DockerAsk";
+            this.DockerAsk.ReadOnly = true;
+            this.DockerAsk.Width = 78;
+            // 
+            // lblZs
+            // 
+            this.lblZs.Location = new System.Drawing.Point(616, 23);
+            this.lblZs.Name = "lblZs";
+            this.lblZs.Size = new System.Drawing.Size(322, 52);
+            this.lblZs.TabIndex = 14;
+            this.lblZs.Text = "主    诉:";
+            // 
+            // lblZd
+            // 
+            this.lblZd.Location = new System.Drawing.Point(616, 85);
+            this.lblZd.Name = "lblZd";
+            this.lblZd.Size = new System.Drawing.Size(322, 52);
+            this.lblZd.TabIndex = 14;
+            this.lblZd.Text = "主    诉:";
+            // 
+            // lblYsyq
+            // 
+            this.lblYsyq.Location = new System.Drawing.Point(616, 146);
+            this.lblYsyq.Name = "lblYsyq";
+            this.lblYsyq.Size = new System.Drawing.Size(322, 52);
+            this.lblYsyq.TabIndex = 14;
+            this.lblYsyq.Text = "主    诉:";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(1223, 792);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.toolStrip1);
@@ -1053,7 +1089,7 @@ namespace Ris.Ui
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.ToolStripStatusLabel tssUser;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.ToolStripStatusLabel tssTime;
         private System.Windows.Forms.Timer timer1;
@@ -1083,6 +1119,9 @@ namespace Ris.Ui
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox cmbPatientType;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckedListBox ckbCheckType;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DataGridViewTextBoxColumn PatientID;
         private System.Windows.Forms.DataGridViewTextBoxColumn grdName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CardNo;
@@ -1110,8 +1149,8 @@ namespace Ris.Ui
         private System.Windows.Forms.DataGridViewTextBoxColumn Symptom;
         private System.Windows.Forms.DataGridViewTextBoxColumn Diagnosis;
         private System.Windows.Forms.DataGridViewTextBoxColumn DockerAsk;
-        private System.Windows.Forms.CheckedListBox ckbCheckType;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lblYsyq;
+        private System.Windows.Forms.Label lblZd;
+        private System.Windows.Forms.Label lblZs;
     }
 }

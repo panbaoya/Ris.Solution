@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace Ris.Ui.Setting
 {
-    public partial class DeptSettingForm : Form,IBaseForm
+    public partial class DeptSettingForm : BaseForm
     {
         //业务类
         private readonly IDeptmentBll _deptmentBll;
@@ -27,7 +27,7 @@ namespace Ris.Ui.Setting
 
         private void DeptSettingForm_Load(object sender, EventArgs e)
         {
-            SetFont();
+            SetStyle();
             txtStatus.DataSource = new List<object>
             {
                 new { Code = 0, Name = "禁用" },
@@ -132,11 +132,6 @@ namespace Ris.Ui.Setting
         {
             DataGridViewRow CurrentRow = dataGridView1.Rows[e.RowIndex];
             CurrentRow.HeaderCell.Value = Convert.ToString(e.RowIndex + 1);
-        }
-
-        public void SetFont()
-        {
-            this.Font = new Font("宋体", AppConfSetting.GlobalFontSize);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

@@ -56,18 +56,19 @@ namespace Ris.Ui
                 Password = txtPassword.Text,
                 Status = 1,
             };
-            var user=_userBll.Login(userModel);
-            if (user!=null)
+            var user = _userBll.Login(userModel);
+            if (user != null)
             {
+                BaseForm.CurrentUser = user;
                 var msg = $"操作员:{user.Name},工号:{user.UserName},{DateTime.Now.ToString()}登录成功.";
-                NLogger.LogInfo(msg,user.UserName);
+                NLogger.LogInfo(msg, user.UserName);
                 MainForm mainForm = new MainForm();
                 mainForm.Show();
                 this.Hide();
             }
             else
             {
-                var msg = $"工号/手机号:{txtUserName.Text+txtPhone.Text},{DateTime.Now.ToString()}登录失败.";
+                var msg = $"工号/手机号:{txtUserName.Text + txtPhone.Text},{DateTime.Now.ToString()}登录失败.";
                 NLogger.LogInfo(msg, user.UserName);
                 this.ShowInfo("用户名或密码错误.");
             }

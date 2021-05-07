@@ -53,6 +53,7 @@ namespace Ris.Bll
             models.ForEach(x =>
             {
                 x.IDCard = AesUnit.AESDecrypt(x.IDCard, AppConfSetting.AesKey);
+                x.GenderName = x.Gender == 1 ? "男" : "女";
             });
             return models;
         }
