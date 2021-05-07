@@ -762,6 +762,7 @@ namespace Ris.Ui
             this.txtCardNo.Name = "txtCardNo";
             this.txtCardNo.Size = new System.Drawing.Size(100, 21);
             this.txtCardNo.TabIndex = 1;
+            this.txtCardNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCardNo_KeyPress);
             // 
             // label2
             // 

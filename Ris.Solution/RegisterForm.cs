@@ -219,5 +219,79 @@ namespace Ris.Ui
         {
             txtImageNumber.Text = DateTime.Now.ToString("yyyyMMddHHmmss");
         }
+
+        private void txtCardNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar==(char)Keys.Enter)
+            {
+                //var response = HttpUnit.PostJson("", "");
+                //RegisterModel _registerModel = new RegisterModel
+                //{
+                //    CardNo = txtCardNo.Text,
+                //    Name = cmbName.Text,
+                //    IDCard = txtIDCard.Text,
+                //    PinYin1 = txtPinyin1.Text,
+                //    Gender = Convert.ToInt32(cmbGender.SelectedValue),
+                //    Address = txtAddress.Text,
+                //    BirthDay = txtBirthDay.Text,
+                //    CurrentAge = txtAge.Text,
+                //    Phone = txtPhone.Text,
+                //    PostCode = txtPostCode.Text,
+                //    Email = txtEmail.Text,
+                //    ImageNumber = txtImageNumber.Text,
+                //    PatientType = cmbPatientType.Text,
+                //    CheckNo = txtCheckNo.Text,
+                //    BillHospital = txtBillHospital.Text,
+                //    ApplyDept = cmbApplyDept.SelectedValue.ToString(),
+                //    ApplyDeptName = cmbApplyDept.Text,
+                //    ApplyDocterName = txtApplyDocter.Text,
+                //    Area = txtArea.Text,
+                //    Bed = txtBed.Text,
+                //    ApplyDate = DateTime.Now,
+                //    CheckDept = cmbCheckDept.SelectedValue.ToString(),
+                //    CheckDeptName = cmbCheckDept.Text,
+                //    CheckType = cmbCheckType.Text,
+                //    Equipment = cmbEquipment.Text,
+                //    Position = cmbPosition.Text,
+                //    Method = cmbMethod.Text,
+                //    Symptom = txtSymptom.Text,
+                //    Diagnosis = txtDiagnosis.Text,
+                //    DockerAsk = txtRemarks.Text
+                //};
+                //var ssss=_registerModel.ToJson();
+                var response = "{\"PatientID\":null,\"Name\":\"潘保亚\",\"CardNo\":\"123\",\"PinYin\":null,\"PinYin1\":\"PanBaoYa\",\"Gender\":1,\"IDCard\":\"410928199106044232\",\"Address\":\"家庭住址\",\"Phone\":\"199216152093\",\"PostCode\":\"123412\",\"CurrentAge\":\"30岁\",\"BirthDay\":\"1991-06-04\",\"Email\":\"123@156.com\",\"ImageNumber\":\"20210506165038\",\"PatientType\":\"自费\",\"BillHospital\":\"开单医院\",\"ApplyDept\":\"ks002\",\"ApplyDeptName\":\"超声科\",\"ApplyDocter\":null,\"ApplyDocterName\":\"申请医师\",\"CheckType\":\"CT\",\"Bed\":\"2床\",\"ApplyDate\":\"2021-05-06T16: 52:14.1880235+08:00\",\"CheckNo\":\"123\",\"CheckDept\":\"ks002\",\"CheckDeptName\":\"超声科\",\"Area\":\"1区\",\"Diagnosis\":\"临床诊断\",\"Equipment\":\"AS\",\"Position\":\"腹部,头部,胸部\",\"Method\":\"肝Ca\",\"Symptom\":\"病例描述\",\"DockerAsk\":\"医师要求\"}";
+                var model = response.JsonToObj<RegisterModel>();
+                txtCardNo.Text = model.CardNo;
+                cmbName.Text = model.Name;
+                txtIDCard.Text = model.IDCard;
+                txtPinyin1.Text = model.PinYin1;
+                cmbGender.SelectedValue = model.Gender.ToString();
+                txtAddress.Text = model.Address;
+                txtBirthDay.Text = model.BirthDay;
+                txtAge.Text = model.CurrentAge;
+                txtPhone.Text = model.Phone;
+                txtPostCode.Text = model.PostCode;
+                txtEmail.Text = model.Email;
+                txtImageNumber.Text = model.ImageNumber;
+                cmbPatientType.Text = model.PatientType;
+                txtCheckNo.Text = model.CheckNo;
+                txtBillHospital.Text = model.BillHospital;
+                cmbApplyDept.SelectedValue = model.ApplyDept;
+                cmbApplyDept.Text = model.ApplyDeptName;
+                txtApplyDocter.Text = model.ApplyDocterName;
+                txtArea.Text = model.Area;
+                txtBed.Text = model.Bed;
+                dtpApplyDate.Value = model.ApplyDate.Value;
+                cmbCheckDept.SelectedValue = model.CheckDept;
+                cmbCheckDept.Text = model.CheckDeptName;
+                cmbCheckType.Text = model.CheckType;
+                cmbEquipment.Text = model.Equipment;
+                cmbPosition.Text = model.Position;
+                cmbMethod.Text = model.Method;
+                txtSymptom.Text = model.Symptom;
+                txtDiagnosis.Text = model.Diagnosis;
+                txtRemarks.Text = model.DockerAsk;
+            }
+        }
     }
 }
