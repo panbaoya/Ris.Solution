@@ -3,6 +3,7 @@ using Ris.Dal;
 using Ris.IBll;
 using Ris.Models.Deptment;
 using Ris.Models.Enums;
+using Ris.Models.InterFaceModel;
 using Ris.Models.Register;
 using Ris.Tools;
 using System;
@@ -15,6 +16,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace Ris.Ui
 {
@@ -199,38 +201,214 @@ namespace Ris.Ui
                 //    DockerAsk = txtRemarks.Text
                 //};
                 //var ssss=_registerModel.ToJson();
-                var response = "{\"PatientID\":null,\"Name\":\"潘保亚\",\"CardNo\":\"123\",\"PinYin\":null,\"PinYin1\":\"PanBaoYa\",\"Gender\":1,\"IDCard\":\"410928199106044232\",\"Address\":\"家庭住址\",\"Phone\":\"199216152093\",\"PostCode\":\"123412\",\"CurrentAge\":\"30岁\",\"BirthDay\":\"1991-06-04\",\"Email\":\"123@156.com\",\"ImageNumber\":\"20210506165038\",\"PatientType\":\"自费\",\"BillHospital\":\"开单医院\",\"ApplyDept\":\"ks002\",\"ApplyDeptName\":\"超声科\",\"ApplyDocter\":null,\"ApplyDocterName\":\"申请医师\",\"CheckType\":\"CT\",\"Bed\":\"2床\",\"ApplyDate\":\"2021-05-06T16: 52:14.1880235+08:00\",\"CheckNo\":\"123\",\"CheckDept\":\"ks002\",\"CheckDeptName\":\"超声科\",\"Area\":\"1区\",\"Diagnosis\":\"临床诊断\",\"Equipment\":\"AS\",\"Position\":\"腹部,头部,胸部\",\"Method\":\"肝Ca\",\"Symptom\":\"病例描述\",\"DockerAsk\":\"医师要求\"}";
-                var model = response.JsonToObj<RegisterModel>();
-                txtCardNo.Text = model.CardNo;
-                cmbName.Text = model.Name;
-                txtIDCard.Text = model.IDCard;
-                txtPinyin1.Text = model.PinYin1;
-                cmbGender.SelectedValue = model.Gender.ToString();
-                txtAddress.Text = model.Address;
-                txtBirthDay.Text = model.BirthDay;
-                txtAge.Text = model.CurrentAge;
-                txtPhone.Text = model.Phone;
-                txtPostCode.Text = model.PostCode;
-                txtEmail.Text = model.Email;
-                txtImageNumber.Text = model.ImageNumber;
-                cmbPatientType.Text = model.PatientType;
-                txtCheckNo.Text = model.CheckNo;
-                txtBillHospital.Text = model.BillHospital;
-                cmbApplyDept.SelectedValue = model.ApplyDept;
-                cmbApplyDept.Text = model.ApplyDeptName;
-                txtApplyDocter.Text = model.ApplyDocterName;
-                txtArea.Text = model.Area;
-                txtBed.Text = model.Bed;
-                dtpApplyDate.Value = model.ApplyDate.Value;
-                cmbCheckDept.SelectedValue = model.CheckDept;
-                cmbCheckDept.Text = model.CheckDeptName;
-                cmbCheckType.Text = model.CheckType;
-                cmbEquipment.Text = model.Equipment;
-                cmbPosition.Text = model.Position;
-                cmbMethod.Text = model.Method;
-                txtSymptom.Text = model.Symptom;
-                txtDiagnosis.Text = model.Diagnosis;
-                txtRemarks.Text = model.DockerAsk;
+
+
+
+                //var response = "{\"PatientID\":null,\"Name\":\"潘保亚\",\"CardNo\":\"123\",\"PinYin\":null,\"PinYin1\":\"PanBaoYa\",\"Gender\":1,\"IDCard\":\"410928199106044232\",\"Address\":\"家庭住址\",\"Phone\":\"199216152093\",\"PostCode\":\"123412\",\"CurrentAge\":\"30岁\",\"BirthDay\":\"1991-06-04\",\"Email\":\"123@156.com\",\"ImageNumber\":\"20210506165038\",\"PatientType\":\"自费\",\"BillHospital\":\"开单医院\",\"ApplyDept\":\"ks002\",\"ApplyDeptName\":\"超声科\",\"ApplyDocter\":null,\"ApplyDocterName\":\"申请医师\",\"CheckType\":\"CT\",\"Bed\":\"2床\",\"ApplyDate\":\"2021-05-06T16: 52:14.1880235+08:00\",\"CheckNo\":\"123\",\"CheckDept\":\"ks002\",\"CheckDeptName\":\"超声科\",\"Area\":\"1区\",\"Diagnosis\":\"临床诊断\",\"Equipment\":\"AS\",\"Position\":\"腹部,头部,胸部\",\"Method\":\"肝Ca\",\"Symptom\":\"病例描述\",\"DockerAsk\":\"医师要求\"}";
+                //var model = response.JsonToObj<RegisterModel>();
+                //txtCardNo.Text = model.CardNo;
+                //cmbName.Text = model.Name;
+                //txtIDCard.Text = model.IDCard;
+                //txtPinyin1.Text = model.PinYin1;
+                //cmbGender.SelectedValue = model.Gender.ToString();
+                //txtAddress.Text = model.Address;
+                //txtBirthDay.Text = model.BirthDay;
+                //txtAge.Text = model.CurrentAge;
+                //txtPhone.Text = model.Phone;
+                //txtPostCode.Text = model.PostCode;
+                //txtEmail.Text = model.Email;
+                //txtImageNumber.Text = model.ImageNumber;
+                //cmbPatientType.Text = model.PatientType;
+                //txtCheckNo.Text = model.CheckNo;
+                //txtBillHospital.Text = model.BillHospital;
+                //cmbApplyDept.SelectedValue = model.ApplyDept;
+                //cmbApplyDept.Text = model.ApplyDeptName;
+                //txtApplyDocter.Text = model.ApplyDocterName;
+                //txtArea.Text = model.Area;
+                //txtBed.Text = model.Bed;
+                //dtpApplyDate.Value = model.ApplyDate.Value;
+                //cmbCheckDept.SelectedValue = model.CheckDept;
+                //cmbCheckDept.Text = model.CheckDeptName;
+                //cmbCheckType.Text = model.CheckType;
+                //cmbEquipment.Text = model.Equipment;
+                //cmbPosition.Text = model.Position;
+                //cmbMethod.Text = model.Method;
+                //txtSymptom.Text = model.Symptom;
+                //txtDiagnosis.Text = model.Diagnosis;
+                //txtRemarks.Text = model.DockerAsk;
+
+
+
+                var xml = @"<ApplyBillInfo>
+        <PatientInfos>
+            <PatientInfo>
+                <RegCode>970312</RegCode>
+                <BedNo/>
+                <DoctorName null=""yes""/>
+                <PatientType>10</PatientType>
+                <OutPatientNo>8658580</OutPatientNo>
+                <WardCode>0</WardCode>
+                <DateOfBirth>19980808</DateOfBirth>
+                <RelationshipType/>
+                <EncounterType>O</EncounterType>
+                <Age>22岁</Age>
+                <LocationName>内科</LocationName>
+                <RelationshipAdd/>
+                <RelationshipTel/>
+                <MIcardNumber>88888888</MIcardNumber>
+                <HomeTel/>
+                <DoctorCode/>
+                <MedicalCardNumber null=""yes""/>
+                <LocationCode>265</LocationCode>
+                <RelationshipName>测试123321</RelationshipName>
+                <HomeAddress/>
+                <GenderCode>M</GenderCode>
+                <WorkAddress/>
+                <WardName null=""yes"" />
+                <PatientName>测试123321</PatientName>
+                <WorkTel/>
+                <Wbbh>8658580</Wbbh>
+                <InPatientNo/>
+                <SSNumber/>
+                <ApplyBills>
+                    <ApplyBill>
+                        <Result/>
+                        <RequestStatus>0 </RequestStatus>
+                        <Memo/>
+                        <MedicalHistory>主诉:1  现病史:1&#xd;
+既往史:1  体格检查:1</MedicalHistory>
+                        <LocationCode>265</LocationCode>
+                        <ReqDoctorName>0000</ReqDoctorName>
+                        <RequestDate>20210413111021</RequestDate>
+                        <UrgentStatus>0</UrgentStatus>
+                        <ReqLocationCode>265</ReqLocationCode>
+                        <LocationName>内科</LocationName>
+                        <RequestId>385168</RequestId>
+                        <ReqLocationName null=""yes"" />
+                        <ReqDoctorCode>0000</ReqDoctorCode>
+                        <RequestType/>
+                        <ClinicDiagnosis>健康查体</ClinicDiagnosis>
+                        <AllergyHistory/>
+                        <ApplyItems>
+                            <ApplyItem>
+                                <UnitPrice>350.0000</UnitPrice>
+                                <CheckPointName/>
+                                <CheckPointCode/>
+                                <Memo/>
+                                <MethodName>0</MethodName>
+                                <ItemName>电子胃镜检查</ItemName>
+                                <MethodCode/>
+                                <Quantity>1</Quantity>
+                                <ItemCode>NKJJC1344</ItemCode>
+                            </ApplyItem>
+                        </ApplyItems>
+                    </ApplyBill>
+                    <ApplyBill>
+                        <Result/>
+                        <RequestStatus>0 </RequestStatus>
+                        <Memo/>
+                        <MedicalHistory>主诉:1  现病史:1既往史:1  体格检查:1</MedicalHistory>
+                        <LocationCode>265</LocationCode>
+                        <ReqDoctorName>0000</ReqDoctorName>
+                        <RequestDate>20210413111038</RequestDate>
+                        <UrgentStatus>0</UrgentStatus>
+                        <ReqLocationCode>265</ReqLocationCode>
+                        <LocationName>内科</LocationName>
+                        <RequestId>385169</RequestId>
+                        <ReqLocationName null=""yes"" />
+                        <ReqDoctorCode>0000</ReqDoctorCode>
+                        <RequestType/>
+                        <ClinicDiagnosis>健康查体</ClinicDiagnosis>
+                        <AllergyHistory/>
+                        <ApplyItems>
+                            <ApplyItem>
+                                <UnitPrice>400.0000</UnitPrice>
+                                <CheckPointName/>
+                                <CheckPointCode/>
+                                <Memo/>
+                                <MethodName>0</MethodName>
+                                <ItemName>电子肠镜检查</ItemName>
+                                <MethodCode/>
+                                <Quantity>1</Quantity>
+                                <ItemCode>NKJJC1345</ItemCode>
+                            </ApplyItem>
+                        </ApplyItems>
+                    </ApplyBill>
+                    <ApplyBill>
+                        <Result/>
+                        <RequestStatus>0 </RequestStatus>
+                        <Memo/>
+                        <MedicalHistory>主诉:1  现病史:1既往史:1  体格检查:1</MedicalHistory>
+                        <LocationCode>265</LocationCode>
+                        <ReqDoctorName>0000</ReqDoctorName>
+                        <RequestDate>20210413110330</RequestDate>
+                        <UrgentStatus/>
+                        <ReqLocationCode>265</ReqLocationCode>
+                        <LocationName>内科</LocationName>
+                        <RequestId>385162</RequestId>
+                        <ReqLocationName null=""yes"" />
+                        <ReqDoctorCode>0000</ReqDoctorCode>
+                        <RequestType/>
+                        <ClinicDiagnosis>健康查体</ClinicDiagnosis>
+                        <AllergyHistory/>
+                        <ApplyItems>
+                            <ApplyItem>
+                                <UnitPrice>350.0000</UnitPrice>
+                                <CheckPointName/>
+                                <CheckPointCode/>
+                                <Memo/>
+                                <MethodName/>
+                                <ItemName>电子胃镜检查</ItemName>
+                                <MethodCode/>
+                                <Quantity>1</Quantity>
+                                <ItemCode>NKJJC1344</ItemCode>
+                            </ApplyItem>
+                            <ApplyItem>
+                                <UnitPrice>400.0000</UnitPrice>
+                                <CheckPointName/>
+                                <CheckPointCode/>
+                                <Memo/>
+                                <MethodName/>
+                                <ItemName>电子肠镜检查</ItemName>
+                                <MethodCode/>
+                                <Quantity>1</Quantity>
+                                <ItemCode>NKJJC1345</ItemCode>
+                            </ApplyItem>
+                        </ApplyItems>
+                    </ApplyBill>
+                </ApplyBills>
+            </PatientInfo>
+        </PatientInfos>
+    </ApplyBillInfo>
+";
+                if (!string.IsNullOrEmpty(txtCardNo.Text))
+                {
+                    var applyBill = XmlUnit.XmlDeserialize<ApplyBillInfo>(xml);
+                    if (applyBill!=null && applyBill.PatientInfos.Count>0&& applyBill.PatientInfos[0].ApplyBills.Count>0)
+                    {
+                        var patient = applyBill.PatientInfos[0];
+
+                        cmbName.Text = patient.PatientName;
+                        if (!string.IsNullOrEmpty(patient.SSNumber))
+                        {
+                            txtIDCard.Text = patient.SSNumber;
+                        }
+                        else
+                        {
+                            txtAge.Text = patient.Age;
+                            cmbGender.Text = patient.GenderCode == "M" ? "男" : patient.GenderCode == "F" ? "女": "未知";
+                        }
+                        txtAddress.Text = patient.HomeAddress;
+                        txtPhone.Text = patient.HomeTel;
+                        cmbPatientType.Text = patient.EncounterType == "0" ? "门诊" : "住院";
+                        txtCardNo.Text = patient.EncounterType == "0" ? patient.OutPatientNo : patient.InPatientNo;
+
+                    }
+                    else
+                    {
+                        this.ShowInfo("没有患者信息.");
+                    }
+                }
             }
         }
 

@@ -45,6 +45,7 @@
     <Compile Include="Deptment\DetpmentModel.cs" />
     <Compile Include="Enums\GenderEnum.cs" />
     <Compile Include="Enums\TypeConfigEnum.cs" />
+    <Compile Include="InterFaceModel\ApplyBillInfo.cs" />
     <Compile Include="PositionMethod\PositionMethodModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register\RegisterModel.cs" />

@@ -74,6 +74,7 @@
     <Compile Include="PinYinConvert.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UdpUnit.cs" />
+    <Compile Include="XmlUnit.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
