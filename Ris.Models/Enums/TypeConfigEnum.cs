@@ -15,9 +15,9 @@ namespace Ris.Models.Enums
         [Description("性别")]
         Gender =10001,
         /// <summary>
-        /// 就诊类型
+        /// 患者类型
         /// </summary>
-        [Description("就诊类型")]
+        [Description("患者类型")]
         PatientType =10002,
         /// <summary>
         /// 医院名称
@@ -39,5 +39,10 @@ namespace Ris.Models.Enums
         /// </summary>
         [Description("加密向量")]
         AesIV = 10006,
+        /// <summary>
+        /// 就诊类型
+        /// </summary>
+        [Description("就诊类型")]
+        VisitType = 10007,
     }
 }

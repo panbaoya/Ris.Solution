@@ -5,15 +5,13 @@ using Ris.Models.Register;
 using Ris.Models.TypeConfig;
 using Ris.Tools;
 using Ris.Ui.Helper;
+using Ris.Ui.Register;
 using Ris.Ui.Setting;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Ris.Ui

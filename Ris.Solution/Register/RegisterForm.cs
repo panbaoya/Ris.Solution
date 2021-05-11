@@ -5,6 +5,7 @@ using Ris.Models.Deptment;
 using Ris.Models.Enums;
 using Ris.Models.InterFaceModel;
 using Ris.Models.Register;
+using Ris.Models.TypeConfig;
 using Ris.Tools;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace Ris.Ui
+namespace Ris.Ui.Register
 {
     public partial class RegisterForm : BaseForm
     {
@@ -26,7 +27,7 @@ namespace Ris.Ui
         private readonly IRegisterBll _registerBll;
         private readonly ITypeConfigBll _typeConfigBll;
         private readonly IDeptmentBll _deptmentBll;
-        private readonly IPositionMethodBll _positionMethodBll;
+        private readonly IPositionMethodBll _positionMethodBll; 
         public RegisterForm()
         {
             InitializeComponent();
@@ -53,7 +54,6 @@ namespace Ris.Ui
 
         private void Init()
         {
-            this.Font = new Font("宋体", AppConfSetting.GlobalFontSize);
             var typeConfigs = _typeConfigBll.GetTypeConfigs(new Models.TypeConfig.RequestTypeConfigModel { IsParent=0});
             //性别
             var Genders = typeConfigs.Where(x => x.DataType == TypeConfigEnum.Gender).ToList();
@@ -62,11 +62,16 @@ namespace Ris.Ui
             cmbGender.DataSource = Genders;
             //cmbGender.SelectedIndex = 0;
             //就诊类型
+            var visitTypes = typeConfigs.Where(x => x.DataType == TypeConfigEnum.VisitType).ToList();
+            cmbVisitType.DisplayMember = "DataName";
+            cmbVisitType.ValueMember = "DataCode";
+            cmbVisitType.DataSource = visitTypes;
+            //cmbPatientType.SelectedIndex = 0;
+            //就诊类型
             var patientTypes = typeConfigs.Where(x => x.DataType == TypeConfigEnum.PatientType).ToList();
             cmbPatientType.DisplayMember = "DataName";
             cmbPatientType.ValueMember = "DataCode";
             cmbPatientType.DataSource = patientTypes;
-            //cmbPatientType.SelectedIndex = 0;
             //科室列表
             var depts = _deptmentBll.GetDeptments(1);
             cmbApplyDept.DisplayMember = "DeptName";
@@ -246,11 +251,13 @@ namespace Ris.Ui
                 <BedNo/>
                 <DoctorName null=""yes""/>
                 <PatientType>10</PatientType>
+                <PatientTypeName>普通病人</PatientTypeName>
                 <OutPatientNo>8658580</OutPatientNo>
                 <WardCode>0</WardCode>
                 <DateOfBirth>19980808</DateOfBirth>
                 <RelationshipType/>
                 <EncounterType>O</EncounterType>
+                <EncounterTypeName>门诊</EncounterTypeName>
                 <Age>22岁</Age>
                 <LocationName>内科</LocationName>
                 <RelationshipAdd/>
@@ -263,6 +270,7 @@ namespace Ris.Ui
                 <RelationshipName>测试123321</RelationshipName>
                 <HomeAddress/>
                 <GenderCode>M</GenderCode>
+                <GenderName>男</GenderName>
                 <WorkAddress/>
                 <WardName null=""yes"" />
                 <PatientName>测试123321</PatientName>
@@ -387,8 +395,26 @@ namespace Ris.Ui
                     if (applyBill!=null && applyBill.PatientInfos.Count>0&& applyBill.PatientInfos[0].ApplyBills.Count>0)
                     {
                         var patient = applyBill.PatientInfos[0];
+                        //his接口数据,异步添加配置
+                        var configTask=_typeConfigBll.AddTypeConfigByHisAsync(patient);
+                        var deptTask=_deptmentBll.AddDeptmentByHisAsync(patient);
 
+                        //本身UI赋值
                         cmbName.Text = patient.PatientName;
+                        txtAddress.Text = patient.HomeAddress;
+                        txtPhone.Text = patient.HomeTel;
+                        txtCardNo.Text = patient.EncounterType == "O" ? patient.OutPatientNo : patient.InPatientNo;
+                        txtDiagnosis.Text =!string.IsNullOrEmpty(patient.DiagnosisCode)? patient.DiagnosisCode + "-" + patient.DiagnosisName:"";
+                        txtCheckNo.Text = patient.RegCode;
+                        txtSymptom.Text = patient.ApplyBills[0].MedicalHistory;
+                        txtRemarks.Text = patient.ApplyBills[0].Memo;
+
+                        dgvApplyBills.DataSource = patient.ApplyBills;
+                        tabPage2.Parent = tabControl1;
+                        //同步数据,最后加载,怕线程没有执行完.
+                        configTask.Wait();
+                        deptTask.Wait();
+                        Init();
                         if (!string.IsNullOrEmpty(patient.SSNumber))
                         {
                             txtIDCard.Text = patient.SSNumber;
@@ -396,13 +422,15 @@ namespace Ris.Ui
                         else
                         {
                             txtAge.Text = patient.Age;
-                            cmbGender.Text = patient.GenderCode == "M" ? "男" : patient.GenderCode == "F" ? "女": "未知";
+                            cmbGender.Text = patient.GenderName;
+                            cmbGender.SelectedValue = patient.GenderCode;
                         }
-                        txtAddress.Text = patient.HomeAddress;
-                        txtPhone.Text = patient.HomeTel;
-                        cmbPatientType.Text = patient.EncounterType == "0" ? "门诊" : "住院";
-                        txtCardNo.Text = patient.EncounterType == "0" ? patient.OutPatientNo : patient.InPatientNo;
-
+                        cmbPatientType.Text = patient.PatientTypeName;
+                        cmbPatientType.SelectedValue = patient.PatientType;
+                        cmbApplyDept.Text = patient.LocationName;
+                        cmbApplyDept.SelectedValue = patient.LocationCode;
+                        cmbVisitType.Text = patient.EncounterTypeName;
+                        cmbVisitType.SelectedValue = patient.EncounterType;
                     }
                     else
                     {
@@ -430,7 +458,7 @@ namespace Ris.Ui
                 PostCode = txtPostCode.Text,
                 Email = txtEmail.Text,
                 ImageNumber = txtImageNumber.Text,
-                PatientType = cmbPatientType.Text,
+                PatientType = cmbVisitType.Text,
                 CheckNo = txtCheckNo.Text,
                 BillHospital = txtBillHospital.Text,
                 ApplyDept = cmbApplyDept.SelectedValue.ToString(),
@@ -471,6 +499,21 @@ namespace Ris.Ui
         {
             txtImageNumber.Text = null;
             txtImageNumber.Enabled = true;
+        }
+
+        private void dgvApplyBills_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvApplyBills_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var list = dgvApplyBills.DataSource as List<ApplyBill>;
+                var apply = list[e.RowIndex];
+                dgvApplyProjects.DataSource = apply.ApplyItems;
+            }
         }
     }
 }

@@ -80,7 +80,7 @@ namespace Ris.Dal
 
         public T GetModel(Expression<Func<T, bool>> lambda)
         {
-            throw new NotImplementedException();
+            return db.Queryable<T>().First(lambda);
         }
 
         public T GetModelBySql(string sql, params object[] param)

@@ -68,6 +68,7 @@
     <Compile Include="EnumUnit.cs" />
     <Compile Include="ExpressionBuilder.cs" />
     <Compile Include="HttpUnit.cs" />
+    <Compile Include="MakeID.cs" />
     <Compile Include="MapperUnit.cs" />
     <Compile Include="MessageBoxUnit.cs" />
     <Compile Include="Nlog\NLogger.cs" />

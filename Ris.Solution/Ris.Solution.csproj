@@ -61,18 +61,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoSizeFormClass.cs" />
     <Compile Include="Helper\AboutUsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Helper\AboutUsForm.Designer.cs">
       <DependentUpon>AboutUsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="IBaseForm.cs" />
+    <Compile Include="IBaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Register\ApplyBillsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Register\ApplyBillsForm.Designer.cs">
+      <DependentUpon>ApplyBillsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Setting\ConfigurationSettingForm.cs">
       <SubType>Form</SubType>
@@ -98,10 +107,10 @@
     <Compile Include="Setting\PositionMethodSettingForm.Designer.cs">
       <DependentUpon>PositionMethodSettingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="RegisterForm.cs">
+    <Compile Include="Register\RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegisterForm.Designer.cs">
+    <Compile Include="Register\RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -133,7 +142,7 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RegisterForm.resx">
+    <EmbeddedResource Include="Register\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

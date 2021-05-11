@@ -1,5 +1,5 @@
 ﻿
-namespace Ris.Ui
+namespace Ris.Ui.Register
 {
     partial class RegisterForm
     {
@@ -33,6 +33,7 @@ namespace Ris.Ui
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmbVisitType = new System.Windows.Forms.ComboBox();
             this.cmbPosition = new CustomControl.ComboBoxExApd();
             this.comboBoxExApd1 = new CustomControl.ComboBoxExApd();
             this.button2 = new System.Windows.Forms.Button();
@@ -51,7 +52,6 @@ namespace Ris.Ui
             this.cmbCheckDept = new System.Windows.Forms.ComboBox();
             this.cmbApplyDept = new System.Windows.Forms.ComboBox();
             this.dtpApplyDate = new System.Windows.Forms.DateTimePicker();
-            this.cmbPatientType = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
             this.txtSymptom = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -71,16 +71,18 @@ namespace Ris.Ui
             this.txtCheckNo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgvApplys = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbPatientType = new System.Windows.Forms.ComboBox();
             this.cmbGender = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.cmbName = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtAge = new System.Windows.Forms.TextBox();
@@ -101,16 +103,22 @@ namespace Ris.Ui
             this.label1 = new System.Windows.Forms.Label();
             this.txtPinyin1 = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.dgvApplyProjects = new System.Windows.Forms.DataGridView();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dgvApplyBills = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvApplys)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvApplyProjects)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvApplyBills)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -121,7 +129,7 @@ namespace Ris.Ui
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(720, 592);
+            this.tabControl1.Size = new System.Drawing.Size(711, 592);
             this.tabControl1.TabIndex = 1017;
             // 
             // tabPage1
@@ -134,13 +142,14 @@ namespace Ris.Ui
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(712, 566);
+            this.tabPage1.Size = new System.Drawing.Size(703, 566);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "登记信息";
             // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.cmbVisitType);
             this.groupBox2.Controls.Add(this.cmbPosition);
             this.groupBox2.Controls.Add(this.comboBoxExApd1);
             this.groupBox2.Controls.Add(this.button2);
@@ -159,7 +168,6 @@ namespace Ris.Ui
             this.groupBox2.Controls.Add(this.cmbCheckDept);
             this.groupBox2.Controls.Add(this.cmbApplyDept);
             this.groupBox2.Controls.Add(this.dtpApplyDate);
-            this.groupBox2.Controls.Add(this.cmbPatientType);
             this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Controls.Add(this.txtSymptom);
             this.groupBox2.Controls.Add(this.label19);
@@ -181,16 +189,24 @@ namespace Ris.Ui
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 139);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(706, 302);
+            this.groupBox2.Size = new System.Drawing.Size(697, 302);
             this.groupBox2.TabIndex = 1018;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "检查信息";
+            // 
+            // cmbVisitType
+            // 
+            this.cmbVisitType.FormattingEnabled = true;
+            this.cmbVisitType.Location = new System.Drawing.Point(77, 61);
+            this.cmbVisitType.Name = "cmbVisitType";
+            this.cmbVisitType.Size = new System.Drawing.Size(100, 20);
+            this.cmbVisitType.TabIndex = 5;
             // 
             // cmbPosition
             // 
             this.cmbPosition.FormattingEnabled = true;
             this.cmbPosition.IntegralHeight = false;
-            this.cmbPosition.Location = new System.Drawing.Point(268, 208);
+            this.cmbPosition.Location = new System.Drawing.Point(268, 209);
             this.cmbPosition.MaxDropDownItems = 20;
             this.cmbPosition.Name = "cmbPosition";
             this.cmbPosition.Size = new System.Drawing.Size(100, 20);
@@ -274,7 +290,6 @@ namespace Ris.Ui
             // 
             // cmbMethod
             // 
-            this.cmbMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMethod.FormattingEnabled = true;
             this.cmbMethod.Location = new System.Drawing.Point(268, 244);
             this.cmbMethod.Name = "cmbMethod";
@@ -292,12 +307,7 @@ namespace Ris.Ui
             // 
             // cmbCheckType
             // 
-            this.cmbCheckType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCheckType.FormattingEnabled = true;
-            this.cmbCheckType.Items.AddRange(new object[] {
-            "门诊",
-            "急诊",
-            "体检"});
             this.cmbCheckType.Location = new System.Drawing.Point(268, 137);
             this.cmbCheckType.Name = "cmbCheckType";
             this.cmbCheckType.Size = new System.Drawing.Size(100, 20);
@@ -314,12 +324,7 @@ namespace Ris.Ui
             // 
             // cmbEquipment
             // 
-            this.cmbEquipment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEquipment.FormattingEnabled = true;
-            this.cmbEquipment.Items.AddRange(new object[] {
-            "机器1",
-            "机器2",
-            "机器3"});
             this.cmbEquipment.Location = new System.Drawing.Point(268, 174);
             this.cmbEquipment.Name = "cmbEquipment";
             this.cmbEquipment.Size = new System.Drawing.Size(100, 20);
@@ -337,7 +342,7 @@ namespace Ris.Ui
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(203, 215);
+            this.label24.Location = new System.Drawing.Point(203, 212);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(59, 12);
             this.label24.TabIndex = 1004;
@@ -345,7 +350,6 @@ namespace Ris.Ui
             // 
             // cmbCheckDept
             // 
-            this.cmbCheckDept.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCheckDept.FormattingEnabled = true;
             this.cmbCheckDept.Location = new System.Drawing.Point(268, 97);
             this.cmbCheckDept.Name = "cmbCheckDept";
@@ -354,12 +358,7 @@ namespace Ris.Ui
             // 
             // cmbApplyDept
             // 
-            this.cmbApplyDept.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbApplyDept.FormattingEnabled = true;
-            this.cmbApplyDept.Items.AddRange(new object[] {
-            "门诊",
-            "急诊",
-            "体检"});
             this.cmbApplyDept.Location = new System.Drawing.Point(77, 133);
             this.cmbApplyDept.Name = "cmbApplyDept";
             this.cmbApplyDept.Size = new System.Drawing.Size(100, 20);
@@ -372,19 +371,6 @@ namespace Ris.Ui
             this.dtpApplyDate.Size = new System.Drawing.Size(100, 21);
             this.dtpApplyDate.TabIndex = 1002;
             this.dtpApplyDate.Visible = false;
-            // 
-            // cmbPatientType
-            // 
-            this.cmbPatientType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPatientType.FormattingEnabled = true;
-            this.cmbPatientType.Items.AddRange(new object[] {
-            "门诊",
-            "急诊",
-            "体检"});
-            this.cmbPatientType.Location = new System.Drawing.Point(77, 61);
-            this.cmbPatientType.Name = "cmbPatientType";
-            this.cmbPatientType.Size = new System.Drawing.Size(100, 20);
-            this.cmbPatientType.TabIndex = 11;
             // 
             // label20
             // 
@@ -441,7 +427,7 @@ namespace Ris.Ui
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(12, 211);
+            this.label15.Location = new System.Drawing.Point(12, 212);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(59, 12);
             this.label15.TabIndex = 33;
@@ -458,7 +444,7 @@ namespace Ris.Ui
             // 
             // txtArea
             // 
-            this.txtArea.Location = new System.Drawing.Point(77, 207);
+            this.txtArea.Location = new System.Drawing.Point(77, 209);
             this.txtArea.Name = "txtArea";
             this.txtArea.Size = new System.Drawing.Size(100, 21);
             this.txtArea.TabIndex = 19;
@@ -542,26 +528,26 @@ namespace Ris.Ui
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.dataGridView2);
+            this.groupBox4.Controls.Add(this.dgvApplys);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox4.Location = new System.Drawing.Point(3, 441);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(706, 92);
+            this.groupBox4.Size = new System.Drawing.Size(697, 92);
             this.groupBox4.TabIndex = 1020;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "收费项目";
             // 
-            // dataGridView2
+            // dgvApplys
             // 
-            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 17);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(700, 72);
-            this.dataGridView2.TabIndex = 0;
+            this.dgvApplys.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgvApplys.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvApplys.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvApplys.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvApplys.Location = new System.Drawing.Point(3, 17);
+            this.dgvApplys.Name = "dgvApplys";
+            this.dgvApplys.RowTemplate.Height = 23;
+            this.dgvApplys.Size = new System.Drawing.Size(691, 72);
+            this.dgvApplys.TabIndex = 0;
             // 
             // panel1
             // 
@@ -571,7 +557,7 @@ namespace Ris.Ui
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(3, 533);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(706, 30);
+            this.panel1.Size = new System.Drawing.Size(697, 30);
             this.panel1.TabIndex = 1019;
             // 
             // btnReset
@@ -610,10 +596,12 @@ namespace Ris.Ui
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.cmbPatientType);
             this.groupBox1.Controls.Add(this.cmbGender);
             this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.cmbName);
             this.groupBox1.Controls.Add(this.label23);
+            this.groupBox1.Controls.Add(this.label21);
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.txtAge);
@@ -636,14 +624,21 @@ namespace Ris.Ui
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(706, 136);
+            this.groupBox1.Size = new System.Drawing.Size(697, 136);
             this.groupBox1.TabIndex = 1017;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "基本信息";
             // 
+            // cmbPatientType
+            // 
+            this.cmbPatientType.FormattingEnabled = true;
+            this.cmbPatientType.Location = new System.Drawing.Point(464, 19);
+            this.cmbPatientType.Name = "cmbPatientType";
+            this.cmbPatientType.Size = new System.Drawing.Size(100, 20);
+            this.cmbPatientType.TabIndex = 5;
+            // 
             // cmbGender
             // 
-            this.cmbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGender.FormattingEnabled = true;
             this.cmbGender.Location = new System.Drawing.Point(268, 46);
             this.cmbGender.Name = "cmbGender";
@@ -679,6 +674,15 @@ namespace Ris.Ui
             this.label23.Size = new System.Drawing.Size(59, 12);
             this.label23.TabIndex = 38;
             this.label23.Text = "性    别:";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(399, 23);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(59, 12);
+            this.label21.TabIndex = 36;
+            this.label21.Text = "患者类型:";
             // 
             // label18
             // 
@@ -750,7 +754,7 @@ namespace Ris.Ui
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(400, 50);
+            this.label6.Location = new System.Drawing.Point(399, 78);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 12);
             this.label6.TabIndex = 30;
@@ -758,7 +762,7 @@ namespace Ris.Ui
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(465, 46);
+            this.txtAddress.Location = new System.Drawing.Point(464, 74);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(228, 21);
             this.txtAddress.TabIndex = 6;
@@ -766,7 +770,7 @@ namespace Ris.Ui
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(400, 23);
+            this.label5.Location = new System.Drawing.Point(399, 51);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 12);
             this.label5.TabIndex = 28;
@@ -774,7 +778,7 @@ namespace Ris.Ui
             // 
             // txtIDCard
             // 
-            this.txtIDCard.Location = new System.Drawing.Point(465, 19);
+            this.txtIDCard.Location = new System.Drawing.Point(464, 47);
             this.txtIDCard.Name = "txtIDCard";
             this.txtIDCard.Size = new System.Drawing.Size(228, 21);
             this.txtIDCard.TabIndex = 3;
@@ -782,7 +786,7 @@ namespace Ris.Ui
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(400, 77);
+            this.label4.Location = new System.Drawing.Point(399, 105);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 12);
             this.label4.TabIndex = 26;
@@ -790,7 +794,7 @@ namespace Ris.Ui
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(465, 73);
+            this.txtPhone.Location = new System.Drawing.Point(464, 101);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(228, 21);
             this.txtPhone.TabIndex = 7;
@@ -840,32 +844,68 @@ namespace Ris.Ui
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.groupBox5);
+            this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(712, 566);
+            this.tabPage2.Size = new System.Drawing.Size(703, 566);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "电子申请单";
             // 
-            // dataGridView1
+            // groupBox5
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(706, 560);
-            this.dataGridView1.TabIndex = 1;
+            this.groupBox5.Controls.Add(this.dgvApplyProjects);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox5.Location = new System.Drawing.Point(3, 225);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(697, 338);
+            this.groupBox5.TabIndex = 1;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "申请项目";
+            // 
+            // dgvApplyProjects
+            // 
+            this.dgvApplyProjects.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgvApplyProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvApplyProjects.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvApplyProjects.Location = new System.Drawing.Point(3, 17);
+            this.dgvApplyProjects.Name = "dgvApplyProjects";
+            this.dgvApplyProjects.RowTemplate.Height = 23;
+            this.dgvApplyProjects.Size = new System.Drawing.Size(691, 318);
+            this.dgvApplyProjects.TabIndex = 0;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.dgvApplyBills);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox3.Location = new System.Drawing.Point(3, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(697, 222);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "申请单信息";
+            // 
+            // dgvApplyBills
+            // 
+            this.dgvApplyBills.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgvApplyBills.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvApplyBills.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvApplyBills.GridColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgvApplyBills.Location = new System.Drawing.Point(3, 17);
+            this.dgvApplyBills.Name = "dgvApplyBills";
+            this.dgvApplyBills.RowTemplate.Height = 23;
+            this.dgvApplyBills.Size = new System.Drawing.Size(691, 202);
+            this.dgvApplyBills.TabIndex = 0;
+            this.dgvApplyBills.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvApplyBills_CellClick);
+            this.dgvApplyBills.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvApplyBills_CellDoubleClick);
             // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(720, 592);
+            this.ClientSize = new System.Drawing.Size(711, 592);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -879,12 +919,15 @@ namespace Ris.Ui
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvApplys)).EndInit();
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvApplyProjects)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvApplyBills)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -912,7 +955,6 @@ namespace Ris.Ui
         private System.Windows.Forms.ComboBox cmbCheckDept;
         private System.Windows.Forms.ComboBox cmbApplyDept;
         private System.Windows.Forms.DateTimePicker dtpApplyDate;
-        private System.Windows.Forms.ComboBox cmbPatientType;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtSymptom;
         private System.Windows.Forms.Label label19;
@@ -932,7 +974,7 @@ namespace Ris.Ui
         private System.Windows.Forms.TextBox txtCheckNo;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgvApplys;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnRegister;
@@ -962,6 +1004,12 @@ namespace Ris.Ui
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtPinyin1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.ComboBox cmbPatientType;
+        private System.Windows.Forms.ComboBox cmbVisitType;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.DataGridView dgvApplyProjects;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.DataGridView dgvApplyBills;
     }
 }

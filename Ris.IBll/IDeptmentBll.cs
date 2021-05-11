@@ -1,6 +1,8 @@
 ﻿using Ris.Dal;
 using Ris.Models.Deptment;
+using Ris.Models.InterFaceModel;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Ris.IBll
 {
@@ -19,6 +21,13 @@ namespace Ris.IBll
         /// <param name="model"></param>
         /// <returns></returns>
         bool AddDeptment(DeptmentModel model,out string errorMsg);
+
+        /// <summary>
+        /// 根据his接口异步添加科室
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        Task AddDeptmentByHisAsync(PatientInfo patient);
 
         /// <summary>
         /// 修改科室

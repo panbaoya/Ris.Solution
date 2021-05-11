@@ -1,5 +1,6 @@
 ﻿using Ris.Dal;
 using Ris.Models.Enums;
+using Ris.Models.InterFaceModel;
 using Ris.Models.TypeConfig;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,13 @@ namespace Ris.IBll
         /// <param name="configModel"></param>
         /// <returns></returns>
         bool AddTypeConfig(TypeConfigModel configModel);
+
+        /// <summary>
+        /// 根据his接口添加
+        /// </summary>
+        /// <param name="configModel"></param>
+        /// <returns></returns>
+        Task AddTypeConfigByHisAsync(PatientInfo patient);
         bool DelTypeConfig(int id);
     }
 }

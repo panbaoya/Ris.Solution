@@ -16,5 +16,12 @@ namespace Ris.Models.TypeConfig
         public string Remarks { get; set; }
         public TypeConfigEnum DataType { get; set; }
         public Nullable<int> Status { get; set; }
+        public string StatusName
+        {
+            get { return Status == 1 ? "启用" : "禁用"; }
+            set { Status = value == "启用" ? 1 : 0; }
+        }
+
+        public string HisCode { get; set; }
     }
 }

@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace Ris.Ui
 {
-    public partial class LoginForm : Form
+    public partial class LoginForm : BaseForm
     {
         IUserBll _userBll;
         public LoginForm()
@@ -76,6 +76,7 @@ namespace Ris.Ui
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
+            SetStyle();
             checkBox1.Checked = false;
             txtPhone.Visible = false;
         }

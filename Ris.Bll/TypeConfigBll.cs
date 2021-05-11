@@ -3,8 +3,10 @@ using Ris.Dal.Entitys;
 using Ris.Dal.EntityService;
 using Ris.IBll;
 using Ris.Models.Enums;
+using Ris.Models.InterFaceModel;
 using Ris.Models.TypeConfig;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Ris.Bll
 {
@@ -80,6 +82,59 @@ namespace Ris.Bll
                 return _typeConfigService.Insert(entity) > 0;
             }
         }
+
+        /// <summary>
+        /// 根据his接口添加
+        /// </summary>
+        /// <param name="configModel"></param>
+        /// <returns></returns>
+        public Task AddTypeConfigByHisAsync(PatientInfo patient)
+        {
+            Task task = Task.Run(() =>
+            {
+                TypeConfigModel genderModel = new TypeConfigModel
+                {
+                    //DataCode = MakeID.MakeGenderID(8),
+                    DataCode = patient.GenderCode,
+                    HisCode = patient.GenderCode,
+                    Status = 1,
+                    Remarks = "his接口性别",
+                    DataType = TypeConfigEnum.Gender,
+                    DataName = patient.GenderName
+                };
+                TypeConfigModel patientModel = new TypeConfigModel
+                {
+                    HisCode = patient.PatientType,
+                    DataName = patient.PatientTypeName,
+                    DataCode = patient.PatientType,
+                    Status = 1,
+                    DataType = TypeConfigEnum.PatientType,
+                    Remarks = "His患者类型",
+                };
+                TypeConfigModel visitModel = new TypeConfigModel
+                {
+                    HisCode = patient.EncounterType,
+                    DataName = patient.EncounterTypeName,
+                    DataCode = patient.EncounterType,
+                    Status = 1,
+                    DataType = TypeConfigEnum.VisitType,
+                    Remarks = "His就诊类型",
+                };
+                List<TypeConfigModel> configs = new List<TypeConfigModel> { genderModel, patientModel, visitModel };
+                foreach (var item in configs)
+                {
+                    var after = _typeConfigService.GetModel(x => x.HisCode == item.HisCode && x.DataType == (int)item.DataType);
+                    if (after == null)
+                    {
+                        var entity = item.MapTo<tb_TypeConfig>();
+                        entity.IsParent = 0;
+                        _typeConfigService.Insert(entity);
+                    }
+                }
+            });
+            return task;
+        }
+
 
         /// <summary>
         /// 删除配置

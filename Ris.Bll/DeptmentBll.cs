@@ -3,7 +3,9 @@ using Ris.Dal.Entitys;
 using Ris.Dal.EntityService;
 using Ris.IBll;
 using Ris.Models.Deptment;
+using Ris.Models.InterFaceModel;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Ris.Bll
 {
@@ -79,6 +81,26 @@ namespace Ris.Bll
                 errorMsg = "要修改的科室代码不存在..";
                 return false;
             }
+        }
+
+        public Task AddDeptmentByHisAsync(PatientInfo patient)
+        {
+            return Task.Run(() =>
+            {
+                DeptmentModel model = new DeptmentModel
+                {
+                    DeptCode = patient.LocationCode,
+                    HisDeptCode = patient.LocationCode,
+                    DeptName = patient.LocationName,
+                    Status = 1
+                };
+                var exist = _deptmentService.IsExist(model.DeptCode);
+                if (!exist)
+                {
+                    var entity = model.MapTo<tb_Deptment>();
+                    _deptmentService.Insert(entity);
+                }
+            });
         }
     }
 }
