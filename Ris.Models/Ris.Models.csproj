@@ -49,6 +49,7 @@
     <Compile Include="PositionMethod\PositionMethodModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register\RegisterModel.cs" />
+    <Compile Include="Register\RegisterProjectsModel.cs" />
     <Compile Include="Register\RequestRegisterModel.cs" />
     <Compile Include="TypeConfig\RequestTypeConfigModel.cs" />
     <Compile Include="TypeConfig\TypeConfigModel.cs" />

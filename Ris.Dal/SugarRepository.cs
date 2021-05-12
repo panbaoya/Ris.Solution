@@ -64,7 +64,7 @@ namespace Ris.Dal
             }
             catch (Exception ex)
             {
-                return 0;
+                throw ex;
             }
         }
 

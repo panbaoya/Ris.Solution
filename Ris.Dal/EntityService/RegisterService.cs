@@ -35,5 +35,10 @@ namespace Ris.Dal.EntityService
             }
             return GetList(expression);
         }
+
+        public int InsertProjects(List<tb_ApplyProjects>  applyProjects)
+        {
+            return db.Insertable<tb_ApplyProjects>(applyProjects).ExecuteCommand();
+        }
     }
 }

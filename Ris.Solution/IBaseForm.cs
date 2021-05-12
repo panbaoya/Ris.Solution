@@ -34,9 +34,45 @@ namespace Ris.Ui
             this.SizeChanged += BaseForm_SizeChanged;
         }
 
+        /// <summary>
+        /// 窗体大小更改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BaseForm_SizeChanged(object sender, EventArgs e)
         {
             asc.controlAutoSize(this);
+        }
+
+        protected virtual void RestTextBox()
+        {
+            foreach (Control item in this.Controls)
+            {
+                if (item is TextBox)
+                {
+                    TextBox txt = item as TextBox;
+                    txt.Text = null;
+                }
+                if (item.Controls.Count>0)
+                {
+                    RestTextBox(item);
+                }
+            }
+        }
+        private void RestTextBox(Control control )
+        {
+            foreach (Control item in control.Controls)
+            {
+                if (item is TextBox)
+                {
+                    TextBox txt = item as TextBox;
+                    txt.Text = null;
+                }
+                if (item.Controls.Count > 0)
+                {
+                    RestTextBox(item);
+                }
+            }
         }
 
         public static UserModel CurrentUser { get; set; }

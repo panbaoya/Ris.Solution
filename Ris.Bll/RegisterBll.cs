@@ -3,6 +3,7 @@ using Ris.Dal.Entitys;
 using Ris.Dal.EntityService;
 using Ris.IBll;
 using Ris.Models.Enums;
+using Ris.Models.InterFaceModel;
 using Ris.Models.Register;
 using Ris.Models.TypeConfig;
 using Ris.Tools;
@@ -53,9 +54,22 @@ namespace Ris.Bll
             models.ForEach(x =>
             {
                 x.IDCard = AesUnit.AESDecrypt(x.IDCard, AppConfSetting.AesKey);
-                x.GenderName = x.Gender == 1 ? "男" : "女";
             });
             return models;
+        }
+
+        public bool ImageStatus(string imageNumber)
+        {
+            var entity=_registerService.GetModel(x => x.ImageNumber == imageNumber);
+            if (entity!=null)
+            {
+                entity.ImageStatus = "图像已到达";
+                return _registerService.Update(entity);
+            }
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -69,11 +83,30 @@ namespace Ris.Bll
             {
                 registerModel.PatientID = Guid.NewGuid().ToString("N");
                 registerModel.IDCard = AesUnit.AESEncrypt(registerModel.IDCard, AppConfSetting.AesKey);//AppConfSetting.AesKey
+                registerModel.ImageStatus = "图像未到达";
                 var registerEntity = registerModel.MapTo<RegisterModel, tb_Register>();
-                var result = _registerService.Insert(registerEntity) > 0;
-                errorMsg = result ? "添加成功." : "添加失败.";
-                NLogger.LogInfo(result ? $"登记成功,影像号:{registerModel.ImageNumber},操作员{UserName}" : $"登记失败,影像号:{registerModel.ImageNumber},操作员{UserName}", UserName);
-                return result;
+                var projectEntitys = registerModel.Projects.MapListTo<ApplyItem, tb_ApplyProjects>();
+                projectEntitys.ForEach(x =>
+                {
+                    x.RegisterID = registerEntity.PatientID;
+                });
+                bool IsSuccess = false;
+                try
+                {
+                    _registerService.db.Ado.BeginTran();
+                    int num=_registerService.Insert(registerEntity);
+                    int num2=_registerService.InsertProjects(projectEntitys);
+                    _registerService.db.Ado.CommitTran();
+                    IsSuccess = true;
+                }
+                catch (Exception ex)
+                {
+                    _registerService.db.Ado.RollbackTran();
+                    throw ex;
+                }
+                errorMsg = IsSuccess ? "添加成功." : "添加失败.";
+                NLogger.LogInfo(IsSuccess ? $"登记成功,影像号:{registerModel.ImageNumber},操作员{UserName}" : $"登记失败,影像号:{registerModel.ImageNumber},操作员{UserName}", UserName);
+                return IsSuccess;
             }
             else
             {

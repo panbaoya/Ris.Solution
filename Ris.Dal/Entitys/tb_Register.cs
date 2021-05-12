@@ -64,7 +64,7 @@ namespace Ris.Dal.Entitys
            /// Default:
            /// Nullable:True
            /// </summary>           
-           public int? Gender {get;set;}
+           public string Gender {get;set;}
 
            /// <summary>
            /// Desc:身份证号码
@@ -254,6 +254,20 @@ namespace Ris.Dal.Entitys
            /// Nullable:True
            /// </summary>           
            public string DockerAsk {get;set;}
+
+           /// <summary>
+           /// Desc:登记状态:已登记,已扫描等状态
+           /// Default:
+           /// Nullable:True
+           /// </summary>           
+           public int? CheckStatus {get;set;}
+
+        /// <summary>
+        /// Desc:图像状态
+        /// Default:
+        /// Nullable:True
+        /// </summary>           
+        public string ImageStatus { get; set; }
 
     }
 }

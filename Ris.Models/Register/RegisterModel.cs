@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ris.Models.InterFaceModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace Ris.Models.Register
         public string CardNo { get; set; }
         public string PinYin { get; set; }
         public string PinYin1 { get; set; }
-        public Nullable<int> Gender { get; set; }
+        public string Gender { get; set; }
         public string GenderName { get; set; }
         public string IDCard { get; set; }
         public string Address { get; set; }
@@ -42,5 +43,7 @@ namespace Ris.Models.Register
         public string Method { get; set; }
         public string Symptom { get; set; }
         public string DockerAsk { get; set; }
+        public List<ApplyItem> Projects { get; set; }
+        public string ImageStatus { get; set; }
     }
 }

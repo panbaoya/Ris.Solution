@@ -77,10 +77,9 @@ namespace Ris.Ui.Register
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.cmbPatientType = new System.Windows.Forms.ComboBox();
             this.cmbGender = new System.Windows.Forms.ComboBox();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.cmbName = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -539,6 +538,7 @@ namespace Ris.Ui.Register
             // 
             // dgvApplys
             // 
+            this.dgvApplys.AllowUserToOrderColumns = true;
             this.dgvApplys.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvApplys.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvApplys.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -596,10 +596,9 @@ namespace Ris.Ui.Register
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.cmbPatientType);
             this.groupBox1.Controls.Add(this.cmbGender);
-            this.groupBox1.Controls.Add(this.btnSearch);
-            this.groupBox1.Controls.Add(this.cmbName);
             this.groupBox1.Controls.Add(this.label23);
             this.groupBox1.Controls.Add(this.label21);
             this.groupBox1.Controls.Add(this.label18);
@@ -629,6 +628,14 @@ namespace Ris.Ui.Register
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "基本信息";
             // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(268, 20);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(100, 21);
+            this.txtName.TabIndex = 39;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
+            // 
             // cmbPatientType
             // 
             this.cmbPatientType.FormattingEnabled = true;
@@ -644,27 +651,6 @@ namespace Ris.Ui.Register
             this.cmbGender.Name = "cmbGender";
             this.cmbGender.Size = new System.Drawing.Size(100, 20);
             this.cmbGender.TabIndex = 5;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackgroundImage = global::Ris.Ui.Properties.Resources.search;
-            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSearch.FlatAppearance.BorderSize = 0;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSearch.Location = new System.Drawing.Point(348, 19);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(20, 20);
-            this.btnSearch.TabIndex = 7;
-            this.btnSearch.UseVisualStyleBackColor = true;
-            // 
-            // cmbName
-            // 
-            this.cmbName.FormattingEnabled = true;
-            this.cmbName.Location = new System.Drawing.Point(268, 19);
-            this.cmbName.Name = "cmbName";
-            this.cmbName.Size = new System.Drawing.Size(81, 20);
-            this.cmbName.TabIndex = 2;
-            this.cmbName.TextChanged += new System.EventHandler(this.cmbName_TextChanged);
             // 
             // label23
             // 
@@ -866,6 +852,7 @@ namespace Ris.Ui.Register
             // 
             // dgvApplyProjects
             // 
+            this.dgvApplyProjects.AllowUserToOrderColumns = true;
             this.dgvApplyProjects.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvApplyProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvApplyProjects.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -888,6 +875,7 @@ namespace Ris.Ui.Register
             // 
             // dgvApplyBills
             // 
+            this.dgvApplyBills.AllowUserToOrderColumns = true;
             this.dgvApplyBills.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvApplyBills.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvApplyBills.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -981,8 +969,6 @@ namespace Ris.Ui.Register
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cmbGender;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.ComboBox cmbName;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label9;
@@ -1011,5 +997,6 @@ namespace Ris.Ui.Register
         private System.Windows.Forms.DataGridView dgvApplyProjects;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dgvApplyBills;
+        private System.Windows.Forms.TextBox txtName;
     }
 }

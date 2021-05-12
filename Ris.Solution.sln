@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ris.Models", "Ris.Models\Ri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControl", "CustomControl\CustomControl.csproj", "{BBB0E2E0-4673-4C14-A4D5-60400378CF69}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ris.Api.Hl7", "Ris.Api.Hl7\Ris.Api.Hl7.csproj", "{782B6E51-8512-4F3E-965D-7B77CAF00EC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{BBB0E2E0-4673-4C14-A4D5-60400378CF69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBB0E2E0-4673-4C14-A4D5-60400378CF69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBB0E2E0-4673-4C14-A4D5-60400378CF69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{782B6E51-8512-4F3E-965D-7B77CAF00EC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{782B6E51-8512-4F3E-965D-7B77CAF00EC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{782B6E51-8512-4F3E-965D-7B77CAF00EC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{782B6E51-8512-4F3E-965D-7B77CAF00EC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

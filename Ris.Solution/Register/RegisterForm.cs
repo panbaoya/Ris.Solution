@@ -96,9 +96,9 @@ namespace Ris.Ui.Register
 
         }
 
-        private void cmbName_TextChanged(object sender, EventArgs e)
+        private void txtName_TextChanged(object sender, EventArgs e)
         {
-            txtPinyin1.Text = PinYinConvert.GetPY(cmbName.Text);
+            txtPinyin1.Text = PinYinConvert.GetPY(txtName.Text);
             //if (cmbName.SelectedValue != null)
             //{
             //    var selectPatient = patients.Where(x => x.PatientID == cmbName.SelectedValue.ToString()).FirstOrDefault();
@@ -112,42 +112,52 @@ namespace Ris.Ui.Register
         {
             if (e.KeyCode == Keys.F2)
             {
-                btnSearch.PerformClick();
+                //btnSearch.PerformClick();
             }
         }
 
+        /// <summary>
+        /// 姓名查询按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(cmbName.Text))
-            {
-                RequestRegisterModel request = new RequestRegisterModel { Name = cmbName.Text };
-                var retisters = _registerBll.Getpatients(request);
-                if (retisters != null)
-                {
-                    cmbName.DisplayMember = "Name";
-                    cmbName.ValueMember = "PatientID";
-                    cmbName.DataSource = retisters;
-                    cmbName.SelectionStart = cmbName.Text.Length;
-                    cmbName.SelectionLength = 0;
-                    cmbName.SelectedIndex = -1;
-                    Cursor = Cursors.Default;
-                    cmbName.DroppedDown = true;
-                    cmbName.Text = request.Name;
-                    txtPinyin1.Text = PinYinConvert.GetPY(cmbName.Text);
-                }
-            }
+            //if (!string.IsNullOrEmpty(txtName.Text))
+            //{
+            //    RequestRegisterModel request = new RequestRegisterModel { Name = txtName.Text };
+            //    var retisters = _registerBll.Getpatients(request);
+            //    if (retisters != null)
+            //    {
+            //        txtName.DisplayMember = "Name";
+            //        txtName.ValueMember = "PatientID";
+            //        txtName.DataSource = retisters;
+            //        txtName.SelectionStart = txtName.Text.Length;
+            //        txtName.SelectionLength = 0;
+            //        txtName.SelectedIndex = -1;
+            //        Cursor = Cursors.Default;
+            //        txtName.DroppedDown = true;
+            //        txtName.Text = request.Name;
+            //        txtPinyin1.Text = PinYinConvert.GetPY(txtName.Text);
+            //    }
+            //}
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            this.DialogResult = DialogResult.OK;
             this.Close();
             this.Dispose();
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-
+            patient = null;
+            dgvApplys.DataSource = null;
+            dgvApplyProjects.DataSource = null;
+            dgvApplyBills.DataSource = null;
+            tabPage2.Parent = null;
+            RestTextBox();
         }
 
         private void txtNum_KeyPress(object sender, KeyPressEventArgs e)
@@ -394,43 +404,17 @@ namespace Ris.Ui.Register
                     var applyBill = XmlUnit.XmlDeserialize<ApplyBillInfo>(xml);
                     if (applyBill!=null && applyBill.PatientInfos.Count>0&& applyBill.PatientInfos[0].ApplyBills.Count>0)
                     {
-                        var patient = applyBill.PatientInfos[0];
+                        patient = applyBill.PatientInfos[0];
                         //his接口数据,异步添加配置
                         var configTask=_typeConfigBll.AddTypeConfigByHisAsync(patient);
                         var deptTask=_deptmentBll.AddDeptmentByHisAsync(patient);
 
-                        //本身UI赋值
-                        cmbName.Text = patient.PatientName;
-                        txtAddress.Text = patient.HomeAddress;
-                        txtPhone.Text = patient.HomeTel;
-                        txtCardNo.Text = patient.EncounterType == "O" ? patient.OutPatientNo : patient.InPatientNo;
-                        txtDiagnosis.Text =!string.IsNullOrEmpty(patient.DiagnosisCode)? patient.DiagnosisCode + "-" + patient.DiagnosisName:"";
-                        txtCheckNo.Text = patient.RegCode;
-                        txtSymptom.Text = patient.ApplyBills[0].MedicalHistory;
-                        txtRemarks.Text = patient.ApplyBills[0].Memo;
-
                         dgvApplyBills.DataSource = patient.ApplyBills;
                         tabPage2.Parent = tabControl1;
+                        tabControl1.SelectedTab = tabPage2;
                         //同步数据,最后加载,怕线程没有执行完.
-                        configTask.Wait();
-                        deptTask.Wait();
-                        Init();
-                        if (!string.IsNullOrEmpty(patient.SSNumber))
-                        {
-                            txtIDCard.Text = patient.SSNumber;
-                        }
-                        else
-                        {
-                            txtAge.Text = patient.Age;
-                            cmbGender.Text = patient.GenderName;
-                            cmbGender.SelectedValue = patient.GenderCode;
-                        }
-                        cmbPatientType.Text = patient.PatientTypeName;
-                        cmbPatientType.SelectedValue = patient.PatientType;
-                        cmbApplyDept.Text = patient.LocationName;
-                        cmbApplyDept.SelectedValue = patient.LocationCode;
-                        cmbVisitType.Text = patient.EncounterTypeName;
-                        cmbVisitType.SelectedValue = patient.EncounterType;
+                        //configTask.Wait();
+                        //deptTask.Wait();                        
                     }
                     else
                     {
@@ -440,6 +424,10 @@ namespace Ris.Ui.Register
             }
         }
 
+        public delegate void RestDataBind();
+        //事件只能内部去调用.
+        public event RestDataBind Rest;
+
         private void btnRegister_Click(object sender, EventArgs e)
         {
             btnRegister.Enabled = false;
@@ -447,10 +435,11 @@ namespace Ris.Ui.Register
             RegisterModel _registerModel = new RegisterModel
             {
                 CardNo = txtCardNo.Text,
-                Name = cmbName.Text,
+                Name = txtName.Text,
                 IDCard = txtIDCard.Text,
-                PinYin1 = txtPinyin1.Text,
-                Gender = Convert.ToInt32(cmbGender.SelectedValue),
+                PinYin = txtPinyin1.Text,
+                Gender = cmbGender.SelectedValue.ToString(),
+                GenderName=cmbGender.Text,
                 Address = txtAddress.Text,
                 BirthDay = txtBirthDay.Text,
                 CurrentAge = txtAge.Text,
@@ -475,13 +464,24 @@ namespace Ris.Ui.Register
                 Method = cmbMethod.Text,
                 Symptom = txtSymptom.Text,
                 Diagnosis = txtDiagnosis.Text,
-                DockerAsk = txtRemarks.Text
+                DockerAsk = txtRemarks.Text,
+                Projects = dgvApplys.DataSource as List<ApplyItem>,
             };
             if (_registerBll.Register(_registerModel, out string errorMsg))
             {
+                tabControl1.SelectedTab = tabPage1;
+                tabPage2.Parent = null;
+                dgvApplyBills.DataSource = null;
+                dgvApplyProjects.DataSource = null;
+                dgvApplys.DataSource = null;
+                patient = new PatientInfo();
+                Rest();
+                RestTextBox();
                 MessageBox.Show("添加成功.");
-                this.Close();
-                this.DialogResult = DialogResult.OK;
+
+                //this.Close();
+                //this.DialogResult = DialogResult.OK;
+
             }
             else
             {
@@ -493,6 +493,7 @@ namespace Ris.Ui.Register
         private void button1_Click(object sender, EventArgs e)
         {
             txtImageNumber.Text = DateTime.Now.ToString("yyyyMMddHHmmss");
+            txtImageNumber.Enabled = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -501,9 +502,38 @@ namespace Ris.Ui.Register
             txtImageNumber.Enabled = true;
         }
 
+        private PatientInfo patient;
         private void dgvApplyBills_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            //本身UI赋值
+            txtName.Text = patient.PatientName;
+            txtAddress.Text = patient.HomeAddress;
+            txtPhone.Text = patient.HomeTel;
+            txtCardNo.Text = patient.EncounterType == "O" ? patient.OutPatientNo : patient.InPatientNo;
+            txtDiagnosis.Text = !string.IsNullOrEmpty(patient.DiagnosisCode) ? patient.DiagnosisCode + "-" + patient.DiagnosisName : "";
+            txtCheckNo.Text = patient.RegCode;
+            txtSymptom.Text = patient.ApplyBills[0].MedicalHistory;
+            txtRemarks.Text = patient.ApplyBills[0].Memo;
+            Init();
+            if (!string.IsNullOrEmpty(patient.SSNumber))
+            {
+                txtIDCard.Text = patient.SSNumber;
+            }
+            else
+            {
+                txtAge.Text = patient.Age;
+                cmbGender.Text = patient.GenderName;
+                cmbGender.SelectedValue = patient.GenderCode;
+            }
+            cmbPatientType.Text = patient.PatientTypeName;
+            cmbPatientType.SelectedValue = patient.PatientType;
+            cmbApplyDept.Text = patient.LocationName;
+            cmbApplyDept.SelectedValue = patient.LocationCode;
+            cmbVisitType.Text = patient.EncounterTypeName;
+            cmbVisitType.SelectedValue = patient.EncounterType;
 
+            tabControl1.SelectedTab = tabPage1;
+            dgvApplys.DataSource = dgvApplyProjects.DataSource;
         }
 
         private void dgvApplyBills_CellClick(object sender, DataGridViewCellEventArgs e)

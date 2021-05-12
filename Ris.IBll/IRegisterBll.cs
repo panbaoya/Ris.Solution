@@ -34,5 +34,7 @@ namespace Ris.IBll
         /// </summary>
         /// <returns></returns>
         List<RegisterModel> GetRegisters(RequestRegisterModel request);
+
+        bool ImageStatus(string imageNumber);
     }
 }

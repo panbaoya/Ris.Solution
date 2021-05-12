@@ -39,12 +39,14 @@ namespace Ris.Ui
         private void tsbRegister_Click(object sender, EventArgs e)
         {
             RegisterForm registerForm = new RegisterForm();
+            registerForm.Rest += BindData;
             var result = registerForm.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                //重新绑定
-                BindData();
-            }
+
+            //if (result == DialogResult.OK)
+            //{
+            //    //重新绑定
+            //    BindData();
+            //}
         }
 
         private void MainForm_Load(object sender, EventArgs e)

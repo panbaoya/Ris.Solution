@@ -160,7 +160,9 @@
     <Compile Include="EntityService\PositionMethodService.cs" />
     <Compile Include="EntityService\TypeConfigService.cs" />
     <Compile Include="EntityService\UserService.cs" />
+    <Compile Include="Entitys\tb_ApplyProjects.cs" />
     <Compile Include="Entitys\tb_Deptment.cs" />
+    <Compile Include="Entitys\tb_LogInfo.cs" />
     <Compile Include="Entitys\tb_PositionMethod.cs" />
     <Compile Include="Entitys\tb_Register.cs" />
     <Compile Include="Entitys\tb_TypeConfig.cs" />
