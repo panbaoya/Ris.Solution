@@ -43,18 +43,25 @@ namespace Ris.Bll
             return models;
         }
 
-        //[Log]
+        /// <summary>
+        /// 登录
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public UserModel Login(UserModel model)
         {
-            if (!string.IsNullOrEmpty(model.Phone))
+            if (!string.IsNullOrEmpty(AppConfSetting.AesKey))
             {
-                model.Phone = AesUnit.AESEncrypt(model.Phone, AppConfSetting.AesKey);
+                if (!string.IsNullOrEmpty(model.Phone))
+                {
+                    model.Phone = AesUnit.AESEncrypt(model.Phone, AppConfSetting.AesKey);
+                }
+                if (!string.IsNullOrEmpty(model.Password))
+                {
+                    model.Password = AesUnit.AESEncrypt(model.Password, AppConfSetting.AesKey);
+                }
             }
-            if (!string.IsNullOrEmpty(model.Password))
-            {
-                model.Password = AesUnit.AESEncrypt(model.Password, AppConfSetting.AesKey);
-            }
-            var entity= _userService.Login(model);
+            var entity = _userService.Login(model);
             return entity.MapTo<UserModel>();
         }
     }

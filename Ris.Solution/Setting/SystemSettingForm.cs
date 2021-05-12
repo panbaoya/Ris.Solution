@@ -21,18 +21,33 @@ namespace Ris.Ui.Setting
         private void SystemSetting_Load(object sender, EventArgs e)
         {
             SetStyle();
+            Init();
+        }
 
+        private void Init()
+        {
+            txtHospitalCode.Text = AppConfSetting.HospitalCode;
+            txtHospitalName.Text = AppConfSetting.HospitalName;
+            txtAesKey.Text = AppConfSetting.AesKey;
+            txtPostAddress.Text = AppConfSetting.PostAddress;
+            txtPort.Text = AppConfSetting.Port.ToString() ;
+            cmbGlobalFontSize.Text = AppConfSetting.GlobalFontSize.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string fullAddress = txtPostAddress.Text;
-            if (!string.IsNullOrEmpty(txtPort.Text))
+            if (txtAesKey.TextLength!=16)
             {
-                fullAddress += ":" + txtPort.Text+"/";
+                this.ShowInfo("密钥应为16位.");
             }
-            txtPostAddress.Text = fullAddress;
-            AppConfSetting.SaveSettiongs("PostAddress", fullAddress);
+            AppConfSetting.SaveSettiongs("PostAddress", txtPostAddress.Text);
+            AppConfSetting.SaveSettiongs("Port", txtPort.Text);
+            AppConfSetting.SaveSettiongs("GlobalFontSize", cmbGlobalFontSize.Text);
+            AppConfSetting.SaveSettiongs("HospitalName", txtHospitalName.Text);
+            AppConfSetting.SaveSettiongs("HospitalCode", txtHospitalCode.Text);
+            AppConfSetting.SaveSettiongs("AesKey", txtAesKey.Text);
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

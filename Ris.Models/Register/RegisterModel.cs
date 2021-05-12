@@ -25,6 +25,7 @@ namespace Ris.Models.Register
         public string Email { get; set; }
         public string ImageNumber { get; set; }
         public string PatientType { get; set; }
+        public string VisitType { get; set; }
         public string BillHospital { get; set; }
         public string ApplyDept { get; set; }
         public string ApplyDeptName { get; set; }

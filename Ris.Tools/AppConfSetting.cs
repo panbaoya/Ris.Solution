@@ -33,6 +33,7 @@ namespace Ris.Tools
         /// </summary>
         public static string EmailRegex => ConfigurationManager.AppSettings["EmailRegex"];
 
+        public static string PostAddress => ConfigurationManager.AppSettings["PostAddress"];
         /// <summary>
         /// 全局字体大小
         /// </summary>
@@ -67,9 +68,9 @@ namespace Ris.Tools
             {
                 config.AppSettings.Settings.Add(setName, setValue);
             }
-
             var sss=config.AppSettings.Settings[setName];
             config.Save();
+            ConfigurationManager.RefreshSection(setName);
         }
     }
 }

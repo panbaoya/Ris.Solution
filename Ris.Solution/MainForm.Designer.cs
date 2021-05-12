@@ -118,7 +118,7 @@ namespace Ris.Ui
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.ckbCheckType = new System.Windows.Forms.CheckedListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.cmbPatientType = new System.Windows.Forms.ComboBox();
@@ -932,8 +932,8 @@ namespace Ris.Ui
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.btnSearch);
             this.groupBox2.Controls.Add(this.ckbCheckType);
-            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.comboBox1);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.cmbPatientType);
@@ -957,15 +957,16 @@ namespace Ris.Ui
             this.ckbCheckType.Size = new System.Drawing.Size(120, 84);
             this.ckbCheckType.TabIndex = 4;
             // 
-            // button1
+            // btnSearch
             // 
-            this.button1.Location = new System.Drawing.Point(44, 877);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "查询";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Location = new System.Drawing.Point(64, 599);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 3;
+            this.btnSearch.Text = "查询";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.button1_Click);
             // 
             // comboBox1
             // 
@@ -1119,7 +1120,7 @@ namespace Ris.Ui
         private System.Windows.Forms.TextBox txtImageNumber;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox cmbPatientType;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.CheckedListBox ckbCheckType;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label15;

@@ -149,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\Hl7发布.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ris.Bll\Ris.Bll.csproj">

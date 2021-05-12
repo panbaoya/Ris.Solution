@@ -74,8 +74,9 @@ namespace Ris.Tools
                     }
                 }
             }
-            catch
+            catch(Exception ex)
             {
+                throw ex;
             }
             aes.Clear();
 

@@ -66,6 +66,7 @@ namespace Ris.Ui
             ctrlNo = 1;//进入=1，第0个为窗体本身,窗体内的控件,从序号1开始
             AutoScaleControl(mForm, wScale, hScale);//窗体内其余控件还可能嵌套控件(比如panel),要单独抽出,因为要递归调用
         }
+
         private void AutoScaleControl(Control ctl, float wScale, float hScale)
         {
             int ctrLeft0, ctrTop0, ctrWidth0, ctrHeight0;

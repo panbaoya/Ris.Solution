@@ -188,7 +188,7 @@ namespace Ris.Ui.Register
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 139);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(697, 302);
+            this.groupBox2.Size = new System.Drawing.Size(697, 276);
             this.groupBox2.TabIndex = 1018;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "检查信息";
@@ -529,9 +529,9 @@ namespace Ris.Ui.Register
             // 
             this.groupBox4.Controls.Add(this.dgvApplys);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox4.Location = new System.Drawing.Point(3, 441);
+            this.groupBox4.Location = new System.Drawing.Point(3, 415);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(697, 92);
+            this.groupBox4.Size = new System.Drawing.Size(697, 118);
             this.groupBox4.TabIndex = 1020;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "收费项目";
@@ -546,7 +546,7 @@ namespace Ris.Ui.Register
             this.dgvApplys.Location = new System.Drawing.Point(3, 17);
             this.dgvApplys.Name = "dgvApplys";
             this.dgvApplys.RowTemplate.Height = 23;
-            this.dgvApplys.Size = new System.Drawing.Size(691, 72);
+            this.dgvApplys.Size = new System.Drawing.Size(691, 98);
             this.dgvApplys.TabIndex = 0;
             // 
             // panel1

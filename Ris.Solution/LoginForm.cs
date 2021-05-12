@@ -69,7 +69,7 @@ namespace Ris.Ui
             else
             {
                 var msg = $"工号/手机号:{txtUserName.Text + txtPhone.Text},{DateTime.Now.ToString()}登录失败.";
-                NLogger.LogInfo(msg, user.UserName);
+                NLogger.LogInfo(msg, txtUserName.Text + txtPhone.Text);
                 this.ShowInfo("用户名或密码错误.");
             }
         }

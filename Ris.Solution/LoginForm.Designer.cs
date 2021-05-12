@@ -95,7 +95,6 @@ namespace Ris.Ui
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(100, 21);
             this.txtUserName.TabIndex = 4;
-            this.txtUserName.Text = "admin";
             // 
             // txtPassword
             // 
@@ -104,7 +103,6 @@ namespace Ris.Ui
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(100, 21);
             this.txtPassword.TabIndex = 5;
-            this.txtPassword.Text = "123";
             // 
             // txtPhone
             // 
@@ -113,7 +111,6 @@ namespace Ris.Ui
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(100, 21);
             this.txtPhone.TabIndex = 4;
-            this.txtPhone.Text = "110";
             // 
             // checkBox1
             // 

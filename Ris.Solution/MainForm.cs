@@ -52,6 +52,7 @@ namespace Ris.Ui
         private void MainForm_Load(object sender, EventArgs e)
         {
             tssUser.Text += $"[{CurrentUser.Name}]";
+
             SetStyle();
             this.dgvRegisterList.AutoGenerateColumns = false;
             dgvRegisterList.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -233,7 +234,7 @@ namespace Ris.Ui
         {
             if (string.IsNullOrEmpty(AppConfSetting.HospitalName))
             {
-                ConfigurationSettingForm form = new ConfigurationSettingForm();
+                SystemSettingForm form = new SystemSettingForm();
                 form.Owner = this;
                 var result = form.ShowDialog();
             }
@@ -270,8 +271,15 @@ namespace Ris.Ui
 
         private void 用户管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UserSettingForm form = new UserSettingForm();
-            form.ShowDialog();
+            if (CurrentUser.UserName=="admin")
+            {
+                UserSettingForm form = new UserSettingForm();
+                form.ShowDialog();
+            }
+            else
+            {
+                this.ShowInfo("请联系管理员");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -26,9 +26,16 @@ namespace Ris.Api.Hl7.Controllers
         // POST api/values
         public string Post([FromBody]  string imageNumber)
         {
-            IRegisterBll bll = new RegisterBll();
-            var result=bll.ImageStatus(imageNumber);
-            return result?"更新成功.":"更新失败.";
+            try
+            {
+                IRegisterBll bll = new RegisterBll();
+                var result = bll.ImageStatus(imageNumber);
+                return result ? "更新成功." : "更新失败.";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
 
         // PUT api/values/5
