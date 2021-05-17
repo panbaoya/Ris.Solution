@@ -213,7 +213,6 @@ namespace Ris.Ui.Register
             this.cmbPosition.Size = new System.Drawing.Size(100, 20);
             this.cmbPosition.TabIndex = 20;
             this.cmbPosition.TextSource = null;
-            this.cmbPosition.SelectedIndexChanged += new System.EventHandler(this.cmbPosition_SelectedIndexChanged);
             // 
             // comboBoxExApd1
             // 

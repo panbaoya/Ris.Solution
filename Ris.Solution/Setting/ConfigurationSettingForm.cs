@@ -79,6 +79,7 @@ namespace Ris.Ui.Setting
             }
             var typeConfigs = _typeConfigBll.GetTypeConfigs(request);
             dataGridView1.DataSource = typeConfigs;
+            dataGridView1.ClearSelection();
             txtCode.Text = null;
             txtName.Text = null;
             txtRemark.Text = null;
@@ -174,6 +175,16 @@ namespace Ris.Ui.Setting
                 {
                     dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
                 }
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var list = dataGridView1.DataSource as List<TypeConfigModel>;
+                var configModel = list[e.RowIndex];
+                btnDel.Text = configModel.Status == 1 ? "禁用" : "启用";
             }
         }
     }

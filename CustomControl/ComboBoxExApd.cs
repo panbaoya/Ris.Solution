@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -54,58 +52,42 @@ namespace CustomControl
             }
         }
 
-
-        /// <summary>
-        /// 判断是人为选择还是代码赋值
-        /// </summary>
-        public bool IsAutoSet = false;
-
         /// <summary>
         /// 追加文本
         /// </summary>
         public string StrAppend = "";
+        private List<string> selecteds= new List<string>();
 
         //下标改变时需要删除已有部位，增加新部位，并判断是鼠标操作还是键盘上下键操作
         private void ComboBoxExApd_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (IsAutoSet)
-            {
-                return;
-            }
-
             if (this.SelectedIndex != -1 && !DroppedDown)
             {
-                string strPart = this.Items[this.SelectedIndex].ToString();
-                string[] parts = StrAppend.TrimEnd(',').Split(',');
-                StrAppend = "";
-                bool isHas = false;
-                for (int i = 0; i < parts.Length; i++)
+                string strPart1 = this.Items[this.SelectedIndex].ToString();
+                if (selecteds.Contains(strPart1))
                 {
-                    if (parts[i] != strPart && !string.IsNullOrEmpty(parts[i]))
-                    {
-                        StrAppend += parts[i] + ",";
-                    }
-                    else if (parts[i] == strPart && !string.IsNullOrEmpty(parts[i]))
-                    {
-                        isHas = true;
-                        continue;
-                    }
+                    selecteds.Remove(strPart1);
                 }
-                if (!isHas)
+                else
                 {
-                    StrAppend += strPart + ",";
+                    selecteds.Add(strPart1);
                 }
-
-                var task=Task.Run(() =>
+                if (selecteds.Count>0)
                 {
-                    this.Invoke(new Action(() =>
-                    {
-                        this.Text = StrAppend.TrimEnd(',');
-                        this.SelectionStart = this.Text.Length;
-                    }));
-                });
+                    StrAppend = string.Join(",", selecteds) + " ";
+                }
             }
+            Task.Run(() =>
+            {
+                Thread.Sleep(10);
+                this.Invoke(new Action(() =>
+                {
+                    this.Text = StrAppend;
+                    this.SelectionStart = this.Text.Length;
+                }));
+            });
         }
+
 
         /// <summary>
         /// 重写基类文本事件
@@ -166,5 +148,35 @@ namespace CustomControl
             }
             this.Items.AddRange(DefaultList.ToArray());
         }
+
+
+        #region -----基类事件-----
+
+
+        protected override void OnGotFocus(EventArgs e)
+        {
+            if (Cursor.Current == Cursors.IBeam)
+            {
+                this.DroppedDown = true;
+            }
+            Cursor = Cursors.Default;
+            base.OnGotFocus(e);
+        }
+
+
+        protected override void OnLostFocus(EventArgs e)
+        {
+            if (this.Items.Count != DefaultList.Count)
+            {
+                this.Items.Clear();
+                this.Items.AddRange(DefaultList.ToArray());
+            }
+
+            this.DroppedDown = false;
+            base.OnLostFocus(e);
+        }
+
+        #endregion
+
     }
 }

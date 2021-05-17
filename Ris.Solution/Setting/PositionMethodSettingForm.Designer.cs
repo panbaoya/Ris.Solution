@@ -32,11 +32,11 @@ namespace Ris.Ui.Setting
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PositionMethodSettingForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tvPosition = new System.Windows.Forms.TreeView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -47,24 +47,34 @@ namespace Ris.Ui.Setting
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtName);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.txtCode);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(253, 69);
+            this.groupBox1.Size = new System.Drawing.Size(257, 100);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "操作";
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(83, 68);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(72, 16);
+            this.checkBox1.TabIndex = 6;
+            this.checkBox1.Text = "是否部位";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // button1
             // 
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(165, 38);
+            this.button1.Location = new System.Drawing.Point(165, 64);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
@@ -72,61 +82,46 @@ namespace Ris.Ui.Setting
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // radioButton2
+            // txtName
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(124, 43);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(35, 16);
-            this.radioButton2.TabIndex = 4;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "否";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.txtName.Location = new System.Drawing.Point(83, 37);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(157, 21);
+            this.txtName.TabIndex = 1;
             // 
-            // radioButton1
+            // label3
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(83, 43);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(35, 16);
-            this.radioButton1.TabIndex = 3;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "是";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 40);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 12);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "部位/方法:";
             // 
-            // label2
+            // txtCode
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 43);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 12);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "是否部位 :";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(83, 14);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(157, 21);
-            this.textBox1.TabIndex = 1;
+            this.txtCode.Location = new System.Drawing.Point(83, 14);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(157, 21);
+            this.txtCode.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.Size = new System.Drawing.Size(35, 12);
             this.label1.TabIndex = 0;
-            this.label1.Text = "部位/方法:";
+            this.label1.Text = "代码:";
             // 
             // tvPosition
             // 
             this.tvPosition.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tvPosition.ContextMenuStrip = this.contextMenuStrip1;
             this.tvPosition.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvPosition.Location = new System.Drawing.Point(0, 69);
+            this.tvPosition.Location = new System.Drawing.Point(0, 100);
             this.tvPosition.Name = "tvPosition";
-            this.tvPosition.Size = new System.Drawing.Size(253, 449);
+            this.tvPosition.Size = new System.Drawing.Size(257, 418);
             this.tvPosition.TabIndex = 1;
             this.tvPosition.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tvPosition_MouseDoubleClick);
             this.tvPosition.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tvPosition_MouseDown);
@@ -150,7 +145,7 @@ namespace Ris.Ui.Setting
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(253, 518);
+            this.ClientSize = new System.Drawing.Size(257, 518);
             this.Controls.Add(this.tvPosition);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -170,12 +165,12 @@ namespace Ris.Ui.Setting
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TreeView tvPosition;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 作废ToolStripMenuItem;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

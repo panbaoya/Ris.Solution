@@ -39,7 +39,7 @@ namespace Ris.Ui.Setting
                 foreach (var item in parents)
                 {
                     TreeNode tn = new TreeNode();
-                    tn.Name = item.Name;
+                    tn.Name = item.Code;
                     tn.Text = item.Name;
                     tn.Tag = item.ID.ToString();
                     tn.ForeColor = item.Status == 0 ? Color.Red : Color.Black;
@@ -58,7 +58,7 @@ namespace Ris.Ui.Setting
                 foreach (var item in childs)
                 {
                     TreeNode tn = new TreeNode();
-                    tn.Name = item.Name;
+                    tn.Name = item.Code;
                     tn.Text = item.Name;
                     tn.Tag = item.ID.ToString();
                     tn.ForeColor=item.Status == 0 ?  Color.Red :  Color.Black;
@@ -70,36 +70,15 @@ namespace Ris.Ui.Setting
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (radioButton1.Checked)
+            PositionMethodModel model = new PositionMethodModel()
             {
-                PositionMethodModel model = new PositionMethodModel()
-                {
-                    Name = textBox1.Text,
-                    ParentID = 0,
-                    Status = 1,
-                    IsPosition = 1
-                };
-                _positionMethodBll.AddPositionMethod(model);
-            }
-            else
-            {
-                if (tvPosition.SelectedNode!=null && tvPosition.SelectedNode.Level==1)
-                {
-                    PositionMethodModel model = new PositionMethodModel()
-                    {
-                        Name = textBox1.Text,
-                        ParentID = Convert.ToInt32(tvPosition.SelectedNode.Tag),
-                        Status = 1,
-                        IsPosition = 0
-                    };
-                    _positionMethodBll.AddPositionMethod(model);
-                }
-                else
-                {
-                    this.ShowInfo("添加方法请选择部位.");
-                    return;
-                }
-            }
+                Name=txtName.Text,
+                Code = txtCode.Text,
+                ParentID = checkBox1.Checked?0: Convert.ToInt32(tvPosition.SelectedNode.Tag),
+                Status = 1,
+                IsPosition = checkBox1.Checked ? 1 : 0
+            };
+            _positionMethodBll.AddPositionMethod(model);
             BindData();
         }
 
@@ -111,7 +90,7 @@ namespace Ris.Ui.Setting
                 PositionMethodModel model = new PositionMethodModel()
                 {
                     ID = Convert.ToInt32(tvPosition.SelectedNode.Tag),
-                    IsPosition = node != null ? Convert.ToInt32(node.Parent.Tag) : 1,
+                    Code=tvPosition.SelectedNode.Name,
                     Status = 0,
                 };
                 _positionMethodBll.UpdatePositionMethod(model);
@@ -129,26 +108,26 @@ namespace Ris.Ui.Setting
 
         private void tvPosition_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            TreeNode node = this.tvPosition.GetNodeAt(e.X, e.Y);
-            if (e.X > node.Bounds.Left || e.X < node.Bounds.Right)
-            {
-                _updateModel = new PositionMethodModel()
-                {
-                    Name = node.Name,
-                    IsPosition = node.Level == 0 ? 1 : 0,
-                    ID = Convert.ToInt32(node.Tag)
-                };
-                textBox1.Text = _updateModel.Name;
-                if (_updateModel.IsPosition==1)
-                {
-                    radioButton1.Checked=true;
-                }
-                else
-                {
-                    radioButton2.Checked = true;
-                }
-                _positionMethodBll.UpdatePositionMethod(_updateModel);
-            }
+            //TreeNode node = this.tvPosition.GetNodeAt(e.X, e.Y);
+            //if (e.X > node.Bounds.Left || e.X < node.Bounds.Right)
+            //{
+            //    _updateModel = new PositionMethodModel()
+            //    {
+            //        Name = node.Name,
+            //        IsPosition = node.Level == 0 ? 1 : 0,
+            //        ID = Convert.ToInt32(node.Tag)
+            //    };
+            //    txtCode.Text = _updateModel.Name;
+            //    if (_updateModel.IsPosition==1)
+            //    {
+            //        checkBox1.Checked=true;
+            //    }
+            //    else
+            //    {
+            //        checkBox1.Checked = false;
+            //    }
+            //    _positionMethodBll.UpdatePositionMethod(_updateModel);
+            //}
         }
     }
 }

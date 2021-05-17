@@ -39,14 +39,14 @@ namespace Ris.Dal.Entitys
            /// Default:
            /// Nullable:False
            /// </summary>           
-           public int IsPosition {get;set;}
+           public int? IsPosition {get;set;}
 
            /// <summary>
            /// Desc:方法的部位ID
            /// Default:0
            /// Nullable:False
            /// </summary>           
-           public int ParentID {get;set;}
+           public int? ParentID {get;set;}
 
            /// <summary>
            /// Desc:状态,1可用
