@@ -160,6 +160,10 @@
       <Project>{45F8C07C-B45D-44DE-8554-876ACD78135D}</Project>
       <Name>Ris.IBll</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ris.Models\Ris.Models.csproj">
+      <Project>{3FF8664B-5624-40E5-9887-9F01F2CCE9F9}</Project>
+      <Name>Ris.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

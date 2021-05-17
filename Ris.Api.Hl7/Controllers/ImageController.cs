@@ -1,4 +1,5 @@
-﻿using Ris.Bll;
+﻿using Models.WorkList;
+using Ris.Bll;
 using Ris.IBll;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,11 @@ namespace Ris.Api.Hl7.Controllers
 {
     public class ImageController : ApiController
     {
+        IRegisterBll bll = new RegisterBll();
         // GET api/values
-        public IEnumerable<string> Get()
+        public List<WorklistItem> Get()
         {
-            return new string[] { "value1", "value2" };
+            return bll.GetRegisterToWorkList();
         }
 
         // GET api/values/5
@@ -28,7 +30,6 @@ namespace Ris.Api.Hl7.Controllers
         {
             try
             {
-                IRegisterBll bll = new RegisterBll();
                 var result = bll.ImageStatus(imageNumber);
                 return result ? "更新成功." : "更新失败.";
             }

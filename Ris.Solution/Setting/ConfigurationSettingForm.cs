@@ -111,17 +111,18 @@ namespace Ris.Ui.Setting
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            var type = (TypeConfigEnum)Enum.Parse(typeof(TypeConfigEnum), cmbType.SelectedValue.ToString());
             TypeConfigModel configModel = new TypeConfigModel
             {
                 DataCode = txtCode.Text,
                 DataName = txtName.Text,
                 Status = 1,
                 Remarks = txtRemark.Text,
-                DataType = (TypeConfigEnum)(int)cmbType.SelectedValue
+                DataType =type,
+                IsParent=0,
             };
             if (Verification())
             {
-
                 if (_typeConfigBll.AddTypeConfig(configModel))
                 {
                     BindData();

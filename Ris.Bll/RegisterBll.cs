@@ -1,11 +1,10 @@
-﻿using Nursing.Tools;
+﻿using Models.WorkList;
+using Nursing.Tools;
 using Ris.Dal.Entitys;
 using Ris.Dal.EntityService;
 using Ris.IBll;
-using Ris.Models.Enums;
 using Ris.Models.InterFaceModel;
 using Ris.Models.Register;
-using Ris.Models.TypeConfig;
 using Ris.Tools;
 using Ris.Tools.Nlog;
 using System;
@@ -34,13 +33,11 @@ namespace Ris.Bll
         /// </summary>
         /// <param name="patient"></param>
         /// <returns></returns>
-        public List<RegisterModel> Getpatients(RequestRegisterModel patient)
+        public List<WorklistItem> GetRegisterToWorkList()
         {
-            var models = _registerService.GetList(patient).MapListTo<tb_Register, RegisterModel>();
-            models.ForEach(x =>
-            {
-                x.IDCard = AesUnit.AESDecrypt(x.IDCard, AppConfSetting.AesKey);
-            });
+            var models = _registerService.GetListBySql<WorklistItem>("SELECT PatientID,Name AS Surname,CardNo AS AccessionNumber,CASE Gender WHEN 'M' THEN '男' WHEN 'F' THEN '女' END AS Sex,Equipment Modality,ApplyDate ExamDateAndTime,BillHospital AS HospitalName," +
+                "CASE BirthDay WHEN '' THEN NULL WHEN NULL THEN NULL ELSE BirthDay END AS DateOfBirth, ApplyDate AS ExamDateAndTime " +
+                "FROM dbo.tb_Register");
             return models;
         }
 

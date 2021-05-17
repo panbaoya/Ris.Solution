@@ -54,6 +54,7 @@
     <Compile Include="TypeConfig\RequestTypeConfigModel.cs" />
     <Compile Include="TypeConfig\TypeConfigModel.cs" />
     <Compile Include="User\UserModel.cs" />
+    <Compile Include="WorkList\WorklistItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ris.Tools\Ris.Tools.csproj">

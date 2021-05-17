@@ -24,9 +24,9 @@ namespace Ris.Ui
                 Sugar sqlSugar = new Sugar();
                 sqlSugar.setCon(AppConfSetting.ConnectionString);
                 sqlSugar.sugarClient.Open();
+                sqlSugar.sugarClient.DbFirst
+                    .IsCreateDefaultValue().IsCreateAttribute().CreateClassFile("D:\\Models", "Ris.Dal.Entitys");
                 sqlSugar.sugarClient.Close();
-                //sqlSugar.sugarClient.DbFirst
-                //    .IsCreateDefaultValue().IsCreateAttribute().CreateClassFile("D:\\Models", "Ris.Dal.Entitys");
 
 
                 //设置应用程序处理异常方式：ThreadException处理

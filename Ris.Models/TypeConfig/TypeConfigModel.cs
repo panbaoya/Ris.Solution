@@ -23,5 +23,6 @@ namespace Ris.Models.TypeConfig
         }
 
         public string HisCode { get; set; }
+        public int? IsParent { get; set; }
     }
 }

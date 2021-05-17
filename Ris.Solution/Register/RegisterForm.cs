@@ -4,6 +4,7 @@ using Ris.IBll;
 using Ris.Models.Deptment;
 using Ris.Models.Enums;
 using Ris.Models.InterFaceModel;
+using Ris.Models.PositionMethod;
 using Ris.Models.Register;
 using Ris.Models.TypeConfig;
 using Ris.Tools;
@@ -94,6 +95,8 @@ namespace Ris.Ui.Register
             var positions = _positionMethodBll.GetPositions();
             cmbPosition.TextSource = positions.Select(x=>x.Name).ToList();
 
+            txtBillHospital.Text = AppConfSetting.HospitalName;
+
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
@@ -181,79 +184,6 @@ namespace Ris.Ui.Register
         {
             if (e.KeyChar==(char)Keys.Enter)
             {
-                //var response = HttpUnit.PostJson("", "");
-                //RegisterModel _registerModel = new RegisterModel
-                //{
-                //    CardNo = txtCardNo.Text,
-                //    Name = cmbName.Text,
-                //    IDCard = txtIDCard.Text,
-                //    PinYin1 = txtPinyin1.Text,
-                //    Gender = Convert.ToInt32(cmbGender.SelectedValue),
-                //    Address = txtAddress.Text,
-                //    BirthDay = txtBirthDay.Text,
-                //    CurrentAge = txtAge.Text,
-                //    Phone = txtPhone.Text,
-                //    PostCode = txtPostCode.Text,
-                //    Email = txtEmail.Text,
-                //    ImageNumber = txtImageNumber.Text,
-                //    PatientType = cmbPatientType.Text,
-                //    CheckNo = txtCheckNo.Text,
-                //    BillHospital = txtBillHospital.Text,
-                //    ApplyDept = cmbApplyDept.SelectedValue.ToString(),
-                //    ApplyDeptName = cmbApplyDept.Text,
-                //    ApplyDocterName = txtApplyDocter.Text,
-                //    Area = txtArea.Text,
-                //    Bed = txtBed.Text,
-                //    ApplyDate = DateTime.Now,
-                //    CheckDept = cmbCheckDept.SelectedValue.ToString(),
-                //    CheckDeptName = cmbCheckDept.Text,
-                //    CheckType = cmbCheckType.Text,
-                //    Equipment = cmbEquipment.Text,
-                //    Position = cmbPosition.Text,
-                //    Method = cmbMethod.Text,
-                //    Symptom = txtSymptom.Text,
-                //    Diagnosis = txtDiagnosis.Text,
-                //    DockerAsk = txtRemarks.Text
-                //};
-                //var ssss=_registerModel.ToJson();
-
-
-
-                //var response = "{\"PatientID\":null,\"Name\":\"潘保亚\",\"CardNo\":\"123\",\"PinYin\":null,\"PinYin1\":\"PanBaoYa\",\"Gender\":1,\"IDCard\":\"410928199106044232\",\"Address\":\"家庭住址\",\"Phone\":\"199216152093\",\"PostCode\":\"123412\",\"CurrentAge\":\"30岁\",\"BirthDay\":\"1991-06-04\",\"Email\":\"123@156.com\",\"ImageNumber\":\"20210506165038\",\"PatientType\":\"自费\",\"BillHospital\":\"开单医院\",\"ApplyDept\":\"ks002\",\"ApplyDeptName\":\"超声科\",\"ApplyDocter\":null,\"ApplyDocterName\":\"申请医师\",\"CheckType\":\"CT\",\"Bed\":\"2床\",\"ApplyDate\":\"2021-05-06T16: 52:14.1880235+08:00\",\"CheckNo\":\"123\",\"CheckDept\":\"ks002\",\"CheckDeptName\":\"超声科\",\"Area\":\"1区\",\"Diagnosis\":\"临床诊断\",\"Equipment\":\"AS\",\"Position\":\"腹部,头部,胸部\",\"Method\":\"肝Ca\",\"Symptom\":\"病例描述\",\"DockerAsk\":\"医师要求\"}";
-                //var model = response.JsonToObj<RegisterModel>();
-                //txtCardNo.Text = model.CardNo;
-                //cmbName.Text = model.Name;
-                //txtIDCard.Text = model.IDCard;
-                //txtPinyin1.Text = model.PinYin1;
-                //cmbGender.SelectedValue = model.Gender.ToString();
-                //txtAddress.Text = model.Address;
-                //txtBirthDay.Text = model.BirthDay;
-                //txtAge.Text = model.CurrentAge;
-                //txtPhone.Text = model.Phone;
-                //txtPostCode.Text = model.PostCode;
-                //txtEmail.Text = model.Email;
-                //txtImageNumber.Text = model.ImageNumber;
-                //cmbPatientType.Text = model.PatientType;
-                //txtCheckNo.Text = model.CheckNo;
-                //txtBillHospital.Text = model.BillHospital;
-                //cmbApplyDept.SelectedValue = model.ApplyDept;
-                //cmbApplyDept.Text = model.ApplyDeptName;
-                //txtApplyDocter.Text = model.ApplyDocterName;
-                //txtArea.Text = model.Area;
-                //txtBed.Text = model.Bed;
-                //dtpApplyDate.Value = model.ApplyDate.Value;
-                //cmbCheckDept.SelectedValue = model.CheckDept;
-                //cmbCheckDept.Text = model.CheckDeptName;
-                //cmbCheckType.Text = model.CheckType;
-                //cmbEquipment.Text = model.Equipment;
-                //cmbPosition.Text = model.Position;
-                //cmbMethod.Text = model.Method;
-                //txtSymptom.Text = model.Symptom;
-                //txtDiagnosis.Text = model.Diagnosis;
-                //txtRemarks.Text = model.DockerAsk;
-
-
-
                 var xml = @"<ApplyBillInfo>
         <PatientInfos>
             <PatientInfo>
@@ -383,12 +313,12 @@ namespace Ris.Ui.Register
                             </ApplyItem>
                             <ApplyItem>
                                 <UnitPrice>400.0000</UnitPrice>
-                                <CheckPointName/>
-                                <CheckPointCode/>
+                                <CheckPointName>部位</CheckPointName>
+                                <CheckPointCode>111</CheckPointCode>
                                 <Memo/>
-                                <MethodName/>
                                 <ItemName>电子肠镜检查</ItemName>
-                                <MethodCode/>
+                                <MethodName>方法</MethodName>
+                                <MethodCode>222</MethodCode>
                                 <Quantity>1</Quantity>
                                 <ItemCode>NKJJC1345</ItemCode>
                             </ApplyItem>
@@ -405,6 +335,7 @@ namespace Ris.Ui.Register
                     if (applyBill!=null && applyBill.PatientInfos.Count>0&& applyBill.PatientInfos[0].ApplyBills.Count>0)
                     {
                         patient = applyBill.PatientInfos[0];
+                        patient.ApplyBills[0].ApplyItems.Select(x => x.CheckPointCode);
                         //his接口数据,异步添加配置
                         var configTask=_typeConfigBll.AddTypeConfigByHisAsync(patient);
                         var deptTask=_deptmentBll.AddDeptmentByHisAsync(patient);
@@ -453,10 +384,11 @@ namespace Ris.Ui.Register
                 BillHospital = txtBillHospital.Text,
                 ApplyDept = cmbApplyDept.SelectedValue.ToString(),
                 ApplyDeptName = cmbApplyDept.Text,
+                ApplyDocter=txtApplyDocterCode.Text,
                 ApplyDocterName = txtApplyDocter.Text,
                 Area = txtArea.Text,
                 Bed = txtBed.Text,
-                ApplyDate = DateTime.Now,
+                ApplyDate = dtpApplyDate.Value,
                 CheckDept = cmbCheckDept.SelectedValue.ToString(),
                 CheckDeptName = cmbCheckDept.Text,
                 CheckType = cmbCheckType.Text,
@@ -506,35 +438,54 @@ namespace Ris.Ui.Register
         private PatientInfo patient;
         private void dgvApplyBills_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //本身UI赋值
-            txtName.Text = patient.PatientName;
-            txtAddress.Text = patient.HomeAddress;
-            txtPhone.Text = patient.HomeTel;
-            txtCardNo.Text = patient.EncounterType == "O" ? patient.OutPatientNo : patient.InPatientNo;
-            txtDiagnosis.Text = !string.IsNullOrEmpty(patient.DiagnosisCode) ? patient.DiagnosisCode + "-" + patient.DiagnosisName : "";
-            txtCheckNo.Text = patient.RegCode;
-            txtSymptom.Text = patient.ApplyBills[0].MedicalHistory;
-            txtRemarks.Text = patient.ApplyBills[0].Memo;
-            Init();
-            if (!string.IsNullOrEmpty(patient.SSNumber))
+            if (e.RowIndex>0)
             {
-                txtIDCard.Text = patient.SSNumber;
+                if (true)//按照申请单登记
+                {
+                    var bills = dgvApplyBills.DataSource as List<ApplyBill>;
+                    var bill = bills[e.RowIndex];
+                    if (bill.RequestStatus.Trim() != "0")
+                    {
+                        this.ShowInfo("该申请单不符合登记状态.");
+                        return;
+                    }
+                    //本身UI赋值
+                    txtName.Text = patient.PatientName;
+                    txtAddress.Text = patient.HomeAddress;
+                    txtPhone.Text = patient.HomeTel;
+                    txtCardNo.Text = patient.EncounterType == "O" ? patient.OutPatientNo : patient.InPatientNo;
+                    txtDiagnosis.Text = !string.IsNullOrEmpty(patient.DiagnosisCode) ? patient.DiagnosisCode + "-" + patient.DiagnosisName : "";
+                    txtCheckNo.Text = patient.RegCode;
+                    txtSymptom.Text = bill.MedicalHistory;
+                    txtRemarks.Text = bill.Memo;
+                    Init();
+                    if (!string.IsNullOrEmpty(patient.SSNumber))
+                    {
+                        txtIDCard.Text = patient.SSNumber;
+                    }
+                    else
+                    {
+                        txtAge.Text = patient.Age;
+                        cmbGender.Text = patient.GenderName;
+                        cmbGender.SelectedValue = patient.GenderCode;
+                    }
+                    txtApplyDocter.Text = bill.ReqDoctorName;
+                    txtApplyDocterCode.Text = bill.ReqDoctorCode;
+                    cmbPatientType.Text = patient.PatientTypeName;
+                    cmbPatientType.SelectedValue = patient.PatientType;
+                    cmbApplyDept.Text = patient.LocationName;
+                    cmbApplyDept.SelectedValue = patient.LocationCode;
+                    cmbVisitType.Text = patient.EncounterTypeName;
+                    cmbVisitType.SelectedValue = patient.EncounterType;
+                    dtpApplyDate.Value = DateTime.ParseExact(bill.RequestDate, "yyyyMMddHHmmss", System.Globalization.CultureInfo.CurrentCulture);
+                    tabControl1.SelectedTab = tabPage1;
+                    dgvApplys.DataSource = dgvApplyProjects.DataSource;
+                }
+                else
+                {
+                    return;
+                }
             }
-            else
-            {
-                txtAge.Text = patient.Age;
-                cmbGender.Text = patient.GenderName;
-                cmbGender.SelectedValue = patient.GenderCode;
-            }
-            cmbPatientType.Text = patient.PatientTypeName;
-            cmbPatientType.SelectedValue = patient.PatientType;
-            cmbApplyDept.Text = patient.LocationName;
-            cmbApplyDept.SelectedValue = patient.LocationCode;
-            cmbVisitType.Text = patient.EncounterTypeName;
-            cmbVisitType.SelectedValue = patient.EncounterType;
-
-            tabControl1.SelectedTab = tabPage1;
-            dgvApplys.DataSource = dgvApplyProjects.DataSource;
         }
 
         private void dgvApplyBills_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -544,6 +495,10 @@ namespace Ris.Ui.Register
                 var list = dgvApplyBills.DataSource as List<ApplyBill>;
                 var apply = list[e.RowIndex];
                 dgvApplyProjects.DataSource = apply.ApplyItems;
+                var posiModels = apply.ApplyItems.Where(x=>!string.IsNullOrEmpty(x.CheckPointCode)).Select(x => new PositionMethodModel{Code=x.CheckPointCode, Name=x.CheckPointName,IsPosition=1,Status=1 }).ToList();
+                var methods = apply.ApplyItems.Where(x => !string.IsNullOrEmpty(x.MethodCode)).Select(x => new PositionMethodModel { Code = x.CheckPointCode, Name = x.CheckPointName, IsPosition = 0, Status = 1 }).ToList();
+                posiModels.AddRange(methods);
+                var positionTask = _positionMethodBll.AddPositionMethodByHisAsync(posiModels);
             }
         }
     }

@@ -33,6 +33,7 @@ namespace Ris.IBll
         /// <param name="model"></param>
         /// <returns></returns>
         bool AddPositionMethod(PositionMethodModel model);
+        Task AddPositionMethodByHisAsync(List<PositionMethodModel> model);
 
         /// <summary>
         /// 修改部位方法

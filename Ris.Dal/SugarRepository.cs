@@ -95,7 +95,17 @@ namespace Ris.Dal
 
         public List<F> GetListBySql<F>(string sql, params object[] parameters)
         {
-            throw new NotImplementedException();
+            return db.Ado.SqlQuery<F>(sql); ;
+        }
+
+        /// <summary>
+        /// 主键是否存在
+        /// </summary>
+        /// <returns>true存在</returns>
+        public bool IsExist(string id)
+        {
+            var entity = GetById(id);
+            return entity is null ? false : true;
         }
     }
 }

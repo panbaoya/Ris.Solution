@@ -1,11 +1,6 @@
-﻿using Ris.Dal;
-using Ris.Models.Enums;
+﻿using Models.WorkList;
 using Ris.Models.Register;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ris.IBll
 {
@@ -15,11 +10,11 @@ namespace Ris.IBll
     public interface IRegisterBll
     {
         /// <summary>
-        /// 获取患者信息
+        /// 获取注册信息,给worklist
         /// </summary>
         /// <param name="patient"></param>
         /// <returns></returns>
-        List<RegisterModel> Getpatients(RequestRegisterModel patient);
+        List<WorklistItem> GetRegisterToWorkList();
 
         /// <summary>
         /// 登记

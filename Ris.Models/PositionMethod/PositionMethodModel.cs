@@ -10,6 +10,10 @@ namespace Ris.Models.PositionMethod
     {
         public int ID { get; set; }
         /// <summary>
+        /// 代码
+        /// </summary>
+        public string Code { get; set; }
+        /// <summary>
         /// 名称
         /// </summary>
         public string Name { get; set; }

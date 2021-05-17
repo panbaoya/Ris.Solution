@@ -64,6 +64,7 @@ namespace Ris.Ui.Register
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.txtApplyDocterCode = new System.Windows.Forms.TextBox();
             this.txtApplyDocter = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -128,7 +129,7 @@ namespace Ris.Ui.Register
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(711, 592);
+            this.tabControl1.Size = new System.Drawing.Size(711, 667);
             this.tabControl1.TabIndex = 1017;
             // 
             // tabPage1
@@ -141,7 +142,7 @@ namespace Ris.Ui.Register
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(703, 566);
+            this.tabPage1.Size = new System.Drawing.Size(703, 641);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "登记信息";
             // 
@@ -179,6 +180,7 @@ namespace Ris.Ui.Register
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.txtApplyDocterCode);
             this.groupBox2.Controls.Add(this.txtApplyDocter);
             this.groupBox2.Controls.Add(this.label30);
             this.groupBox2.Controls.Add(this.label11);
@@ -188,7 +190,7 @@ namespace Ris.Ui.Register
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 139);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(697, 276);
+            this.groupBox2.Size = new System.Drawing.Size(697, 306);
             this.groupBox2.TabIndex = 1018;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "检查信息";
@@ -369,7 +371,6 @@ namespace Ris.Ui.Register
             this.dtpApplyDate.Name = "dtpApplyDate";
             this.dtpApplyDate.Size = new System.Drawing.Size(100, 21);
             this.dtpApplyDate.TabIndex = 1002;
-            this.dtpApplyDate.Visible = false;
             // 
             // label20
             // 
@@ -476,6 +477,14 @@ namespace Ris.Ui.Register
             this.label12.TabIndex = 27;
             this.label12.Text = "申请医师:";
             // 
+            // txtApplyDocterCode
+            // 
+            this.txtApplyDocterCode.Location = new System.Drawing.Point(77, 159);
+            this.txtApplyDocterCode.Name = "txtApplyDocterCode";
+            this.txtApplyDocterCode.Size = new System.Drawing.Size(100, 21);
+            this.txtApplyDocterCode.TabIndex = 17;
+            this.txtApplyDocterCode.Visible = false;
+            // 
             // txtApplyDocter
             // 
             this.txtApplyDocter.Location = new System.Drawing.Point(77, 170);
@@ -529,9 +538,9 @@ namespace Ris.Ui.Register
             // 
             this.groupBox4.Controls.Add(this.dgvApplys);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox4.Location = new System.Drawing.Point(3, 415);
+            this.groupBox4.Location = new System.Drawing.Point(3, 445);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(697, 118);
+            this.groupBox4.Size = new System.Drawing.Size(697, 163);
             this.groupBox4.TabIndex = 1020;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "收费项目";
@@ -546,7 +555,7 @@ namespace Ris.Ui.Register
             this.dgvApplys.Location = new System.Drawing.Point(3, 17);
             this.dgvApplys.Name = "dgvApplys";
             this.dgvApplys.RowTemplate.Height = 23;
-            this.dgvApplys.Size = new System.Drawing.Size(691, 98);
+            this.dgvApplys.Size = new System.Drawing.Size(691, 143);
             this.dgvApplys.TabIndex = 0;
             // 
             // panel1
@@ -555,7 +564,7 @@ namespace Ris.Ui.Register
             this.panel1.Controls.Add(this.btnRegister);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(3, 533);
+            this.panel1.Location = new System.Drawing.Point(3, 608);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(697, 30);
             this.panel1.TabIndex = 1019;
@@ -835,7 +844,7 @@ namespace Ris.Ui.Register
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(703, 566);
+            this.tabPage2.Size = new System.Drawing.Size(703, 641);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "电子申请单";
             // 
@@ -845,7 +854,7 @@ namespace Ris.Ui.Register
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox5.Location = new System.Drawing.Point(3, 225);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(697, 338);
+            this.groupBox5.Size = new System.Drawing.Size(697, 413);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "申请项目";
@@ -859,7 +868,7 @@ namespace Ris.Ui.Register
             this.dgvApplyProjects.Location = new System.Drawing.Point(3, 17);
             this.dgvApplyProjects.Name = "dgvApplyProjects";
             this.dgvApplyProjects.RowTemplate.Height = 23;
-            this.dgvApplyProjects.Size = new System.Drawing.Size(691, 318);
+            this.dgvApplyProjects.Size = new System.Drawing.Size(691, 393);
             this.dgvApplyProjects.TabIndex = 0;
             // 
             // groupBox3
@@ -893,7 +902,7 @@ namespace Ris.Ui.Register
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(711, 592);
+            this.ClientSize = new System.Drawing.Size(711, 667);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -998,5 +1007,6 @@ namespace Ris.Ui.Register
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dgvApplyBills;
         private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtApplyDocterCode;
     }
 }
