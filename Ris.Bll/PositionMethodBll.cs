@@ -29,7 +29,7 @@ namespace Ris.Bll
 
         public bool UpdatePositionMethod(PositionMethodModel model)
         {
-            var entity = _positionMethodService.GetById(model.ID);
+            var entity = _positionMethodService.GetById(model.Code);
             entity = model.MapTo<PositionMethodModel, tb_PositionMethod>(entity);
             return _positionMethodService.Update(entity);
         }

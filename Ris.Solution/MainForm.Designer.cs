@@ -78,6 +78,8 @@ namespace Ris.Ui
             this.Symptom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Diagnosis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DockerAsk = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.打开影像ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblYsyq = new System.Windows.Forms.Label();
             this.lblZd = new System.Windows.Forms.Label();
@@ -117,19 +119,22 @@ namespace Ris.Ui
             this.tssTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.ckbCheckType = new System.Windows.Forms.CheckedListBox();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.ckbCheckType = new System.Windows.Forms.CheckedListBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.cmbPatientType = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtImageNumber = new System.Windows.Forms.TextBox();
+            this.清除影像ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.追加检查ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegisterList)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -329,6 +334,7 @@ namespace Ris.Ui
             this.Symptom,
             this.Diagnosis,
             this.DockerAsk});
+            this.dgvRegisterList.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvRegisterList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRegisterList.Location = new System.Drawing.Point(3, 3);
             this.dgvRegisterList.MultiSelect = false;
@@ -573,6 +579,22 @@ namespace Ris.Ui
             this.DockerAsk.Name = "DockerAsk";
             this.DockerAsk.ReadOnly = true;
             this.DockerAsk.Width = 78;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.打开影像ToolStripMenuItem,
+            this.清除影像ToolStripMenuItem,
+            this.追加检查ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
+            // 
+            // 打开影像ToolStripMenuItem
+            // 
+            this.打开影像ToolStripMenuItem.Name = "打开影像ToolStripMenuItem";
+            this.打开影像ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.打开影像ToolStripMenuItem.Text = "打开影像";
+            this.打开影像ToolStripMenuItem.Click += new System.EventHandler(this.打开影像ToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
@@ -948,15 +970,6 @@ namespace Ris.Ui
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "条件查询";
             // 
-            // ckbCheckType
-            // 
-            this.ckbCheckType.CheckOnClick = true;
-            this.ckbCheckType.FormattingEnabled = true;
-            this.ckbCheckType.Location = new System.Drawing.Point(74, 84);
-            this.ckbCheckType.Name = "ckbCheckType";
-            this.ckbCheckType.Size = new System.Drawing.Size(120, 84);
-            this.ckbCheckType.TabIndex = 4;
-            // 
             // btnSearch
             // 
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -967,6 +980,15 @@ namespace Ris.Ui
             this.btnSearch.Text = "查询";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // ckbCheckType
+            // 
+            this.ckbCheckType.CheckOnClick = true;
+            this.ckbCheckType.FormattingEnabled = true;
+            this.ckbCheckType.Location = new System.Drawing.Point(74, 84);
+            this.ckbCheckType.Name = "ckbCheckType";
+            this.ckbCheckType.Size = new System.Drawing.Size(120, 84);
+            this.ckbCheckType.TabIndex = 4;
             // 
             // comboBox1
             // 
@@ -1020,6 +1042,20 @@ namespace Ris.Ui
             this.txtImageNumber.Size = new System.Drawing.Size(121, 21);
             this.txtImageNumber.TabIndex = 0;
             // 
+            // 清除影像ToolStripMenuItem
+            // 
+            this.清除影像ToolStripMenuItem.Name = "清除影像ToolStripMenuItem";
+            this.清除影像ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.清除影像ToolStripMenuItem.Text = "清除影像";
+            this.清除影像ToolStripMenuItem.Click += new System.EventHandler(this.清除影像ToolStripMenuItem_Click);
+            // 
+            // 追加检查ToolStripMenuItem
+            // 
+            this.追加检查ToolStripMenuItem.Name = "追加检查ToolStripMenuItem";
+            this.追加检查ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.追加检查ToolStripMenuItem.Text = "追加检查";
+            this.追加检查ToolStripMenuItem.Click += new System.EventHandler(this.追加检查ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1049,6 +1085,7 @@ namespace Ris.Ui
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegisterList)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -1154,5 +1191,9 @@ namespace Ris.Ui
         private System.Windows.Forms.Label lblYsyq;
         private System.Windows.Forms.Label lblZd;
         private System.Windows.Forms.Label lblZs;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 打开影像ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 清除影像ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 追加检查ToolStripMenuItem;
     }
 }

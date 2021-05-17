@@ -20,7 +20,7 @@ namespace Ris.Tools
             UdpClient udp = new UdpClient();
             byte[] sendbuf = Encoding.Default.GetBytes(message);
             //IP自定义配置
-            IPEndPoint iPEndPoint = new IPEndPoint(IPAddress.Parse("192.168.1.101"), AppConfSetting.Port);
+            IPEndPoint iPEndPoint = new IPEndPoint(IPAddress.Parse(AppConfSetting.PacsIP), AppConfSetting.Port);
             udp.SendAsync(sendbuf, sendbuf.Length, iPEndPoint);
             udp.Close();
         }

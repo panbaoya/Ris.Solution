@@ -302,8 +302,8 @@ namespace Ris.Ui.Register
                         <ApplyItems>
                             <ApplyItem>
                                 <UnitPrice>350.0000</UnitPrice>
-                                <CheckPointName/>
-                                <CheckPointCode/>
+                                <CheckPointName>部位2</CheckPointName>
+                                <CheckPointCode>222</CheckPointCode>
                                 <Memo/>
                                 <MethodName/>
                                 <ItemName>电子胃镜检查</ItemName>

@@ -16,7 +16,7 @@ using System.Windows.Forms;
 
 namespace Ris.Ui
 {
-    public partial class MainForm :BaseForm
+    public partial class MainForm : BaseForm
     {
         private readonly IRegisterBll _registerBll;
         private readonly ITypeConfigBll _typeConfigBll;
@@ -66,7 +66,7 @@ namespace Ris.Ui
 
         private void Init()
         {
-            var typeConfigs = _typeConfigBll.GetTypeConfigs(new RequestTypeConfigModel { IsParent=0 });
+            var typeConfigs = _typeConfigBll.GetTypeConfigs(new RequestTypeConfigModel { IsParent = 0 });
             //就诊类型
             var patientTypes = typeConfigs.Where(x => x.DataType == TypeConfigEnum.PatientType).ToList();
             patientTypes.Insert(0, new Models.TypeConfig.TypeConfigModel { DataCode = "-1", DataName = "全部" });
@@ -90,7 +90,7 @@ namespace Ris.Ui
             {
                 ImageNumber = txtImageNumber.Text,
                 PatientType = cmbPatientType.Text,
-                CheckType=new List<string>(),
+                CheckType = new List<string>(),
             };
             for (int i = 0; i < ckbCheckType.Items.Count; i++)
             {
@@ -208,8 +208,8 @@ namespace Ris.Ui
                 lblPosition.Text = patientRegister.Position;
                 txtZs.Text = patientRegister.Symptom;
                 txtZd.Text = patientRegister.Diagnosis;
-                txtYsyq.Text = patientRegister.DockerAsk; 
-                lblZs.Text= patientRegister.Symptom;
+                txtYsyq.Text = patientRegister.DockerAsk;
+                lblZs.Text = patientRegister.Symptom;
                 lblZd.Text = patientRegister.Diagnosis;
                 lblYsyq.Text = patientRegister.DockerAsk;
                 //UdpUnit.SendMsg("clearImage");
@@ -271,7 +271,7 @@ namespace Ris.Ui
 
         private void 用户管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (CurrentUser.UserName=="admin")
+            if (CurrentUser.UserName == "admin")
             {
                 UserSettingForm form = new UserSettingForm();
                 form.ShowDialog();
@@ -296,6 +296,23 @@ namespace Ris.Ui
         {
             AboutUsForm form = new AboutUsForm();
             form.ShowDialog();
+        }
+
+        private void 打开影像ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dgvRegisterList.Rows[dgvRegisterList.CurrentRow.Index];
+            UdpUnit.SendMsg("openImage#" + row.Cells["ImageNumber"].Value);
+        }
+
+        private void 清除影像ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UdpUnit.SendMsg("clearImage");
+        }
+
+        private void 追加检查ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dgvRegisterList.Rows[dgvRegisterList.CurrentRow.Index];
+            UdpUnit.SendMsg("addStudy#" + row.Cells["ImageNumber"].Value);
         }
     }
 }

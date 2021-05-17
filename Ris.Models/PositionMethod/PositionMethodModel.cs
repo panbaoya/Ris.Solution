@@ -21,7 +21,7 @@ namespace Ris.Models.PositionMethod
         /// <summary>
         /// 是否位置
         /// </summary>
-        public int IsPosition { get; set; }
+        public int? IsPosition { get; set; }
 
         /// <summary>
         /// 方法的父 id

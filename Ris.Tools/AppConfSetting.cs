@@ -51,6 +51,7 @@ namespace Ris.Tools
         }
 
         public static int Port => Convert.ToInt32(ConfigurationManager.AppSettings["Port"]);
+        public static string PacsIP => ConfigurationManager.AppSettings["PacsIP"];
 
         /// <summary>
         /// 修改配置信息
