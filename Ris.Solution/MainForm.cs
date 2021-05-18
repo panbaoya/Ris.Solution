@@ -41,7 +41,7 @@ namespace Ris.Ui
             RegisterForm registerForm = new RegisterForm();
             registerForm.Rest += BindData;
             var result = registerForm.ShowDialog();
-
+            Init();
             //if (result == DialogResult.OK)
             //{
             //    //重新绑定
@@ -74,6 +74,7 @@ namespace Ris.Ui
             cmbPatientType.ValueMember = "DataCode";
             cmbPatientType.DataSource = patientTypes;
             //检查类型
+            ckbCheckType.Items.Clear();
             var checkTypes = typeConfigs.Where(x => x.DataType == TypeConfigEnum.CheckType).ToList();
             checkTypes.ForEach(x =>
             {
@@ -301,7 +302,7 @@ namespace Ris.Ui
         private void 打开影像ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DataGridViewRow row = dgvRegisterList.Rows[dgvRegisterList.CurrentRow.Index];
-            UdpUnit.SendMsg("openImage#" + row.Cells["ImageNumber"].Value);
+            UdpUnit.SendMsg("addStudy#1.2.840.113619.2.472.3.2831157775.102.1603175316.637"); //+ row.Cells["ImageNumber"].Value);
         }
 
         private void 清除影像ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -312,7 +313,7 @@ namespace Ris.Ui
         private void 追加检查ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DataGridViewRow row = dgvRegisterList.Rows[dgvRegisterList.CurrentRow.Index];
-            UdpUnit.SendMsg("addStudy#" + row.Cells["ImageNumber"].Value);
+            UdpUnit.SendMsg("addStudy#1517952");// + row.Cells["ImageNumber"].Value);
         }
     }
 }

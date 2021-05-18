@@ -41,6 +41,9 @@ namespace Ris.Ui.Register
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            dgvApplyBills.AutoGenerateColumns = false;
+            dgvApplyProjects.AutoGenerateColumns = false;
+            dgvApplys.AutoGenerateColumns = false;
             SetStyle();
             Init();
             tabPage2.Parent = null;
@@ -356,7 +359,7 @@ namespace Ris.Ui.Register
         }
 
         public delegate void RestDataBind();
-        //事件只能内部去调用.
+        //主页面刷新.事件只能内部去调用.
         public event RestDataBind Rest;
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -384,7 +387,7 @@ namespace Ris.Ui.Register
                 BillHospital = txtBillHospital.Text,
                 ApplyDept = cmbApplyDept.SelectedValue.ToString(),
                 ApplyDeptName = cmbApplyDept.Text,
-                ApplyDocter=txtApplyDocterCode.Text,
+                ApplyDocter = txtApplyDocterCode.Text,
                 ApplyDocterName = txtApplyDocter.Text,
                 Area = txtArea.Text,
                 Bed = txtBed.Text,
@@ -398,11 +401,13 @@ namespace Ris.Ui.Register
                 Symptom = txtSymptom.Text,
                 Diagnosis = txtDiagnosis.Text,
                 DockerAsk = txtRemarks.Text,
+                RequestID = lblRequestID.Text,
                 Projects = dgvApplys.DataSource as List<ApplyItem>,
             };
             if (_registerBll.Register(_registerModel, out string errorMsg))
             {
                 tabControl1.SelectedTab = tabPage1;
+                lblRequestID.Text = null;
                 tabPage2.Parent = null;
                 dgvApplyBills.DataSource = null;
                 dgvApplyProjects.DataSource = null;
@@ -450,6 +455,7 @@ namespace Ris.Ui.Register
                         return;
                     }
                     //本身UI赋值
+                    lblRequestID.Text = bill.RequestId;
                     txtName.Text = patient.PatientName;
                     txtAddress.Text = patient.HomeAddress;
                     txtPhone.Text = patient.HomeTel;
@@ -457,6 +463,7 @@ namespace Ris.Ui.Register
                     txtDiagnosis.Text = !string.IsNullOrEmpty(patient.DiagnosisCode) ? patient.DiagnosisCode + "-" + patient.DiagnosisName : "";
                     txtCheckNo.Text = patient.RegCode;
                     txtSymptom.Text = bill.MedicalHistory;
+                    txtDiagnosis.Text = bill.ClinicDiagnosis;
                     txtRemarks.Text = bill.Memo;
                     Init();
                     if (!string.IsNullOrEmpty(patient.SSNumber))
@@ -495,8 +502,8 @@ namespace Ris.Ui.Register
                 var list = dgvApplyBills.DataSource as List<ApplyBill>;
                 var apply = list[e.RowIndex];
                 dgvApplyProjects.DataSource = apply.ApplyItems;
-                var posiModels = apply.ApplyItems.Where(x=>!string.IsNullOrEmpty(x.CheckPointCode)).Select(x => new PositionMethodModel{Code=x.CheckPointCode, Name=x.CheckPointName,IsPosition=1,Status=1 }).ToList();
-                var methods = apply.ApplyItems.Where(x => !string.IsNullOrEmpty(x.MethodCode)).Select(x => new PositionMethodModel { Code = x.CheckPointCode, Name = x.CheckPointName, IsPosition = 0, Status = 1 }).ToList();
+                var posiModels = apply.ApplyItems.Where(x=>!string.IsNullOrEmpty(x.CheckPointCode)).Select(x => new PositionMethodModel{Code=x.CheckPointCode, Name=x.CheckPointName,IsPosition=1,Status=1,ParentID=0 }).ToList();
+                var methods = apply.ApplyItems.Where(x => !string.IsNullOrEmpty(x.MethodCode)).Select(x => new PositionMethodModel { Code = x.CheckPointCode, Name = x.CheckPointName, IsPosition = 0, Status = 1,ParentID=0 }).ToList();
                 posiModels.AddRange(methods);
                 var positionTask = _positionMethodBll.AddPositionMethodByHisAsync(posiModels);
             }

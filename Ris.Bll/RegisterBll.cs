@@ -90,6 +90,11 @@ namespace Ris.Bll
                 bool IsSuccess = false;
                 try
                 {
+                    if (_registerService.RequestIDIsExist(registerEntity.RequestID))
+                    {
+                        errorMsg = "申请单ID已存在.";
+                        return false;
+                    }
                     _registerService.db.Ado.BeginTran();
                     int num=_registerService.Insert(registerEntity);
                     int num2=_registerService.InsertProjects(projectEntitys);
@@ -123,6 +128,16 @@ namespace Ris.Bll
             if (string.IsNullOrEmpty(model.Diagnosis))
             {
                 errorMsg = "诊断不可为空.";
+                return false;
+            }
+            if (string.IsNullOrEmpty(model.RequestID))
+            {
+                errorMsg = "申请单号不可为空.";
+                return false;
+            }
+            if (string.IsNullOrEmpty(model.ImageNumber))
+            {
+                errorMsg = "影像号不可为空.";
                 return false;
             }
             Regex re = new Regex(@"[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?");//实例化一个Regex对象

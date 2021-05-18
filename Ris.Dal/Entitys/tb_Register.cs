@@ -129,6 +129,7 @@ namespace Ris.Dal.Entitys
         /// Nullable:True
         /// </summary>           
         public string PatientType { get; set; }
+
         /// <summary>
         /// Desc:就诊类型
         /// Default:
@@ -265,16 +266,22 @@ namespace Ris.Dal.Entitys
         /// <summary>
         /// Desc:登记状态:已登记,已扫描等状态
         /// Default:
-        /// Nullable:True
+        /// Nullable:False
         /// </summary>           
-        public int? CheckStatus { get; set; }
+        public int CheckStatus { get; set; }
 
         /// <summary>
-        /// Desc:图像状态
+        /// Desc:图像的状态
         /// Default:
         /// Nullable:True
         /// </summary>           
         public string ImageStatus { get; set; }
 
+        /// <summary>
+        /// Desc:申请单编号
+        /// Default:
+        /// Nullable:True
+        /// </summary>           
+        public string RequestID { get; set; }
     }
 }

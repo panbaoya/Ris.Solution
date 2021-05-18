@@ -104,7 +104,16 @@ namespace Ris.Ui
                     if (widths >= ctl.Size.Width)  // 如果调整列的宽度大于设定列宽  
                         dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;  // 调整列的模式 自动  
                     else
-                        dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;  // 如果小于 则填充  
+                    {
+                        if (dgv.Columns[0].Frozen)
+                        {
+                            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;  // 如果小于 则填充 
+                        }
+                        else
+                        {
+                            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;  // 如果小于 则填充 
+                        }
+                    }     
 
                     Cursor.Current = Cursors.Default;
                 }

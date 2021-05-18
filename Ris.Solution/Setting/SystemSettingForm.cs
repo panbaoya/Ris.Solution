@@ -29,7 +29,7 @@ namespace Ris.Ui.Setting
             txtHospitalCode.Text = AppConfSetting.HospitalCode;
             txtHospitalName.Text = AppConfSetting.HospitalName;
             txtAesKey.Text = AppConfSetting.AesKey;
-            txtPostAddress.Text = AppConfSetting.PostAddress;
+            txtPacsIP.Text = AppConfSetting.PacsIP;
             txtPort.Text = AppConfSetting.Port.ToString() ;
             cmbGlobalFontSize.Text = AppConfSetting.GlobalFontSize.ToString();
         }
@@ -40,7 +40,7 @@ namespace Ris.Ui.Setting
             {
                 this.ShowInfo("密钥应为16位.");
             }
-            AppConfSetting.SaveSettiongs("PostAddress", txtPostAddress.Text);
+            AppConfSetting.SaveSettiongs("PostAddress", txtPacsIP.Text);
             AppConfSetting.SaveSettiongs("Port", txtPort.Text);
             AppConfSetting.SaveSettiongs("GlobalFontSize", cmbGlobalFontSize.Text);
             AppConfSetting.SaveSettiongs("HospitalName", txtHospitalName.Text);

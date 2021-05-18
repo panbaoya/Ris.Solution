@@ -40,5 +40,12 @@ namespace Ris.Dal.EntityService
         {
             return db.Insertable<tb_ApplyProjects>(applyProjects).ExecuteCommand();
         }
+
+        public bool RequestIDIsExist(string requestID)
+        {
+            Expression<Func<tb_Register, bool>> expression = x => x.RequestID== requestID;
+            var entity = GetModel(expression);
+            return entity is null ? false : true;
+        }
     }
 }

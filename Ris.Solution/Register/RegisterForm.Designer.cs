@@ -33,9 +33,9 @@ namespace Ris.Ui.Register
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblRequestID = new System.Windows.Forms.Label();
             this.cmbVisitType = new System.Windows.Forms.ComboBox();
             this.cmbPosition = new CustomControl.ComboBoxExApd();
-            this.comboBoxExApd1 = new CustomControl.ComboBoxExApd();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label28 = new System.Windows.Forms.Label();
@@ -73,6 +73,13 @@ namespace Ris.Ui.Register
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dgvApplys = new System.Windows.Forms.DataGridView();
+            this.ItemCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemName1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CheckPointCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CheckPointName1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Memo2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
@@ -105,8 +112,22 @@ namespace Ris.Ui.Register
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.dgvApplyProjects = new System.Windows.Forms.DataGridView();
+            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CheckPointCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CheckPointName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Memo1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvApplyBills = new System.Windows.Forms.DataGridView();
+            this.RequestId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReqLocationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RequestStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MedicalHistory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClinicDiagnosis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AllergyHistory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Memo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -149,9 +170,9 @@ namespace Ris.Ui.Register
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.lblRequestID);
             this.groupBox2.Controls.Add(this.cmbVisitType);
             this.groupBox2.Controls.Add(this.cmbPosition);
-            this.groupBox2.Controls.Add(this.comboBoxExApd1);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.label28);
@@ -195,6 +216,15 @@ namespace Ris.Ui.Register
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "检查信息";
             // 
+            // lblRequestID
+            // 
+            this.lblRequestID.AutoSize = true;
+            this.lblRequestID.Location = new System.Drawing.Point(301, 280);
+            this.lblRequestID.Name = "lblRequestID";
+            this.lblRequestID.Size = new System.Drawing.Size(0, 12);
+            this.lblRequestID.TabIndex = 1014;
+            this.lblRequestID.Tag = "选择的申请单编号";
+            // 
             // cmbVisitType
             // 
             this.cmbVisitType.FormattingEnabled = true;
@@ -213,18 +243,6 @@ namespace Ris.Ui.Register
             this.cmbPosition.Size = new System.Drawing.Size(100, 20);
             this.cmbPosition.TabIndex = 20;
             this.cmbPosition.TextSource = null;
-            // 
-            // comboBoxExApd1
-            // 
-            this.comboBoxExApd1.FormattingEnabled = true;
-            this.comboBoxExApd1.IntegralHeight = false;
-            this.comboBoxExApd1.Location = new System.Drawing.Point(268, 280);
-            this.comboBoxExApd1.MaxDropDownItems = 20;
-            this.comboBoxExApd1.Name = "comboBoxExApd1";
-            this.comboBoxExApd1.Size = new System.Drawing.Size(100, 20);
-            this.comboBoxExApd1.TabIndex = 1015;
-            this.comboBoxExApd1.TextSource = null;
-            this.comboBoxExApd1.Visible = false;
             // 
             // button2
             // 
@@ -546,16 +564,84 @@ namespace Ris.Ui.Register
             // 
             // dgvApplys
             // 
+            this.dgvApplys.AllowUserToAddRows = false;
+            this.dgvApplys.AllowUserToDeleteRows = false;
             this.dgvApplys.AllowUserToOrderColumns = true;
+            this.dgvApplys.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvApplys.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dgvApplys.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvApplys.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvApplys.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ItemCode1,
+            this.ItemName1,
+            this.Quantity1,
+            this.UnitPrice1,
+            this.CheckPointCode1,
+            this.CheckPointName1,
+            this.Memo2});
             this.dgvApplys.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvApplys.Location = new System.Drawing.Point(3, 17);
+            this.dgvApplys.MultiSelect = false;
             this.dgvApplys.Name = "dgvApplys";
+            this.dgvApplys.ReadOnly = true;
             this.dgvApplys.RowTemplate.Height = 23;
+            this.dgvApplys.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvApplys.Size = new System.Drawing.Size(691, 143);
             this.dgvApplys.TabIndex = 0;
+            // 
+            // ItemCode1
+            // 
+            this.ItemCode1.DataPropertyName = "ItemCode";
+            this.ItemCode1.HeaderText = "项目编码";
+            this.ItemCode1.Name = "ItemCode1";
+            this.ItemCode1.ReadOnly = true;
+            this.ItemCode1.Width = 78;
+            // 
+            // ItemName1
+            // 
+            this.ItemName1.DataPropertyName = "ItemName";
+            this.ItemName1.HeaderText = "项目名称";
+            this.ItemName1.Name = "ItemName1";
+            this.ItemName1.ReadOnly = true;
+            this.ItemName1.Width = 78;
+            // 
+            // Quantity1
+            // 
+            this.Quantity1.DataPropertyName = "Quantity";
+            this.Quantity1.HeaderText = "数量";
+            this.Quantity1.Name = "Quantity1";
+            this.Quantity1.ReadOnly = true;
+            this.Quantity1.Width = 54;
+            // 
+            // UnitPrice1
+            // 
+            this.UnitPrice1.DataPropertyName = "UnitPrice";
+            this.UnitPrice1.HeaderText = "单价";
+            this.UnitPrice1.Name = "UnitPrice1";
+            this.UnitPrice1.ReadOnly = true;
+            this.UnitPrice1.Width = 54;
+            // 
+            // CheckPointCode1
+            // 
+            this.CheckPointCode1.DataPropertyName = "CheckPointCode";
+            this.CheckPointCode1.HeaderText = "检查部位代码";
+            this.CheckPointCode1.Name = "CheckPointCode1";
+            this.CheckPointCode1.ReadOnly = true;
+            this.CheckPointCode1.Visible = false;
+            // 
+            // CheckPointName1
+            // 
+            this.CheckPointName1.DataPropertyName = "CheckPointName";
+            this.CheckPointName1.HeaderText = "检查部位名称";
+            this.CheckPointName1.Name = "CheckPointName1";
+            this.CheckPointName1.ReadOnly = true;
+            this.CheckPointName1.Width = 102;
+            // 
+            // Memo2
+            // 
+            this.Memo2.DataPropertyName = "Memo";
+            this.Memo2.HeaderText = "备注";
+            this.Memo2.Name = "Memo2";
+            this.Memo2.ReadOnly = true;
+            this.Memo2.Width = 54;
             // 
             // panel1
             // 
@@ -860,15 +946,85 @@ namespace Ris.Ui.Register
             // 
             // dgvApplyProjects
             // 
+            this.dgvApplyProjects.AllowUserToAddRows = false;
+            this.dgvApplyProjects.AllowUserToDeleteRows = false;
             this.dgvApplyProjects.AllowUserToOrderColumns = true;
+            this.dgvApplyProjects.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvApplyProjects.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvApplyProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvApplyProjects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ItemCode,
+            this.ItemName,
+            this.Quantity,
+            this.UnitPrice,
+            this.CheckPointCode,
+            this.CheckPointName,
+            this.Memo1});
             this.dgvApplyProjects.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvApplyProjects.Location = new System.Drawing.Point(3, 17);
+            this.dgvApplyProjects.MultiSelect = false;
             this.dgvApplyProjects.Name = "dgvApplyProjects";
+            this.dgvApplyProjects.ReadOnly = true;
             this.dgvApplyProjects.RowTemplate.Height = 23;
+            this.dgvApplyProjects.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvApplyProjects.Size = new System.Drawing.Size(691, 393);
             this.dgvApplyProjects.TabIndex = 0;
+            // 
+            // ItemCode
+            // 
+            this.ItemCode.DataPropertyName = "ItemCode";
+            this.ItemCode.HeaderText = "项目编码";
+            this.ItemCode.Name = "ItemCode";
+            this.ItemCode.ReadOnly = true;
+            this.ItemCode.Width = 78;
+            // 
+            // ItemName
+            // 
+            this.ItemName.DataPropertyName = "ItemName";
+            this.ItemName.HeaderText = "项目名称";
+            this.ItemName.Name = "ItemName";
+            this.ItemName.ReadOnly = true;
+            this.ItemName.Width = 78;
+            // 
+            // Quantity
+            // 
+            this.Quantity.DataPropertyName = "Quantity";
+            this.Quantity.HeaderText = "数量";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            this.Quantity.Width = 54;
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.DataPropertyName = "UnitPrice";
+            this.UnitPrice.HeaderText = "单价";
+            this.UnitPrice.Name = "UnitPrice";
+            this.UnitPrice.ReadOnly = true;
+            this.UnitPrice.Width = 54;
+            // 
+            // CheckPointCode
+            // 
+            this.CheckPointCode.DataPropertyName = "CheckPointCode";
+            this.CheckPointCode.HeaderText = "检查部位编码";
+            this.CheckPointCode.Name = "CheckPointCode";
+            this.CheckPointCode.ReadOnly = true;
+            this.CheckPointCode.Visible = false;
+            // 
+            // CheckPointName
+            // 
+            this.CheckPointName.DataPropertyName = "CheckPointName";
+            this.CheckPointName.HeaderText = "检查部位";
+            this.CheckPointName.Name = "CheckPointName";
+            this.CheckPointName.ReadOnly = true;
+            this.CheckPointName.Width = 78;
+            // 
+            // Memo1
+            // 
+            this.Memo1.DataPropertyName = "Memo";
+            this.Memo1.HeaderText = "备注";
+            this.Memo1.Name = "Memo1";
+            this.Memo1.ReadOnly = true;
+            this.Memo1.Width = 54;
             // 
             // groupBox3
             // 
@@ -883,18 +1039,89 @@ namespace Ris.Ui.Register
             // 
             // dgvApplyBills
             // 
+            this.dgvApplyBills.AllowUserToAddRows = false;
+            this.dgvApplyBills.AllowUserToDeleteRows = false;
             this.dgvApplyBills.AllowUserToOrderColumns = true;
+            this.dgvApplyBills.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvApplyBills.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvApplyBills.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvApplyBills.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.RequestId,
+            this.ReqLocationName,
+            this.RequestStatus,
+            this.MedicalHistory,
+            this.ClinicDiagnosis,
+            this.AllergyHistory,
+            this.Memo});
             this.dgvApplyBills.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvApplyBills.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvApplyBills.Location = new System.Drawing.Point(3, 17);
+            this.dgvApplyBills.MultiSelect = false;
             this.dgvApplyBills.Name = "dgvApplyBills";
+            this.dgvApplyBills.ReadOnly = true;
             this.dgvApplyBills.RowTemplate.Height = 23;
+            this.dgvApplyBills.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvApplyBills.Size = new System.Drawing.Size(691, 202);
             this.dgvApplyBills.TabIndex = 0;
             this.dgvApplyBills.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvApplyBills_CellClick);
             this.dgvApplyBills.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvApplyBills_CellDoubleClick);
+            // 
+            // RequestId
+            // 
+            this.RequestId.DataPropertyName = "RequestId";
+            this.RequestId.Frozen = true;
+            this.RequestId.HeaderText = "申请单编号";
+            this.RequestId.Name = "RequestId";
+            this.RequestId.ReadOnly = true;
+            this.RequestId.Width = 90;
+            // 
+            // ReqLocationName
+            // 
+            this.ReqLocationName.DataPropertyName = "ReqLocationName";
+            this.ReqLocationName.HeaderText = "申请科室";
+            this.ReqLocationName.Name = "ReqLocationName";
+            this.ReqLocationName.ReadOnly = true;
+            this.ReqLocationName.Width = 78;
+            // 
+            // RequestStatus
+            // 
+            this.RequestStatus.DataPropertyName = "RequestStatus";
+            this.RequestStatus.HeaderText = "申请单状态";
+            this.RequestStatus.Name = "RequestStatus";
+            this.RequestStatus.ReadOnly = true;
+            this.RequestStatus.Width = 90;
+            // 
+            // MedicalHistory
+            // 
+            this.MedicalHistory.DataPropertyName = "MedicalHistory";
+            this.MedicalHistory.HeaderText = "病史";
+            this.MedicalHistory.Name = "MedicalHistory";
+            this.MedicalHistory.ReadOnly = true;
+            this.MedicalHistory.Width = 54;
+            // 
+            // ClinicDiagnosis
+            // 
+            this.ClinicDiagnosis.DataPropertyName = "ClinicDiagnosis";
+            this.ClinicDiagnosis.HeaderText = "诊断";
+            this.ClinicDiagnosis.Name = "ClinicDiagnosis";
+            this.ClinicDiagnosis.ReadOnly = true;
+            this.ClinicDiagnosis.Width = 54;
+            // 
+            // AllergyHistory
+            // 
+            this.AllergyHistory.DataPropertyName = "AllergyHistory";
+            this.AllergyHistory.HeaderText = "过敏史";
+            this.AllergyHistory.Name = "AllergyHistory";
+            this.AllergyHistory.ReadOnly = true;
+            this.AllergyHistory.Width = 66;
+            // 
+            // Memo
+            // 
+            this.Memo.DataPropertyName = "Memo";
+            this.Memo.HeaderText = "备注";
+            this.Memo.Name = "Memo";
+            this.Memo.ReadOnly = true;
+            this.Memo.Width = 54;
             // 
             // RegisterForm
             // 
@@ -934,7 +1161,6 @@ namespace Ris.Ui.Register
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox2;
         private CustomControl.ComboBoxExApd cmbPosition;
-        private CustomControl.ComboBoxExApd comboBoxExApd1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label28;
@@ -1007,5 +1233,27 @@ namespace Ris.Ui.Register
         private System.Windows.Forms.DataGridView dgvApplyBills;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtApplyDocterCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RequestId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ReqLocationName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RequestStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MedicalHistory;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClinicDiagnosis;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AllergyHistory;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Memo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemCode1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemName1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CheckPointCode1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CheckPointName1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Memo2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CheckPointCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CheckPointName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Memo1;
+        private System.Windows.Forms.Label lblRequestID;
     }
 }

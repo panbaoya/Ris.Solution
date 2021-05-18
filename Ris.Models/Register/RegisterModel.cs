@@ -44,7 +44,8 @@ namespace Ris.Models.Register
         public string Method { get; set; }
         public string Symptom { get; set; }
         public string DockerAsk { get; set; }
-        public List<ApplyItem> Projects { get; set; }
         public string ImageStatus { get; set; }
+        public string RequestID { get; set; }
+        public List<ApplyItem> Projects { get; set; }
     }
 }

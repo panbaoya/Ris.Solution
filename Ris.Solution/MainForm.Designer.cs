@@ -30,9 +30,9 @@ namespace Ris.Ui
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,7 +47,6 @@ namespace Ris.Ui
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbRegister = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgvRegisterList = new System.Windows.Forms.DataGridView();
@@ -80,6 +79,8 @@ namespace Ris.Ui
             this.DockerAsk = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.打开影像ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.清除影像ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.追加检查ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblYsyq = new System.Windows.Forms.Label();
             this.lblZd = new System.Windows.Forms.Label();
@@ -127,8 +128,6 @@ namespace Ris.Ui
             this.label14 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtImageNumber = new System.Windows.Forms.TextBox();
-            this.清除影像ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.追加检查ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -233,8 +232,7 @@ namespace Ris.Ui
             this.toolStrip1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbRegister,
-            this.toolStripSeparator1,
-            this.toolStripButton2});
+            this.toolStripSeparator1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 25);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1223, 56);
@@ -256,15 +254,6 @@ namespace Ris.Ui
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 56);
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 53);
-            this.toolStripButton2.Text = "toolStripButton2";
             // 
             // tabControl1
             // 
@@ -587,14 +576,28 @@ namespace Ris.Ui
             this.清除影像ToolStripMenuItem,
             this.追加检查ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 70);
             // 
             // 打开影像ToolStripMenuItem
             // 
             this.打开影像ToolStripMenuItem.Name = "打开影像ToolStripMenuItem";
-            this.打开影像ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.打开影像ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.打开影像ToolStripMenuItem.Text = "打开影像";
             this.打开影像ToolStripMenuItem.Click += new System.EventHandler(this.打开影像ToolStripMenuItem_Click);
+            // 
+            // 清除影像ToolStripMenuItem
+            // 
+            this.清除影像ToolStripMenuItem.Name = "清除影像ToolStripMenuItem";
+            this.清除影像ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.清除影像ToolStripMenuItem.Text = "清除影像";
+            this.清除影像ToolStripMenuItem.Click += new System.EventHandler(this.清除影像ToolStripMenuItem_Click);
+            // 
+            // 追加检查ToolStripMenuItem
+            // 
+            this.追加检查ToolStripMenuItem.Name = "追加检查ToolStripMenuItem";
+            this.追加检查ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.追加检查ToolStripMenuItem.Text = "追加检查";
+            this.追加检查ToolStripMenuItem.Click += new System.EventHandler(this.追加检查ToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
@@ -973,7 +976,7 @@ namespace Ris.Ui
             // btnSearch
             // 
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Location = new System.Drawing.Point(64, 599);
+            this.btnSearch.Location = new System.Drawing.Point(74, 642);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 3;
@@ -998,6 +1001,7 @@ namespace Ris.Ui
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 20);
             this.comboBox1.TabIndex = 2;
+            this.comboBox1.Visible = false;
             // 
             // label15
             // 
@@ -1041,20 +1045,6 @@ namespace Ris.Ui
             this.txtImageNumber.Name = "txtImageNumber";
             this.txtImageNumber.Size = new System.Drawing.Size(121, 21);
             this.txtImageNumber.TabIndex = 0;
-            // 
-            // 清除影像ToolStripMenuItem
-            // 
-            this.清除影像ToolStripMenuItem.Name = "清除影像ToolStripMenuItem";
-            this.清除影像ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.清除影像ToolStripMenuItem.Text = "清除影像";
-            this.清除影像ToolStripMenuItem.Click += new System.EventHandler(this.清除影像ToolStripMenuItem_Click);
-            // 
-            // 追加检查ToolStripMenuItem
-            // 
-            this.追加检查ToolStripMenuItem.Name = "追加检查ToolStripMenuItem";
-            this.追加检查ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.追加检查ToolStripMenuItem.Text = "追加检查";
-            this.追加检查ToolStripMenuItem.Click += new System.EventHandler(this.追加检查ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -1108,7 +1098,6 @@ namespace Ris.Ui
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tsbRegister;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView dgvRegisterList;

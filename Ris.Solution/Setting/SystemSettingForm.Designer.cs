@@ -31,7 +31,7 @@ namespace Ris.Ui.Setting
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SystemSettingForm));
             this.label1 = new System.Windows.Forms.Label();
-            this.txtPostAddress = new System.Windows.Forms.TextBox();
+            this.txtPacsIP = new System.Windows.Forms.TextBox();
             this.txtPort = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,15 +53,14 @@ namespace Ris.Ui.Setting
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 12);
             this.label1.TabIndex = 0;
-            this.label1.Text = "接口地址:";
+            this.label1.Text = "Pacs地址:";
             // 
-            // txtPostAddress
+            // txtPacsIP
             // 
-            this.txtPostAddress.Location = new System.Drawing.Point(77, 90);
-            this.txtPostAddress.Name = "txtPostAddress";
-            this.txtPostAddress.Size = new System.Drawing.Size(244, 21);
-            this.txtPostAddress.TabIndex = 1;
-            this.txtPostAddress.Text = "http://192.168.112.112/";
+            this.txtPacsIP.Location = new System.Drawing.Point(77, 90);
+            this.txtPacsIP.Name = "txtPacsIP";
+            this.txtPacsIP.Size = new System.Drawing.Size(244, 21);
+            this.txtPacsIP.TabIndex = 1;
             // 
             // txtPort
             // 
@@ -77,7 +76,7 @@ namespace Ris.Ui.Setting
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 12);
             this.label2.TabIndex = 0;
-            this.label2.Text = "接口端口:";
+            this.label2.Text = "Pacs端口:";
             // 
             // label3
             // 
@@ -189,7 +188,7 @@ namespace Ris.Ui.Setting
             this.Controls.Add(this.txtPort);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtPostAddress);
+            this.Controls.Add(this.txtPacsIP);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -208,7 +207,7 @@ namespace Ris.Ui.Setting
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtPostAddress;
+        private System.Windows.Forms.TextBox txtPacsIP;
         private System.Windows.Forms.TextBox txtPort;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
