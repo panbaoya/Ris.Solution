@@ -29,6 +29,10 @@ namespace Ris.Dal.EntityService
             {
                 expression = expression.And(x => x.PatientType == request.PatientType);
             }
+            if (!string.IsNullOrEmpty(request.VisitType))
+            {
+                expression = expression.And(x => x.VisitType == request.VisitType);
+            }
             if (request.CheckType!=null && request.CheckType.Count>0)
             {
                 expression = expression.And(x => request.CheckType.Contains(x.CheckType));

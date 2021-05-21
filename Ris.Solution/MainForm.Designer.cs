@@ -47,6 +47,7 @@ namespace Ris.Ui
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbRegister = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbUserChange = new System.Windows.Forms.ToolStripButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgvRegisterList = new System.Windows.Forms.DataGridView();
@@ -59,6 +60,7 @@ namespace Ris.Ui
             this.IDCard = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ImageNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PatientType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VisitType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CheckNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -124,6 +126,8 @@ namespace Ris.Ui
             this.ckbCheckType = new System.Windows.Forms.CheckedListBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.cmbVisitType = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.cmbPatientType = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -232,7 +236,8 @@ namespace Ris.Ui
             this.toolStrip1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbRegister,
-            this.toolStripSeparator1});
+            this.toolStripSeparator1,
+            this.tsbUserChange});
             this.toolStrip1.Location = new System.Drawing.Point(0, 25);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1223, 56);
@@ -254,6 +259,17 @@ namespace Ris.Ui
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 56);
+            // 
+            // tsbUserChange
+            // 
+            this.tsbUserChange.Image = global::Ris.Ui.Properties.Resources.切换用户;
+            this.tsbUserChange.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbUserChange.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbUserChange.Name = "tsbUserChange";
+            this.tsbUserChange.Size = new System.Drawing.Size(78, 53);
+            this.tsbUserChange.Text = "切换用户(&Q)";
+            this.tsbUserChange.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbUserChange.Click += new System.EventHandler(this.tsbUserChange_Click);
             // 
             // tabControl1
             // 
@@ -305,6 +321,7 @@ namespace Ris.Ui
             this.IDCard,
             this.ImageNumber,
             this.PatientType,
+            this.VisitType,
             this.CheckNo,
             this.Column2,
             this.Column3,
@@ -375,6 +392,7 @@ namespace Ris.Ui
             // PinYin1
             // 
             this.PinYin1.DataPropertyName = "PinYin1";
+            this.PinYin1.Frozen = true;
             this.PinYin1.HeaderText = "姓名全拼";
             this.PinYin1.Name = "PinYin1";
             this.PinYin1.ReadOnly = true;
@@ -383,6 +401,7 @@ namespace Ris.Ui
             // Gender
             // 
             this.Gender.DataPropertyName = "GenderName";
+            this.Gender.Frozen = true;
             this.Gender.HeaderText = "性别";
             this.Gender.Name = "Gender";
             this.Gender.ReadOnly = true;
@@ -391,6 +410,7 @@ namespace Ris.Ui
             // Age
             // 
             this.Age.DataPropertyName = "Age";
+            this.Age.Frozen = true;
             this.Age.HeaderText = "年龄";
             this.Age.Name = "Age";
             this.Age.ReadOnly = true;
@@ -400,6 +420,7 @@ namespace Ris.Ui
             // 
             this.IDCard.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.IDCard.DataPropertyName = "IDCard";
+            this.IDCard.Frozen = true;
             this.IDCard.HeaderText = "身份证号";
             this.IDCard.Name = "IDCard";
             this.IDCard.ReadOnly = true;
@@ -408,6 +429,7 @@ namespace Ris.Ui
             // ImageNumber
             // 
             this.ImageNumber.DataPropertyName = "ImageNumber";
+            this.ImageNumber.Frozen = true;
             this.ImageNumber.HeaderText = "影像号";
             this.ImageNumber.Name = "ImageNumber";
             this.ImageNumber.ReadOnly = true;
@@ -416,10 +438,20 @@ namespace Ris.Ui
             // PatientType
             // 
             this.PatientType.DataPropertyName = "PatientType";
+            this.PatientType.Frozen = true;
             this.PatientType.HeaderText = "患者类型";
             this.PatientType.Name = "PatientType";
             this.PatientType.ReadOnly = true;
             this.PatientType.Width = 78;
+            // 
+            // VisitType
+            // 
+            this.VisitType.DataPropertyName = "VisitType";
+            this.VisitType.Frozen = true;
+            this.VisitType.HeaderText = "就诊类型";
+            this.VisitType.Name = "VisitType";
+            this.VisitType.ReadOnly = true;
+            this.VisitType.Width = 78;
             // 
             // CheckNo
             // 
@@ -671,6 +703,7 @@ namespace Ris.Ui
             this.txtYsyq.Size = new System.Drawing.Size(320, 55);
             this.txtYsyq.TabIndex = 24;
             this.txtYsyq.Text = "";
+            this.txtYsyq.Visible = false;
             // 
             // txtZd
             // 
@@ -680,6 +713,7 @@ namespace Ris.Ui
             this.txtZd.Size = new System.Drawing.Size(320, 55);
             this.txtZd.TabIndex = 24;
             this.txtZd.Text = "";
+            this.txtZd.Visible = false;
             // 
             // txtZs
             // 
@@ -689,6 +723,7 @@ namespace Ris.Ui
             this.txtZs.Size = new System.Drawing.Size(320, 55);
             this.txtZs.TabIndex = 24;
             this.txtZs.Text = "";
+            this.txtZs.Visible = false;
             // 
             // lblCheckType
             // 
@@ -961,6 +996,8 @@ namespace Ris.Ui
             this.groupBox2.Controls.Add(this.ckbCheckType);
             this.groupBox2.Controls.Add(this.comboBox1);
             this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.cmbVisitType);
+            this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.cmbPatientType);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.label9);
@@ -975,8 +1012,9 @@ namespace Ris.Ui
             // 
             // btnSearch
             // 
+            this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Location = new System.Drawing.Point(74, 642);
+            this.btnSearch.Location = new System.Drawing.Point(73, 649);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 3;
@@ -988,9 +1026,9 @@ namespace Ris.Ui
             // 
             this.ckbCheckType.CheckOnClick = true;
             this.ckbCheckType.FormattingEnabled = true;
-            this.ckbCheckType.Location = new System.Drawing.Point(74, 84);
+            this.ckbCheckType.Location = new System.Drawing.Point(74, 111);
             this.ckbCheckType.Name = "ckbCheckType";
-            this.ckbCheckType.Size = new System.Drawing.Size(120, 84);
+            this.ckbCheckType.Size = new System.Drawing.Size(121, 84);
             this.ckbCheckType.TabIndex = 4;
             // 
             // comboBox1
@@ -1006,11 +1044,29 @@ namespace Ris.Ui
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(9, 84);
+            this.label15.Location = new System.Drawing.Point(9, 111);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(59, 12);
             this.label15.TabIndex = 1;
             this.label15.Text = "检查类型:";
+            // 
+            // cmbVisitType
+            // 
+            this.cmbVisitType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbVisitType.FormattingEnabled = true;
+            this.cmbVisitType.Location = new System.Drawing.Point(73, 78);
+            this.cmbVisitType.Name = "cmbVisitType";
+            this.cmbVisitType.Size = new System.Drawing.Size(121, 20);
+            this.cmbVisitType.TabIndex = 2;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(8, 81);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(59, 12);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "就诊类型:";
             // 
             // cmbPatientType
             // 
@@ -1028,7 +1084,7 @@ namespace Ris.Ui
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(59, 12);
             this.label14.TabIndex = 1;
-            this.label14.Text = "就诊类型:";
+            this.label14.Text = "患者类型:";
             // 
             // label9
             // 
@@ -1150,6 +1206,13 @@ namespace Ris.Ui
         private System.Windows.Forms.CheckedListBox ckbCheckType;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lblYsyq;
+        private System.Windows.Forms.Label lblZd;
+        private System.Windows.Forms.Label lblZs;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 打开影像ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 清除影像ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 追加检查ToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn PatientID;
         private System.Windows.Forms.DataGridViewTextBoxColumn grdName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CardNo;
@@ -1159,6 +1222,7 @@ namespace Ris.Ui
         private System.Windows.Forms.DataGridViewTextBoxColumn IDCard;
         private System.Windows.Forms.DataGridViewTextBoxColumn ImageNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn PatientType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VisitType;
         private System.Windows.Forms.DataGridViewTextBoxColumn CheckNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -1177,12 +1241,8 @@ namespace Ris.Ui
         private System.Windows.Forms.DataGridViewTextBoxColumn Symptom;
         private System.Windows.Forms.DataGridViewTextBoxColumn Diagnosis;
         private System.Windows.Forms.DataGridViewTextBoxColumn DockerAsk;
-        private System.Windows.Forms.Label lblYsyq;
-        private System.Windows.Forms.Label lblZd;
-        private System.Windows.Forms.Label lblZs;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 打开影像ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 清除影像ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 追加检查ToolStripMenuItem;
+        private System.Windows.Forms.ComboBox cmbVisitType;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ToolStripButton tsbUserChange;
     }
 }

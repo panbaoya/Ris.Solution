@@ -16,6 +16,7 @@ namespace Ris.Dal.Entitys
     [Table("tb_User")]
     public partial class tb_User
     {
+        [SqlSugar.SugarColumn(IsIdentity =true,IsPrimaryKey =true)]
         public int ID { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }

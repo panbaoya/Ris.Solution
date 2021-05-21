@@ -24,13 +24,34 @@ namespace Ris.Ui
             _userBll = new UserBll();
         }
 
+        bool IsChange = false;
+        public LoginForm(bool isChange)
+        {
+            InitializeComponent();
+            _userBll = new UserBll();
+            IsChange = isChange;
+            button2.Text = "取消";
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (IsChange)
+            {
+                this.Close();
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (IsChange && CurrentUser.UserName==txtUserName.Text.Trim())
+            {
+                this.ShowInfo("当前登录账户相同.");
+                return;
+            }
             if (checkBox1.Checked)
             {
                 if (string.IsNullOrEmpty(txtPhone.Text))
@@ -59,11 +80,14 @@ namespace Ris.Ui
             var user = _userBll.Login(userModel);
             if (user != null)
             {
-                BaseForm.CurrentUser = user;
-                var msg = $"操作员:{user.Name},工号:{user.UserName},{DateTime.Now.ToString()}登录成功.";
-                NLogger.LogInfo(msg, user.UserName);
-                MainForm mainForm = new MainForm();
-                mainForm.Show();
+                CurrentUser = user;
+                if (!IsChange)
+                {
+                    var msg = $"操作员:{user.Name},工号:{user.UserName},{DateTime.Now.ToString()}登录成功.";
+                    NLogger.LogInfo(msg, user.UserName);
+                    MainForm mainForm = new MainForm();
+                    mainForm.Show();
+                }
                 this.Hide();
             }
             else

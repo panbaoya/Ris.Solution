@@ -1,4 +1,5 @@
-﻿using Ris.Bll;
+﻿using CustomControl;
+using Ris.Bll;
 using Ris.IBll;
 using Ris.Models.Enums;
 using Ris.Models.Register;
@@ -48,10 +49,9 @@ namespace Ris.Ui
             //    BindData();
             //}
         }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
-            tssUser.Text += $"[{CurrentUser.Name}]";
+            tssUser.Text = $"当前登录:[{CurrentUser.Name}]";
 
             SetStyle();
             this.dgvRegisterList.AutoGenerateColumns = false;
@@ -73,6 +73,10 @@ namespace Ris.Ui
             cmbPatientType.DisplayMember = "DataName";
             cmbPatientType.ValueMember = "DataCode";
             cmbPatientType.DataSource = patientTypes;
+            var visitTypes= typeConfigs.Where(x => x.DataType == TypeConfigEnum.VisitType).ToList();
+            cmbVisitType.DisplayMember = "DataName";
+            cmbVisitType.ValueMember = "DataCode";
+            cmbVisitType.DataSource = visitTypes;
             //检查类型
             ckbCheckType.Items.Clear();
             var checkTypes = typeConfigs.Where(x => x.DataType == TypeConfigEnum.CheckType).ToList();
@@ -91,6 +95,7 @@ namespace Ris.Ui
             {
                 ImageNumber = txtImageNumber.Text,
                 PatientType = cmbPatientType.Text,
+                VisitType=cmbVisitType.Text,
                 CheckType = new List<string>(),
             };
             for (int i = 0; i < ckbCheckType.Items.Count; i++)
@@ -259,6 +264,7 @@ namespace Ris.Ui
         private void timer1_Tick(object sender, EventArgs e)
         {
             tssTime.Text = "系统时间:" + DateTime.Now.ToString();
+            tssUser.Text = $"当前登录:[{CurrentUser.Name}]";
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -314,6 +320,12 @@ namespace Ris.Ui
         {
             DataGridViewRow row = dgvRegisterList.Rows[dgvRegisterList.CurrentRow.Index];
             UdpUnit.SendMsg("addStudy#1517952");// + row.Cells["ImageNumber"].Value);
+        }
+
+        private void tsbUserChange_Click(object sender, EventArgs e)
+        {
+            LoginForm form = new LoginForm(true);
+            form.ShowDialog();
         }
     }
 }

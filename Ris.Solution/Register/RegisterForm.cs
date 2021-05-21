@@ -151,9 +151,8 @@ namespace Ris.Ui.Register
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
-            this.Dispose();
         }
 
         private void btnReset_Click(object sender, EventArgs e)

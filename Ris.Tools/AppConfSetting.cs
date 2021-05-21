@@ -12,16 +12,17 @@ namespace Ris.Tools
     /// </summary>
     public class AppConfSetting
     {
+        private static Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);//将当前应用程序的配置文件作为 System.Configuration.Configuration 对象打开。
         public static string ConnectionString => ConfigurationManager.AppSettings["ConnectionString"];
         /// <summary>
         /// 医院名称
         /// </summary>
-        public static string HospitalName => ConfigurationManager.AppSettings["HospitalName"];
+        public static string HospitalName => config.AppSettings.Settings["HospitalName"]?.Value;
 
         /// <summary>
         /// 医院代码
         /// </summary>
-        public static string HospitalCode => ConfigurationManager.AppSettings["HospitalCode"];
+        public static string HospitalCode => config.AppSettings.Settings["HospitalCode"]?.Value;
 
         /// <summary>
         /// 密钥
@@ -60,7 +61,6 @@ namespace Ris.Tools
         /// <param name="setValue"></param>
         public static void SaveSettiongs(string setName, string setValue)
         {
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);//将当前应用程序的配置文件作为 System.Configuration.Configuration 对象打开。
             if (config.AppSettings.Settings.AllKeys.Contains(setName))
             {
                 config.AppSettings.Settings[setName].Value = setValue;
@@ -69,7 +69,6 @@ namespace Ris.Tools
             {
                 config.AppSettings.Settings.Add(setName, setValue);
             }
-            var sss=config.AppSettings.Settings[setName];
             config.Save();
             ConfigurationManager.RefreshSection(setName);
         }

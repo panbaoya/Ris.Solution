@@ -11,6 +11,7 @@ namespace Ris.Models.Register
         public string Name { get; set; }
         public string ImageNumber { get; set; }
         public string PatientType { get; set; }
+        public string VisitType { get; set; }
         public List<string> CheckType { get; set; }
     }
 }
