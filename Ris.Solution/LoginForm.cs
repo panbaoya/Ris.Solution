@@ -24,6 +24,9 @@ namespace Ris.Ui
             _userBll = new UserBll();
         }
 
+        /// <summary>
+        /// 是否切换用户
+        /// </summary>
         bool IsChange = false;
         public LoginForm(bool isChange)
         {
@@ -81,13 +84,14 @@ namespace Ris.Ui
             if (user != null)
             {
                 CurrentUser = user;
+                //如果是切换用户,直接隐藏,否则弹出主页面.
                 if (!IsChange)
                 {
-                    var msg = $"操作员:{user.Name},工号:{user.UserName},{DateTime.Now.ToString()}登录成功.";
-                    NLogger.LogInfo(msg, user.UserName);
                     MainForm mainForm = new MainForm();
                     mainForm.Show();
                 }
+                var msg = $"操作员:{user.Name},工号:{user.UserName},{DateTime.Now.ToString()}登录成功.";
+                NLogger.LogInfo(msg, user.UserName);
                 this.Hide();
             }
             else
