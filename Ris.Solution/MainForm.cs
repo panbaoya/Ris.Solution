@@ -362,6 +362,7 @@ namespace Ris.Ui
 
         private void rdbWeek_Click(object sender, EventArgs e)
         {
+            //三个日期按钮可以不选中.
             var radio = sender as RadioButton;
             if (rdbcheck1 && radio.Name== "rdbWeek")
             {
