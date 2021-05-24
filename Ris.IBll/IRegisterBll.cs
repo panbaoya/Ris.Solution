@@ -31,5 +31,6 @@ namespace Ris.IBll
         List<RegisterModel> GetRegisters(RequestRegisterModel request);
 
         bool ImageStatus(string imageNumber);
+        bool UpdateRegister(RegisterModel updateModel, out string errorMsg);
     }
 }

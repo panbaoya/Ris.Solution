@@ -12,6 +12,8 @@ namespace Ris.Models.Register
         public string ImageNumber { get; set; }
         public string PatientType { get; set; }
         public string VisitType { get; set; }
+        public DateTime? StarDate { get; set; }
+        public DateTime? EndDate { get; set; }
         public List<string> CheckType { get; set; }
     }
 }

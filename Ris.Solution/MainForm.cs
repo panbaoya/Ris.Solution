@@ -52,7 +52,7 @@ namespace Ris.Ui
         private void MainForm_Load(object sender, EventArgs e)
         {
             tssUser.Text = $"当前登录:[{CurrentUser.Name}]";
-
+            dateTimePicker1.Value = DateTime.Now.AddMonths(-3);
             SetStyle();
             this.dgvRegisterList.AutoGenerateColumns = false;
             dgvRegisterList.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -98,6 +98,21 @@ namespace Ris.Ui
                 VisitType=cmbVisitType.Text,
                 CheckType = new List<string>(),
             };
+            if (rdbWeek.Checked)
+            {
+                request.StarDate = DateTime.Now.AddDays(-7);
+                request.EndDate = DateTime.Now;
+            }
+            if (rdbMonth.Checked)
+            {
+                request.StarDate = DateTime.Now.AddMonths(-1);
+                request.EndDate = DateTime.Now;
+            }
+            if (rdbSelf.Checked)
+            {
+                request.StarDate = dateTimePicker1.Value;
+                request.EndDate = dateTimePicker2.Value;
+            }
             for (int i = 0; i < ckbCheckType.Items.Count; i++)
             {
                 if (ckbCheckType.GetItemChecked(i))
@@ -218,7 +233,6 @@ namespace Ris.Ui
                 lblZs.Text = patientRegister.Symptom;
                 lblZd.Text = patientRegister.Diagnosis;
                 lblYsyq.Text = patientRegister.DockerAsk;
-                //UdpUnit.SendMsg("clearImage");
             }
         }
 
@@ -326,6 +340,19 @@ namespace Ris.Ui
         {
             LoginForm form = new LoginForm(true);
             form.ShowDialog();
+        }
+
+        private void dgvRegisterList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //修改登记
+            if (e.RowIndex>=0)
+            {
+                var list = this.dgvRegisterList.DataSource as List<RegisterModel>;
+                var patientRegister = list[e.RowIndex];
+                RegisterForm form = new RegisterForm(patientRegister);
+                form.Rest += BindData;
+                form.ShowDialog();
+            }
         }
     }
 }

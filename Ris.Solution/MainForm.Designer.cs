@@ -30,8 +30,8 @@ namespace Ris.Ui
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,7 +56,7 @@ namespace Ris.Ui
             this.CardNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PinYin1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Age = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CurrentAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDCard = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ImageNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PatientType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -122,9 +122,12 @@ namespace Ris.Ui
             this.tssTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rdbSelf = new System.Windows.Forms.RadioButton();
+            this.rdbMonth = new System.Windows.Forms.RadioButton();
+            this.rdbWeek = new System.Windows.Forms.RadioButton();
             this.btnSearch = new System.Windows.Forms.Button();
             this.ckbCheckType = new System.Windows.Forms.CheckedListBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.cmbVisitType = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -132,6 +135,10 @@ namespace Ris.Ui
             this.label14 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtImageNumber = new System.Windows.Forms.TextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -303,21 +310,21 @@ namespace Ris.Ui
             this.dgvRegisterList.AllowUserToOrderColumns = true;
             this.dgvRegisterList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvRegisterList.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRegisterList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRegisterList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvRegisterList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PatientID,
             this.grdName,
             this.CardNo,
             this.PinYin1,
             this.Gender,
-            this.Age,
+            this.CurrentAge,
             this.IDCard,
             this.ImageNumber,
             this.PatientType,
@@ -346,20 +353,21 @@ namespace Ris.Ui
             this.dgvRegisterList.MultiSelect = false;
             this.dgvRegisterList.Name = "dgvRegisterList";
             this.dgvRegisterList.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRegisterList.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRegisterList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvRegisterList.RowTemplate.Height = 23;
             this.dgvRegisterList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRegisterList.ShowCellToolTips = false;
             this.dgvRegisterList.Size = new System.Drawing.Size(1003, 427);
             this.dgvRegisterList.TabIndex = 0;
             this.dgvRegisterList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRegisterList_CellClick);
+            this.dgvRegisterList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRegisterList_CellDoubleClick);
             this.dgvRegisterList.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRegisterList_ColumnHeaderMouseClick);
             // 
             // PatientID
@@ -391,7 +399,7 @@ namespace Ris.Ui
             // 
             // PinYin1
             // 
-            this.PinYin1.DataPropertyName = "PinYin1";
+            this.PinYin1.DataPropertyName = "PinYin";
             this.PinYin1.Frozen = true;
             this.PinYin1.HeaderText = "姓名全拼";
             this.PinYin1.Name = "PinYin1";
@@ -407,14 +415,14 @@ namespace Ris.Ui
             this.Gender.ReadOnly = true;
             this.Gender.Width = 54;
             // 
-            // Age
+            // CurrentAge
             // 
-            this.Age.DataPropertyName = "Age";
-            this.Age.Frozen = true;
-            this.Age.HeaderText = "年龄";
-            this.Age.Name = "Age";
-            this.Age.ReadOnly = true;
-            this.Age.Width = 54;
+            this.CurrentAge.DataPropertyName = "CurrentAge";
+            this.CurrentAge.Frozen = true;
+            this.CurrentAge.HeaderText = "年龄";
+            this.CurrentAge.Name = "CurrentAge";
+            this.CurrentAge.ReadOnly = true;
+            this.CurrentAge.Width = 54;
             // 
             // IDCard
             // 
@@ -992,9 +1000,16 @@ namespace Ris.Ui
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.dateTimePicker2);
+            this.groupBox2.Controls.Add(this.dateTimePicker1);
+            this.groupBox2.Controls.Add(this.rdbSelf);
+            this.groupBox2.Controls.Add(this.rdbMonth);
+            this.groupBox2.Controls.Add(this.rdbWeek);
             this.groupBox2.Controls.Add(this.btnSearch);
             this.groupBox2.Controls.Add(this.ckbCheckType);
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.label19);
+            this.groupBox2.Controls.Add(this.label18);
+            this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.cmbVisitType);
             this.groupBox2.Controls.Add(this.label16);
@@ -1009,6 +1024,40 @@ namespace Ris.Ui
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "条件查询";
+            // 
+            // rdbSelf
+            // 
+            this.rdbSelf.AutoSize = true;
+            this.rdbSelf.Location = new System.Drawing.Point(154, 214);
+            this.rdbSelf.Name = "rdbSelf";
+            this.rdbSelf.Size = new System.Drawing.Size(47, 16);
+            this.rdbSelf.TabIndex = 5;
+            this.rdbSelf.TabStop = true;
+            this.rdbSelf.Text = "自选";
+            this.rdbSelf.UseVisualStyleBackColor = true;
+            // 
+            // rdbMonth
+            // 
+            this.rdbMonth.AutoSize = true;
+            this.rdbMonth.Location = new System.Drawing.Point(113, 214);
+            this.rdbMonth.Name = "rdbMonth";
+            this.rdbMonth.Size = new System.Drawing.Size(35, 16);
+            this.rdbMonth.TabIndex = 5;
+            this.rdbMonth.TabStop = true;
+            this.rdbMonth.Text = "月";
+            this.rdbMonth.UseVisualStyleBackColor = true;
+            // 
+            // rdbWeek
+            // 
+            this.rdbWeek.AutoSize = true;
+            this.rdbWeek.Checked = true;
+            this.rdbWeek.Location = new System.Drawing.Point(73, 214);
+            this.rdbWeek.Name = "rdbWeek";
+            this.rdbWeek.Size = new System.Drawing.Size(35, 16);
+            this.rdbWeek.TabIndex = 5;
+            this.rdbWeek.TabStop = true;
+            this.rdbWeek.Text = "周";
+            this.rdbWeek.UseVisualStyleBackColor = true;
             // 
             // btnSearch
             // 
@@ -1031,15 +1080,14 @@ namespace Ris.Ui
             this.ckbCheckType.Size = new System.Drawing.Size(121, 84);
             this.ckbCheckType.TabIndex = 4;
             // 
-            // comboBox1
+            // label17
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(64, 225);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 20);
-            this.comboBox1.TabIndex = 2;
-            this.comboBox1.Visible = false;
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(9, 216);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(59, 12);
+            this.label17.TabIndex = 1;
+            this.label17.Text = "登记日期:";
             // 
             // label15
             // 
@@ -1101,6 +1149,38 @@ namespace Ris.Ui
             this.txtImageNumber.Name = "txtImageNumber";
             this.txtImageNumber.Size = new System.Drawing.Size(121, 21);
             this.txtImageNumber.TabIndex = 0;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(74, 236);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(121, 21);
+            this.dateTimePicker1.TabIndex = 6;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(73, 263);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(121, 21);
+            this.dateTimePicker2.TabIndex = 6;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(8, 242);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(59, 12);
+            this.label18.TabIndex = 1;
+            this.label18.Text = "开始日期:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(8, 269);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(59, 12);
+            this.label19.TabIndex = 1;
+            this.label19.Text = "结束日期:";
             // 
             // MainForm
             // 
@@ -1204,7 +1284,6 @@ namespace Ris.Ui
         private System.Windows.Forms.ComboBox cmbPatientType;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.CheckedListBox ckbCheckType;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label lblYsyq;
         private System.Windows.Forms.Label lblZd;
@@ -1213,12 +1292,15 @@ namespace Ris.Ui
         private System.Windows.Forms.ToolStripMenuItem 打开影像ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 清除影像ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 追加检查ToolStripMenuItem;
+        private System.Windows.Forms.ComboBox cmbVisitType;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ToolStripButton tsbUserChange;
         private System.Windows.Forms.DataGridViewTextBoxColumn PatientID;
         private System.Windows.Forms.DataGridViewTextBoxColumn grdName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CardNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn PinYin1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gender;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Age;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CurrentAge;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDCard;
         private System.Windows.Forms.DataGridViewTextBoxColumn ImageNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn PatientType;
@@ -1241,8 +1323,13 @@ namespace Ris.Ui
         private System.Windows.Forms.DataGridViewTextBoxColumn Symptom;
         private System.Windows.Forms.DataGridViewTextBoxColumn Diagnosis;
         private System.Windows.Forms.DataGridViewTextBoxColumn DockerAsk;
-        private System.Windows.Forms.ComboBox cmbVisitType;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.ToolStripButton tsbUserChange;
+        private System.Windows.Forms.RadioButton rdbSelf;
+        private System.Windows.Forms.RadioButton rdbMonth;
+        private System.Windows.Forms.RadioButton rdbWeek;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
     }
 }

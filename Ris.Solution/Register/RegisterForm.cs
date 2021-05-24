@@ -8,6 +8,7 @@ using Ris.Models.PositionMethod;
 using Ris.Models.Register;
 using Ris.Models.TypeConfig;
 using Ris.Tools;
+using Ris.Tools.Nlog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,6 +38,20 @@ namespace Ris.Ui.Register
             _typeConfigBll = new TypeConfigBll();
             _deptmentBll = new DeptmentBll();
             _positionMethodBll = new PositionMethodBll();
+            btnRegister.Visible = true;
+            btnUpdate.Visible = false;
+        }
+        public RegisterForm(RegisterModel registerModel)
+        {
+            InitializeComponent();
+            txtIDCard.LostFocus += txtIDCard_LostFocus;
+            _registerBll = new RegisterBll();
+            _typeConfigBll = new TypeConfigBll();
+            _deptmentBll = new DeptmentBll();
+            _positionMethodBll = new PositionMethodBll();
+            btnRegister.Visible = false;
+            btnUpdate.Visible = true;
+            BindModel(registerModel);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -415,10 +430,6 @@ namespace Ris.Ui.Register
                 Rest();
                 RestTextBox();
                 MessageBox.Show("添加成功.");
-
-                //this.Close();
-                //this.DialogResult = DialogResult.OK;
-
             }
             else
             {
@@ -506,6 +517,110 @@ namespace Ris.Ui.Register
                 posiModels.AddRange(methods);
                 var positionTask = _positionMethodBll.AddPositionMethodByHisAsync(posiModels);
             }
+        }
+
+        RegisterModel updateModel;
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            updateModel.CardNo = txtCardNo.Text;
+            updateModel.Name = txtName.Text;
+            updateModel.IDCard = txtIDCard.Text;
+            updateModel.PinYin = txtPinyin1.Text;
+            updateModel.Gender = cmbGender.SelectedValue.ToString();
+            updateModel.GenderName = cmbGender.Text;
+            updateModel.Address = txtAddress.Text;
+            updateModel.BirthDay = txtBirthDay.Text;
+            updateModel.CurrentAge = txtAge.Text;
+            updateModel.Phone = txtPhone.Text;
+            updateModel.PostCode = txtPostCode.Text;
+            updateModel.Email = txtEmail.Text;
+            updateModel.ImageNumber = txtImageNumber.Text;
+            updateModel.PatientType = cmbPatientType.Text;
+            updateModel.VisitType = cmbVisitType.Text;
+            updateModel.CheckNo = txtCheckNo.Text;
+            updateModel.BillHospital = txtBillHospital.Text;
+            updateModel.ApplyDept = cmbApplyDept.SelectedValue.ToString();
+            updateModel.ApplyDeptName = cmbApplyDept.Text;
+            updateModel.ApplyDocter = txtApplyDocterCode.Text;
+            updateModel.ApplyDocterName = txtApplyDocter.Text;
+            updateModel.Area = txtArea.Text;
+            updateModel.Bed = txtBed.Text;
+            updateModel.ApplyDate = dtpApplyDate.Value;
+            updateModel.CheckDept = cmbCheckDept.SelectedValue.ToString();
+            updateModel.CheckDeptName = cmbCheckDept.Text;
+            updateModel.CheckType = cmbCheckType.Text;
+            updateModel.Equipment = cmbEquipment.Text;
+            updateModel.Position = cmbPosition.Text;
+            updateModel.Method = cmbMethod.Text;
+            updateModel.Symptom = txtSymptom.Text;
+            updateModel.Diagnosis = txtDiagnosis.Text;
+            updateModel.DockerAsk = txtRemarks.Text;
+            updateModel.RequestID = lblRequestID.Text;
+            updateModel.Projects = dgvApplys.DataSource as List<ApplyItem>;
+            var result = _registerBll.UpdateRegister(updateModel, out string errorMsg);
+
+            this.ShowInfo(errorMsg);
+            if (result)
+            {
+                var msg = $"操作员:{CurrentUser.Name},工号:{CurrentUser.UserName},{DateTime.Now.ToString()} 修改登记信息,登记ID:{updateModel.PatientID}.";
+                NLogger.LogInfo(msg, CurrentUser.UserName);
+                RestTextBox();
+                Rest();
+                updateModel = null;
+                btnUpdate.Visible = false;
+                btnRegister.Visible = true;
+            }
+            else
+            {
+                var msg = $"操作员:{CurrentUser.Name},工号:{CurrentUser.UserName},{DateTime.Now.ToString()} 修改登记信失败,登记ID:{updateModel.PatientID}.";
+                NLogger.LogInfo(msg, CurrentUser.UserName);
+                Rest();
+                this.Close();
+            }
+        }
+
+        /// <summary>
+        /// 修改功能绑定模型
+        /// </summary>
+        /// <param name="model"></param>
+        private void BindModel(RegisterModel model)
+        {
+            updateModel = model;
+            txtCardNo.Text = model.CardNo;
+            txtName.Text = model.Name;
+            txtIDCard.Text = model.IDCard;
+            txtPinyin1.Text = model.PinYin;
+            cmbGender.SelectedValue = model.Gender;
+            //cmbGender.Text = model.GenderName;
+            txtAddress.Text = model.Address;
+            txtBirthDay.Text = model.BirthDay;
+            txtAge.Text = model.CurrentAge;
+            txtPhone.Text = model.Phone;
+            txtPostCode.Text = model.PostCode;
+            txtEmail.Text = model.Email;
+            txtImageNumber.Text = model.ImageNumber;
+            cmbPatientType.Text = model.PatientType;
+            cmbVisitType.Text = model.VisitType;
+            txtCheckNo.Text = model.CheckNo;
+            txtBillHospital.Text = model.BillHospital;
+            cmbApplyDept.SelectedValue = model.ApplyDept;
+            cmbApplyDept.Text = model.ApplyDeptName;
+            txtApplyDocterCode.Text = model.ApplyDocter;
+            txtApplyDocter.Text = model.ApplyDocterName;
+            txtArea.Text = model.Area;
+            txtBed.Text = model.Bed;
+            dtpApplyDate.Value = model.ApplyDate.Value;
+            cmbCheckDept.SelectedValue = model.CheckDept;
+            cmbCheckDept.Text = model.CheckDeptName;
+            cmbCheckType.Text = model.CheckType;
+            cmbEquipment.Text = model.Equipment;
+            cmbPosition.Text = model.Position;
+            cmbMethod.Text = model.Method;
+            txtSymptom.Text = model.Symptom;
+            txtDiagnosis.Text = model.Diagnosis;
+            txtRemarks.Text = model.DockerAsk;
+            lblRequestID.Text = model.RequestID;
+            dgvApplys.DataSource = model.Projects;
         }
     }
 }

@@ -37,6 +37,14 @@ namespace Ris.Dal.EntityService
             {
                 expression = expression.And(x => request.CheckType.Contains(x.CheckType));
             }
+            if (request.StarDate.HasValue)
+            {
+                expression = expression.And(x => request.StarDate<=x.ApplyDate);
+            }
+            if (request.EndDate.HasValue)
+            {
+                expression = expression.And(x => request.EndDate>=x.ApplyDate);
+            }
             return GetList(expression);
         }
 

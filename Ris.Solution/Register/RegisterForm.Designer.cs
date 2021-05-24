@@ -128,6 +128,7 @@ namespace Ris.Ui.Register
             this.ClinicDiagnosis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AllergyHistory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Memo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -645,6 +646,7 @@ namespace Ris.Ui.Register
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.btnReset);
             this.panel1.Controls.Add(this.btnRegister);
             this.panel1.Controls.Add(this.btnCancel);
@@ -657,6 +659,7 @@ namespace Ris.Ui.Register
             // btnReset
             // 
             this.btnReset.BackColor = System.Drawing.Color.Transparent;
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.Location = new System.Drawing.Point(320, 4);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
@@ -668,6 +671,7 @@ namespace Ris.Ui.Register
             // btnRegister
             // 
             this.btnRegister.BackColor = System.Drawing.Color.Transparent;
+            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegister.Location = new System.Drawing.Point(171, 4);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(75, 23);
@@ -679,6 +683,7 @@ namespace Ris.Ui.Register
             // btnCancel
             // 
             this.btnCancel.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Location = new System.Drawing.Point(469, 4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
@@ -1123,6 +1128,19 @@ namespace Ris.Ui.Register
             this.Memo.ReadOnly = true;
             this.Memo.Width = 54;
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackColor = System.Drawing.Color.Transparent;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.Location = new System.Drawing.Point(171, 4);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.TabIndex = 23;
+            this.btnUpdate.Text = "修改";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Visible = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1255,5 +1273,6 @@ namespace Ris.Ui.Register
         private System.Windows.Forms.DataGridViewTextBoxColumn CheckPointName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Memo1;
         private System.Windows.Forms.Label lblRequestID;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }

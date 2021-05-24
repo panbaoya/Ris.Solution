@@ -3,12 +3,14 @@ using Nursing.Tools;
 using Ris.Dal.Entitys;
 using Ris.Dal.EntityService;
 using Ris.IBll;
+using Ris.Models.Enums;
 using Ris.Models.InterFaceModel;
 using Ris.Models.Register;
 using Ris.Tools;
 using Ris.Tools.Nlog;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Ris.Bll
@@ -48,17 +50,19 @@ namespace Ris.Bll
         public List<RegisterModel> GetRegisters(RequestRegisterModel request)
         {
             var models = _registerService.GetList(request).MapListTo<tb_Register, RegisterModel>();
+            var genders = _typeConfigService.GetList(x => x.DataType == (int)TypeConfigEnum.Gender);
             models.ForEach(x =>
             {
                 x.IDCard = AesUnit.AESDecrypt(x.IDCard, AppConfSetting.AesKey);
+                x.GenderName = genders.Where(g => g.DataCode == x.Gender).Select(g => g.DataName).FirstOrDefault();
             });
             return models;
         }
 
         public bool ImageStatus(string imageNumber)
         {
-            var entity=_registerService.GetModel(x => x.ImageNumber == imageNumber);
-            if (entity!=null)
+            var entity = _registerService.GetModel(x => x.ImageNumber == imageNumber);
+            if (entity != null)
             {
                 entity.ImageStatus = "图像已到达";
                 return _registerService.Update(entity);
@@ -96,8 +100,8 @@ namespace Ris.Bll
                         return false;
                     }
                     _registerService.db.Ado.BeginTran();
-                    int num=_registerService.Insert(registerEntity);
-                    int num2=_registerService.InsertProjects(projectEntitys);
+                    int num = _registerService.Insert(registerEntity);
+                    int num2 = _registerService.InsertProjects(projectEntitys);
                     _registerService.db.Ado.CommitTran();
                     IsSuccess = true;
                 }
@@ -147,6 +151,27 @@ namespace Ris.Bll
                 return false;
             }
             return true;
+        }
+
+        public bool UpdateRegister(RegisterModel updateModel, out string errorMsg)
+        {
+            errorMsg = "修改成功.";
+            var exists=_registerService.GetModel(x=>x.PatientID!=updateModel.PatientID && x.ImageNumber==updateModel.ImageNumber);
+            if (exists!=null)
+            {
+                errorMsg = "影像号已存在,修改失败.";
+                return false;
+            }
+            var beforeEntity = _registerService.GetModel(x => x.PatientID == updateModel.PatientID);
+            if (beforeEntity==null)
+            {
+                errorMsg = "要修改的患者不存在,修改失败.";
+            }
+            var updateEntity = updateModel.MapTo<RegisterModel,tb_Register>(beforeEntity);
+            updateEntity.IDCard= AesUnit.AESEncrypt(updateEntity.IDCard, AppConfSetting.AesKey);
+            var result=_registerService.Update(updateEntity);
+            errorMsg = result ? "修改成功." : "修改失败.";
+            return result;
         }
     }
 }
