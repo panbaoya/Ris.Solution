@@ -95,7 +95,9 @@ namespace Ris.Ui
             {
                 ImageNumber = txtImageNumber.Text,
                 PatientType = cmbPatientType.Text,
-                VisitType=cmbVisitType.Text,
+                VisitType = cmbVisitType.Text,
+                StarDate = Convert.ToDateTime(DateTime.Now.ToString("D").ToString()),
+                EndDate = Convert.ToDateTime(DateTime.Now.AddDays(1).ToString("D").ToString()).AddSeconds(-1),
                 CheckType = new List<string>(),
             };
             if (rdbWeek.Checked)
@@ -352,6 +354,44 @@ namespace Ris.Ui
                 RegisterForm form = new RegisterForm(patientRegister);
                 form.Rest += BindData;
                 form.ShowDialog();
+            }
+        }
+        bool rdbcheck1 = false;
+        bool rdbcheck2 = false;
+        bool rdbcheck3 = false;
+
+        private void rdbWeek_Click(object sender, EventArgs e)
+        {
+            var radio = sender as RadioButton;
+            if (rdbcheck1 && radio.Name== "rdbWeek")
+            {
+                radio.Checked = !rdbcheck1;
+                rdbcheck1 = !rdbcheck1;
+            }
+            else
+            {
+                radio.Checked = !rdbcheck1;
+                rdbcheck1 = !rdbcheck1;
+            }
+            if (rdbcheck2 && radio.Name == "rdbMonth")
+            {
+                radio.Checked = !rdbcheck2;
+                rdbcheck2 = !rdbcheck2;
+            }
+            else
+            {
+                radio.Checked = !rdbcheck2;
+                rdbcheck2 = !rdbcheck2;
+            }
+            if (rdbcheck3 && radio.Name == "rdbSelf")
+            {
+                radio.Checked = !rdbcheck3;
+                rdbcheck3 = !rdbcheck3;
+            }
+            else
+            {
+                radio.Checked = !rdbcheck3;
+                rdbcheck3 = !rdbcheck3;
             }
         }
     }
